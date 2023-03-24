@@ -17,7 +17,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
             Rejoignez-nous dès maintenant et découvrez comment ensemble, nous pouvons faire la différence.</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
           <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">S'inscrire</button>
-          <button type="button" class="btn btn-secondary btn-lg px-4">Default</button>
+          <button type="button" class="btn btn-secondary btn-lg px-4">Découvrir</button>
         </div>
       </div>
       <div class="hero-img col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
@@ -96,10 +96,11 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
         répondrons dès que possible.
       </p>
 
-      <form action="" method="POST">
+      <form action="" method="POST" class="text-center">
         <input type="text" class="form-control" id="name" placeholder="Nom"><br>
         <input type="email" class="form-control" id="email" placeholder="Adresse e-mail"><br>
         <textarea class="form-control" id="message" placeholder="Message" rows="5"></textarea><br>
+        <input type="submit" class="btn btn-primary" placeholder="Envoyer">
       </form>
 
 </div>

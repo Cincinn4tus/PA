@@ -44,7 +44,7 @@
                 </li>
                 </ul>
                 <form role="search" class="mt-1">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control" type="search" placeholder="Rechercher" aria-label="Search">
                 </form>
                 <a href="/user/register.php">
                     <button class="btn btn-primary ms-2 mt-1">
