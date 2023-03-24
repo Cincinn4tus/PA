@@ -1,0 +1,115 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url("/assets/fonts/poppins.ttf");
+}
+
+
+
+:root{
+    --primary-btn: purple;
+    --primary-btn-hover: rgb(167, 1, 167);
+    --secondary-btn: darkblue;
+    --secondary-btn-hover: rgb(0, 0, 187);
+}
+.navbar-toggler {
+    outline: none;
+    border: none;
+  }
+  
+.navbar-brand{
+    font-weight: bold;
+    font-family: 'Poppins';
+}
+
+.logo{
+  font-family: 'Poppins';
+  font-size: 33px;
+}
+
+.btn-primary{
+    background-color: var(--primary-btn);
+    border: none;
+}
+.btn-secondary{
+    background-color: var(--secondary-btn);
+    border: none;
+}
+.btn-secondary:hover{
+    background-color: var(--secondary-btn-hover);
+    border: none;
+}
+
+.btn-primary:hover{
+    background-color: var(--primary-btn-hover);
+    border: none;
+}
+
+.form{
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+.feature-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: .75rem;
+}
+
+.icon-link > .bi {
+  margin-top: .125rem;
+  margin-left: .125rem;
+  fill: currentcolor;
+  transition: transform .25s ease-in-out;
+}
+.icon-link:hover > .bi {
+  transform: translate(.25rem);
+}
+
+.icon-square {
+  width: 3rem;
+  height: 3rem;
+  border-radius: .75rem;
+}
+
+.text-shadow-1 { text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25); }
+.text-shadow-2 { text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25); }
+.text-shadow-3 { text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25); }
+
+.card-cover {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.feature-icon-small {
+  width: 3rem;
+  height: 3rem;
+}
+
+.icon-square{
+    color: var(--secondary-btn);
+    color: white;
+}
+
+.newsletter-subscribe{
+    background-color: darkblue;
+    color: white;
+    background-position: fixed;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    height: 100%;
+    width: auto;
+    border-radius: 10px;
+}
+
+p{
+  font-size: 1.3em;
+}
+
+@media (max-width: 768px) {
+  .hero-img{
+    display: none;
+  }
+}
+
