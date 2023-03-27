@@ -6,10 +6,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 
 
 
-<div class="container my-5">
+<div class="container hero my-5">
     <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
       <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-        <h1 class="display-4 fw-bold lh-1 logo">CrowdHub</h1>
+        <h1 class="display-4 fw-bold lh-1 logo">Crowd<span class="primary-color">H</span>ub</h1>
         <p class="lead">
             <strong>Financer l'innovation ensemble</strong><br>
             Découvrez CrowdHub, la plateforme de financement participatif qui permet aux innovateurs, aux créateurs et aux rêveurs de réaliser leurs projets les plus ambitieux. <br>
@@ -24,7 +24,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
           <img class="rounded-lg-3" src="/assets/img/analyse.jpg" alt="" width="720">
       </div>
     </div>
-  </div>
+</div>
 
   <div class="container-fluid px-4 py-5" id="hanging-icons">
   <h2 class="pb-2 border-bottom">Nos avantages</h2>
@@ -35,7 +35,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
       </div>
       <div>
         <h3 class="fs-2">Satisfaction garantie</h3>
-        <p>Nous sommes fiers de notre excellent service client et nous nous assurons que nos clients soient satisfaits de notre travail. Si vous n'êtes pas satisfait, nous ferons tout notre possible pour remédier à la situation.</p>
+        <p>Nous sommes fiers de notre excellent service client et nous nous assurons que nos clients soient satisfaits de notre travail.</p>
         <a href="#" class="btn btn-primary">
           En savoir plus
         </a>
@@ -96,13 +96,12 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
         répondrons dès que possible.
       </p>
 
-      <form action="" method="POST" class="text-center">
+      <form action="" method="POST" class="text-center" id="contact-form">
         <input type="text" class="form-control" id="name" placeholder="Nom"><br>
         <input type="email" class="form-control" id="email" placeholder="Adresse e-mail"><br>
         <textarea class="form-control" id="message" placeholder="Message" rows="5"></textarea><br>
         <input type="submit" class="btn btn-primary" placeholder="Envoyer">
       </form>
-
 </div>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>

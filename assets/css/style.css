@@ -1,14 +1,30 @@
 @font-face {
   font-family: 'Poppins';
   src: url("/assets/fonts/poppins.ttf");
+
+  font-family: 'Droid-serif';
+  src: url("/assets/fonts/droid-serif.ttf");
 }
 
+body{
+  background-color: #fbfbfd;
+}
 
+h1, p, h2, h3, h4, h5, h6{
+  color: #333333;
+}
+h1, .navbar-brand{
+  font-family: 'Droid-serif';
+}
+
+h1{
+  font-size: 44px;
+}
 
 :root{
     --primary-btn: purple;
     --primary-btn-hover: rgb(167, 1, 167);
-    --secondary-btn: darkblue;
+    --secondary-btn: midnightblue;
     --secondary-btn-hover: rgb(0, 0, 187);
 }
 .navbar-toggler {
@@ -20,7 +36,9 @@
     font-weight: bold;
     font-family: 'Poppins';
 }
-
+.primary-color{
+    color: midnightblue;
+}
 .logo{
   font-family: 'Poppins';
   font-size: 33px;
@@ -93,7 +111,6 @@
 }
 
 .newsletter-subscribe{
-    background-color: darkblue;
     color: white;
     background-position: fixed;
     padding-top: 30px;

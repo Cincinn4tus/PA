@@ -13,7 +13,7 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-light rounded" aria-label="Eleventh navbar example">
         <div class="container">
-            <a class="navbar-brand" href="/">CrowdHub</a>
+            <a class="navbar-brand" href="/">Crowd<span class="primary-color">H</span>ub</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -32,7 +32,7 @@
                     <a class="nav-link" href="#">À propos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="/#contact-form">Contact</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
