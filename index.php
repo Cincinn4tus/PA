@@ -4,10 +4,21 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
 
+<div class="container-fluid" id="hero">
+    <div class="text-center">
+      <h1>Financer l'innovation ensemble</h1>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex inventore doloremque magni iste rem expedita itaque doloribus adipisci quia tempora eum aspernatur odio consectetur, hic maxime animi. Dolores, corporis numquam!
+      </p>
+      <button class="btn btn-danger">
+        Par ici
+      </button>
+    </div>
+</div>
 
 
-<div class="container hero my-5">
-    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+<div class="container -fluid hero my-5">
+    <div class="container-fluid p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
       <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
         <h1 class="display-4 fw-bold lh-1 logo">Crowd<span class="primary-color">H</span>ub</h1>
         <p class="lead">

@@ -22,10 +22,15 @@ h1{
 }
 
 :root{
-    --primary-btn: purple;
-    --primary-btn-hover: rgb(167, 1, 167);
-    --secondary-btn: midnightblue;
-    --secondary-btn-hover: rgb(0, 0, 187);
+    --primary-btn: midnightblue;
+    --primary-btn-hover: rgb(0, 0, 187);
+    font-size: 1.1em;
+}
+.btn{
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 .navbar-toggler {
     outline: none;
@@ -39,39 +44,40 @@ h1{
 .primary-color{
     color: midnightblue;
 }
-.logo{
-  font-family: 'Poppins';
-  font-size: 33px;
-}
-
-.btn-primary{
-    background-color: var(--primary-btn);
-    border: none;
-}
-.btn-secondary{
-    background-color: var(--secondary-btn);
-    border: none;
-}
-.btn-secondary:hover{
-    background-color: var(--secondary-btn-hover);
-    border: none;
-}
-
-.btn-primary:hover{
-    background-color: var(--primary-btn-hover);
-    border: none;
-}
-
-.form{
-    padding: 20px;
-    border-radius: 10px;
-}
 
 
-.feature-icon {
-  width: 4rem;
-  height: 4rem;
-  border-radius: .75rem;
+#hero {
+  position: relative; /* Assurez-vous que la div a une position relative pour que la pseudo-classe soit positionnée correctement par rapport à celle-ci */
+  background-image: url("/assets/img/background/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 70vh;
+}
+
+#hero::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.5); /* Utilisation de la propriété background au lieu de background-color */
+  z-index: 1; /* Assurez-vous que la pseudo-classe soit positionnée au-dessus du contenu de la div */
+}
+
+h1{
+  font-size: 1.4em;
+  color: var(--primary-btn);
+}
+
+/* media min width 750px */
+
+@media (min-width: 750px) {
+  h1{
+    font-size: 3.4em;
+  }
 }
 
 .icon-link > .bi {

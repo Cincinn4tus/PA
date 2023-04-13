@@ -13,7 +13,7 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-light rounded" aria-label="Eleventh navbar example">
         <div class="container">
-            <a class="navbar-brand" href="/">Crowd<span class="primary-color">H</span>ub</a>
+            <img src="/assets/img/logo/logo.png" alt="Logo" class="logo" height="44px">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
