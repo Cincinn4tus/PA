@@ -22,8 +22,10 @@ h1{
 }
 
 :root{
-    --primary-btn: midnightblue;
-    --primary-btn-hover: rgb(0, 0, 187);
+    --primary: midnightblue;
+    --primary-2: rgb(0, 0, 187);
+    --secondary: grey;
+    --secondary-2: darkgrey;
     font-size: 1.1em;
 }
 .btn{
@@ -45,6 +47,14 @@ h1{
     color: midnightblue;
 }
 
+.btn-primary{
+  background-color: var(--primary);
+  border: none;
+}
+.btn-primary:hover{
+  background-color: var(--primary-2);
+}
+
 
 #hero {
   position: relative; /* Assurez-vous que la div a une position relative pour que la pseudo-classe soit positionnée correctement par rapport à celle-ci */
@@ -52,10 +62,10 @@ h1{
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 70vh;
+  height: 50vh;
 }
 
-#hero::after {
+#hero-cover {
   content: "";
   display: block;
   position: absolute;
@@ -67,9 +77,28 @@ h1{
   z-index: 1; /* Assurez-vous que la pseudo-classe soit positionnée au-dessus du contenu de la div */
 }
 
+#hero-content .btn-get-started {
+  font-family: "Raleway", sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 32px;
+  border-radius: 2px;
+  transition: 0.5s;
+  margin: 10px;
+  color: #fff;
+  background: #0c2e8a;
+  border: 2px solid #0c2e8a;
+}
+
+#hero-content .btn-get-started:hover {
+  background: none;
+  color: #0c2e8a;
+}
 h1{
   font-size: 1.4em;
-  color: var(--primary-btn);
+  color: var(--primary);
 }
 
 /* media min width 750px */
