@@ -7,18 +7,13 @@
 }
 
 
-.wrapper
-{
+.wrapper{
     width: 940px;
     margin: 0 auto;
     padding: 0 10px;
 }
-.orange
-{
-    color: #ff7a00;
-}
-.clear
-{
+
+.clear{
     clear: both;   
 }
 small
@@ -50,6 +45,9 @@ h1{
     --secondary: grey;
     --secondary-2: darkgrey;
     font-size: 1.1em;
+}
+.clear{
+    clear: both;   
 }
 .btn{
   width: auto;
@@ -144,28 +142,39 @@ h1{
 /* POSSIBILITIES */
 
 
-#possibilities
-{
+#signup{
     background-color: #efefef;
     padding:  60px 0;
+    padding-left: 0px;
 }
-#possibilities article
-{
+#signup article{
     width: 460px;
     height: 270px;
     float: left;
     border-radius: 10px;
 }
-#possibilities article:first-child
-{
-    margin-right: 20px;
+
+#enterprise{
+    background-image: url("/assets/img/background/enterprise.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
+
+#investor{
+    background-image: url("/assets/img/background/investor.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .overlay
 {
     background: rgba(255,255,255, 0.95);
     height: 100%;
     width: 190px;
     padding: 20px;
+    padding-left: 0px;
     border-radius: 10px 0 0 10px;
     text-align: center;
     box-sizing: border-box;
@@ -178,8 +187,7 @@ article h4
     margin-bottom: 20px;
     text-align: center;
 }
-#possibilities p
-{
+#signup p{
     text-align: center;
     margin-bottom: 20px;
 }

@@ -17,27 +17,31 @@
 </div>
 
 
-<section id="possibilities">
-			<div class="wrapper">
-                <article style="background-image: url(images/article-image-1.jpg);">
-                    <div class="overlay">
-                        <h4>Partez en famille</h4>
-                        <p><small>Offrez le meilleur à ceux que vous aimez et partagez des moments fabuleux !</small></p>
-                        <a href="#" class="button-2">Plus d'infos</a>
-                    </div>
-                </article>
-                
-                <article style="background-image: url(images/article-image-2.jpg);">
-                    <div class="overlay">
-                        <h4>Envie de s'evader</h4>
-                        <p><small>Parfois un peu d'évasion serait le bienvenue et ferait le plus grand bien !</small></p>
-                        <a href="#" class="button-2">Plus d'infos</a>
-                    </div>
-                </article>
-                
-                <div class="clear"></div>
-                
-			</div>
-		</section>
+<section id="signup">
+    <div class="wrapper">
+        <article id="enterprise">
+            <div class="overlay">
+                <h4>Entreprise</h4>
+                <p><small>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
+                </small></p>
+                <a href="#" class="button-2">Enregistrer</a>
+            </div>
+        </article>
+        
+        <article id="investor">
+            <div class="overlay">
+                <h4>Investisseur</h4>
+                <p><small>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
+                </small></p>
+                <a href="#" class="button-2">Plus d'infos</a>
+            </div>
+        </article>
+        
+        <div class="clear"></div>
+        
+    </div>
+</section>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>
