@@ -11,7 +11,7 @@
 </head>
     
 <header>
-    <nav class="navbar navbar-expand-lg bg-light rounded" aria-label="Eleventh navbar example">
+    <nav class="navbar navbar-expand-lg bg-light rounded" aria-label="main navigation">
         <div class="container">
             <img src="/assets/img/logo/logo.png" alt="Logo" class="logo" height="44px">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">

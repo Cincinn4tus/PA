@@ -25,7 +25,7 @@
                 <p><small>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
                 </small></p>
-                <a href="#" class="button-2">Enregistrer</a>
+                <a href="#" class="btn button-2">Enregistrer</a>
             </div>
         </article>
         
@@ -35,7 +35,7 @@
                 <p><small>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
                 </small></p>
-                <a href="#" class="button-2">Plus d'infos</a>
+                <a href="#" class="btn button-2">Plus d'infos</a>
             </div>
         </article>
         
