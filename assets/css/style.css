@@ -16,13 +16,10 @@
 .clear{
     clear: both;   
 }
-small
-{
+small{
     font-size: 13px;
     font-style:italic;
 }
-
-
 
 body{
   background-color: #fbfbfd;
@@ -46,6 +43,10 @@ h1{
     --secondary-2: darkgrey;
     font-size: 1.1em;
 }
+
+.btn-get-started:hover, h1, h2, h3, h4{
+  color: var(--primary);
+}
 .clear{
     clear: both;   
 }
@@ -63,9 +64,6 @@ h1{
 .navbar-brand{
     font-weight: bold;
     font-family: 'Poppins';
-}
-.primary-color{
-    color: midnightblue;
 }
 .btn{
   border: none;
@@ -103,7 +101,7 @@ h1{
   margin-right: auto;
 }
 
-#hero-content .btn-get-started {
+#hero-content .btn-get-started{
   font-family: "Raleway", sans-serif;
   font-size: 15px;
   font-weight: bold;
@@ -122,11 +120,9 @@ h1{
 
 #hero-content .btn-get-started:hover {
   background-color: #fff;
-  color: var(--primary);
 }
 h1{
   font-size: 1.4em;
-  color: var(--primary);
 }
 
 /* media min width 750px */
@@ -135,13 +131,28 @@ h1{
   h1{
     font-size: 3.4em;
   }
+}
+
+@media (max-width: 750px) {
   #signup .wrapper{
     display: flex;
     flex-direction: column;
   }
+  #signup .wrapper article{
+    height: auto;
+    width: 90%;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+
+  #clients{
+    display: inline-block;
+    animation: marquee 5s linear infinite;
+  }
 }
 
- 
 
 /* POSSIBILITIES */
 
@@ -157,7 +168,6 @@ h1{
     justify-content: center;
     align-items: center;
 }
-
 
 #signup article{
     width: 460px;
@@ -183,9 +193,7 @@ h1{
     background-position: center;
     background-repeat: no-repeat;
 }
-
-.overlay
-{
+.overlay{
     background: rgba(255,255,255, 0.95);
     height: 100%;
     width: 190px;
@@ -195,8 +203,7 @@ h1{
     text-align: center;
     box-sizing: border-box;
 }
-article h4
-{
+article h4{
     border-bottom:  1px solid #ddd;
     text-transform: uppercase;
     text-align: center;
@@ -204,7 +211,6 @@ article h4
     margin-bottom: 20px;
     font-size: 1.2em;
     font-weight: bold;
-    color: var(--primary);
 }
 #signup p{
     text-align: center;
@@ -219,4 +225,13 @@ article h4
 .button-2:hover{
     color: #fff;
     background-color: var(--secondary-2);
+}
+#clients{
+    background-color: #fff;
+    padding: 60px 0;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+#clients img{
+  height: 5vh;
 }

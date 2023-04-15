@@ -25,7 +25,7 @@
                 <p><small>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
                 </small></p>
-                <a href="#" class="btn button-2">Enregistrer</a>
+                <a href="#" class="btn button-2">S'enregistrer</a>
             </div>
         </article>
         
@@ -35,7 +35,7 @@
                 <p><small>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
                 </small></p>
-                <a href="#" class="btn button-2">Plus d'infos</a>
+                <a href="#" class="btn button-2">S'inscrire</a>
             </div>
         </article>
         
@@ -43,5 +43,39 @@
         
     </div>
 </section>
+
+
+
+<section id="clients">
+  <div class="container-fluid">
+    <div class="section-title">
+      <h2>Ils nous font confiance</h2>
+    <div class="row mt-5">
+      <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
+      </div>
+    </div>
+  </div>
+</section><!-- End Clients Section -->
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>
