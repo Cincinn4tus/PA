@@ -44,7 +44,7 @@ h1{
     font-size: 1.1em;
 }
 
-.btn-get-started:hover, h1, h2, h3, h4{
+h1, h2, h3, h4{
   color: var(--primary);
 }
 .clear{
@@ -82,7 +82,7 @@ h1{
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 50vh;
+  height: 55vh;
 }
 
 #hero-cover {
@@ -120,6 +120,7 @@ h1{
 
 #hero-content .btn-get-started:hover {
   background-color: #fff;
+  color: var(--primary);
 }
 h1{
   font-size: 1.4em;
@@ -154,6 +155,30 @@ h1{
 }
 
 
+@media (min-width: 990px) {
+  #sign-in{
+    border-right: #333333 1px solid;
+  }
+  #signup-page{
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+
+@media (max-width: 990px) {
+  #sign-in{
+    padding-bottom: 20px;
+    border-bottom: #333333 1px solid;
+  }
+  #signup-page{
+    display: flex;
+    flex-direction: row;
+  }
+  #register .sign-up{
+    margin-top: 30px;
+  }
+}
 /* POSSIBILITIES */
 
 #signup{
@@ -234,4 +259,16 @@ article h4{
 }
 #clients img{
   height: 5vh;
+}
+
+
+#signup-page{
+  background-color: #fbfbfd;
+}
+#register .sign-up{
+  background-color: #fbfbfd;
+}
+
+#register h4{
+  text-align: center;
 }

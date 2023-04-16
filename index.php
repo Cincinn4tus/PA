@@ -28,7 +28,6 @@
                 <a href="#" class="btn button-2">S'enregistrer</a>
             </div>
         </article>
-        
         <article id="investor">
             <div class="overlay">
                 <h4>Investisseur</h4>
@@ -40,7 +39,6 @@
         </article>
         
         <div class="clear"></div>
-        
     </div>
 </section>
 

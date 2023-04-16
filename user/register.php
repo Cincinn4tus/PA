@@ -1,38 +1,46 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php"; ?>
 
 
-<div class="container mt-4">
-    <h1 class="text-center">
-        Inscription
-    </h1>
-</div>
+
+<div class="container mt-5" id="register">
+  <div class="row">
+    <div id="sign-in" class="col-lg-6">
+      <h4>Déjà inscrit ?</h4>
+      <form action="" method="POST" class="text-center col-lg-8 mt-5">
+        <!-- login form -->
+          <input type="email" name="email" id="email" class="form-control" placeholder="Votre email" required="required"><br>
+          <input type="password" name="password" class="form-control" placeholder="Votre mot de passe" required="required"><br>
+          <input type="submit" value="Se connecter" class="btn btn-primary btn-block btn-lg">
+      </form>
+    </div>
 
 
-
-<div class="container px-4 py-5 mx-auto" id="custom-cards">
-    <h2 class="pb-2 border-bottom">Type de compte</h2>
-    <div class="row">
-    <a href="#" class="col mt-1">
-      <div>
-        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-1.jpg');">
-          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Porteur de projet</h3>
-          </div>
+    <div id="signup" class="col-lg-6 sign-up">
+    <h4>Pas encore enregistré</h4>
+        <div class="wrapper" id="signup-page">
+            <article id="enterprise">
+                <div class="overlay">
+                    <h4>Entreprise</h4>
+                    <p><small>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
+                    </small></p>
+                    <a href="#" class="btn button-2">S'enregistrer</a>
+                </div>
+            </article>
+            <article id="investor">
+                <div class="overlay">
+                    <h4>Investisseur</h4>
+                    <p><small>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
+                    </small></p>
+                    <a href="#" class="btn button-2">S'inscrire</a>
+                </div>
+            </article>
+            
+            <div class="clear"></div>
         </div>
-      </div>
-    </a>
-
-    <a href="#" class="col mt-1">
-      <div>
-        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
-          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Investisseur</h3>
-          </div>
-        </div>
-      </div>
-    </a>
+    </div>
+  </div>
 </div>
-
-
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>''
