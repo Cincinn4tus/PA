@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
-    
+
 <header>
     <nav class="navbar navbar-expand-lg bg-light rounded" aria-label="main navigation">
         <div class="container">

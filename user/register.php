@@ -14,7 +14,6 @@
       </form>
     </div>
 
-
     <div id="signup" class="col-lg-6 sign-up">
     <h4>Pas encore enregistré</h4>
         <div class="wrapper" id="signup-page">
@@ -36,7 +35,7 @@
                     <a href="#" class="btn button-2">S'inscrire</a>
                 </div>
             </article>
-            
+
             <div class="clear"></div>
         </div>
     </div>
