@@ -1,49 +1,115 @@
 <?php 
 session_start();
+$pageTitle = "CrowdHub - Connexion";
 require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
 require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
 
-<div class="container mt-5" id="register">
-  <div class="row">
-    <div id="sign-in" class="col-lg-6">
-      <h4>Déjà inscrit ?</h4>
-      <form action="" method="POST" class="text-center col-lg-8 mt-5">
-        <!-- login form -->
-          <input type="email" name="email" id="email" class="form-control" placeholder="Votre email" required="required"><br>
-          <input type="password" name="password" class="form-control" placeholder="Votre mot de passe" required="required"><br>
-          <input type="submit" value="Se connecter" class="btn btn-primary btn-block btn-lg">
-      </form>
-    </div>
 
-    <div id="signup" class="col-lg-6 sign-up">
-    <h4>Pas encore enregistré</h4>
-        <div class="wrapper" id="signup-page">
-            <article id="enterprise">
-                <div class="overlay">
-                    <h4>Entreprise</h4>
-                    <p><small>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-                    </small></p>
-                    <a href="signin.php" class="btn button-2">S'enregistrer</a>
-                </div>
-            </article>
-            <article id="investor">
-                <div class="overlay">
-                    <h4>Investisseur</h4>
-                    <p><small>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-                    </small></p>
-                    <a href="#" class="btn button-2">S'inscrire</a>
-                </div>
-            </article>
 
-            <div class="clear"></div>
-        </div>
-    </div>
-  </div>
-</div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>''
+<div class="row">
+		<div class="col-12">
+			<h1>S'inscrire</h1>
+		</div>
+	</div>
+
+
+<?php if(isset($_SESSION['listOfErrors'])) {?>
+	<div class="row">
+		<div class="col-12">
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  
+			  <?php
+
+			  foreach ($_SESSION['listOfErrors'] as $error)
+			  {
+			  	echo "<li>".$error."</li>";
+			  }
+			  unset($_SESSION['listOfErrors']);
+			  ?>
+
+
+
+			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		</div>
+	</div>
+<?php } ?> 
+
+
+	<form action="core/userAdd.php" method="POST">
+		<div class="row mt-4">
+
+			<div class="col-lg-12">
+				<input type="radio" class="form-check-input" value="0"  <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["gender"]==0)?"checked":""; ?> name="gender" id="genderM">
+				<label for="genderM" class="form-label"> M.</label> 
+				
+				<input type="radio" class="form-check-input" value="1"
+				<?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["gender"]==1)?"checked":""; ?> name="gender" id="genderMme">
+				<label for="genderMme" class="form-label"> Mme. </label>
+
+				<input type="radio" class="form-check-input" value="2"
+				<?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["gender"]==2)?"checked":""; ?> name="gender" id="genderO">
+				<label for="genderO" class="form-label"> Autre</label>
+			</div>
+
+		</div>
+		<div class="row mt-3">
+			<div class="col-lg-3">
+				<input type="text" class="form-control" name="firstname" placeholder="Votre prénom" required="required" 
+				value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["firstname"]:""; ?>">
+			</div>
+
+			<div class="col-lg-3">
+				<input type="text" class="form-control" name="lastname" placeholder="Votre nom" required="required"
+				value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["lastname"]:""; ?>">
+			</div>
+			<div class="col-lg-6">
+				<input type="email" class="form-control" name="email" placeholder="Votre email" required="required"
+				value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["email"]:""; ?>">
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col-lg-6">
+				<input type="password" class="form-control" name="pwd" placeholder="Votre mot de passe" required="required">
+			</div>
+			<div class="col-lg-6">
+				<input type="password" class="form-control" name="pwdConfirm" placeholder="Confirmation" required="required">
+			</div>
+		</div>
+
+		<div class="row mt-3">
+			<div class="col-lg-6">
+				<select name="country"  class="form-select">
+					<option value="fr" <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["country"]=="fr")?"selected":""; ?>>France</option>
+					<option value="pl" <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["country"]=="pl")?"selected":""; ?>>Pologne</option>
+					<option value="al" <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["country"]=="al")?"selected":""; ?>>Algérie</option>
+					<option value="be" <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["country"]=="be")?"selected":""; ?>>Belgique</option>
+				</select>
+			</div>
+			<div class="col-lg-6">
+				<input type="date" class="form-control" name="birthday" required="required"
+				value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["birthday"]:""; ?>">
+			</div>
+
+		</div>
+		<div class="row mt-3">
+			<div class="col-12">
+				<input type="checkbox" class="form-check-input" id="cgu" name="cgu" required="required">
+				<label for="cgu" class="form-label">J'accepte les CGUs</label>
+			</div>
+
+		</div>
+		<div class="row mt-4">
+			<div class="col-12">
+				<input type="submit" value="S'inscrire" class="btn btn-primary">
+			</div>
+
+		</div>
+
+	</form>
+
+<?php include "template/footer.php";?>
