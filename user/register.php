@@ -1,5 +1,9 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php"; ?>
-
+<?php 
+session_start();
+require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
+?>
 
 
 <div class="container mt-5" id="register">
@@ -23,7 +27,7 @@
                     <p><small>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
                     </small></p>
-                    <a href="#" class="btn button-2">S'enregistrer</a>
+                    <a href="signin.php" class="btn button-2">S'enregistrer</a>
                 </div>
             </article>
             <article id="investor">
