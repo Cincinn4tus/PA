@@ -36,6 +36,10 @@ h1{
   font-size: 44px;
 }
 
+#main-title{
+  font-size: 44px;
+}
+
 :root{
     --primary: midnightblue;
     --primary-2: rgb(0, 0, 187);
@@ -153,32 +157,13 @@ h1{
     animation: marquee 5s linear infinite;
   }
 }
-
-
-@media (min-width: 990px) {
-  #sign-in{
-    border-right: #333333 1px solid;
-  }
-  #signup-page{
-    display: flex;
-    flex-direction: row;
-  }
+#sign-in{
+  padding-bottom: 100px;
+  border-bottom: #333333 1px solid;
 }
 
 
-@media (max-width: 990px) {
-  #sign-in{
-    padding-bottom: 20px;
-    border-bottom: #333333 1px solid;
-  }
-  #signup-page{
-    display: flex;
-    flex-direction: row;
-  }
-  #register .sign-up{
-    margin-top: 30px;
-  }
-}
+
 /* POSSIBILITIES */
 
 #signup{
@@ -186,12 +171,12 @@ h1{
 }
 
 #signup .wrapper{
-    padding:  60px 0;
-    padding-left: 0px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  padding:  60px 0;
+  padding-left: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #signup article{

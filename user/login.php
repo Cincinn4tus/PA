@@ -1,50 +1,74 @@
 <?php 
 session_start();
-$pageTitle = "CrowdHub - Connexion";
+$pageTitle = "Connexion";
 require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
 require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
+saveLogs();
 ?>
 
+<!-- Login form -->
 
-<div class="container mt-5" id="register">
-  <div class="row">
-    <div id="sign-in" class="col-lg-6">
-      <h4>Déjà inscrit ?</h4>
-      <form action="" method="POST" class="text-center col-lg-8 mt-5">
-        <!-- login form -->
-          <input type="email" name="email" id="email" class="form-control" placeholder="Votre email" required="required"><br>
-          <input type="password" name="password" class="form-control" placeholder="Votre mot de passe" required="required"><br>
-          <input type="submit" value="Se connecter" class="btn btn-primary btn-block btn-lg">
-      </form>
+<div class="container mt-5">
+    <div class="row col-lg-4 m-auto text-center">
+        <h4>Je me connecte</h4>
+        <form action="" method="POST" class="mt-4">
+            <input class="form-control" type="email" name="email" placeholder="Votre email" required="required">
+            <input class="form-control mt-2" type="password" name="password" placeholder="Votre mot de passe" required="required">
+        </form>
     </div>
+    <div class="row mt-5 col-lg-4 m-auto text-center">
+        <h4>Pas encore inscrit ?</h4>
+        <form action="" method="POST" class="mt-4">
+            <div class="row">
+                <div class="col-lg-12">
+                    <input type="radio" class="form-check-input" value="0"  <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["gender"]==0)?"checked":""; ?> name="gender" id="genderM">
+                    <label for="genderM" class="form-label"> M.</label> 
+                    
+                    <input type="radio" class="form-check-input" value="1"
+                    <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["gender"]==1)?"checked":""; ?> name="gender" id="genderMme">
+                    <label for="genderMme" class="form-label"> Mme. </label>
 
-    <div id="signup" class="col-lg-6 sign-up">
-    <h4>Pas encore enregistré</h4>
-        <div class="wrapper" id="signup-page">
-            <article id="enterprise">
-                <div class="overlay">
-                    <h4>Entrepreneur</h4>
-                    <p><small>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-                    </small></p>
-                    <a href="register.php" class="btn button-2">S'enregistrer</a>
+                    <input type="radio" class="form-check-input" value="2"
+                    <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["gender"]==2)?"checked":""; ?> name="gender" id="genderO">
+                    <label for="genderO" class="form-label"> Autre</label>
                 </div>
-            </article>
-            <article id="investor">
-                <div class="overlay">
-                    <h4>Investisseur</h4>
-                    <p><small>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-                    </small></p>
-                    <a href="#" class="btn button-2">S'inscrire</a>
-                </div>
-            </article>
+            </div>
+            <div class="row mt-2">
 
-            <div class="clear"></div>
-        </div>
+                <div class="mt-2">
+                    <!-- list of countries -->
+                    <select name="country" class="form-control">
+                        <option value="">Type de compte</option>
+                        <option value="enterprise">Entreprise</option>
+                        <option value="individual">Investisseur</option>
+                    </select>
+                </div>
+
+                <div class="mt-2">
+                    <input type="text" class="form-control" name="firstname" placeholder="Votre prénom" required="required" 
+                    value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["firstname"]:""; ?>">
+                </div>
+
+                <div class="mt-2">
+                    <input type="text" class="form-control" name="lastname" placeholder="Votre nom" required="required"
+                    value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["lastname"]:""; ?>">
+                </div>
+                <div class="mt-2">
+                    <input type="email" class="form-control" name="email" placeholder="Votre email" required="required"
+                    value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["email"]:""; ?>">
+                </div>
+                <div class="mt-2">
+                    <input type="submit" class="btn btn-primary" name="submit" value="Je m'inscris">
+                </div>
+            </div>
+        </form>
     </div>
-  </div>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>
+
+
+
+<div class="fixed-bottom">
+    <?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>
+</div>

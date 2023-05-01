@@ -1,7 +1,9 @@
-<?php
-session_start();
-require $_SERVER['document_root'] . "/conf.inc.php";
-require $_SERVER['document_root'] . "/core/functions.php";
+<?php 
+    session_start();
+    $pageTitle = "Nouvel utilisateur" . $_POST['email'];
+    require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
+    require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
+    saveLogs();
 
 
 //Récupérer les données de l'internaute

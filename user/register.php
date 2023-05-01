@@ -4,6 +4,7 @@ $pageTitle = "CrowdHub - Connexion";
 require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
 require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
+saveLogs();
 ?>
 
 
@@ -40,7 +41,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 <?php } ?> 
 
 
-	<form action="core/userAdd.php" method="POST">
+	<form action="/core/userAdd.php" method="POST">
 		<div class="row mt-4">
 
 			<div class="col-lg-12">
@@ -112,4 +113,4 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 
 	</form>
 
-<?php include "template/footer.php";?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>
