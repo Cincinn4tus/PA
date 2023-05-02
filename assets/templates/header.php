@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
+
+
 <header>
     <nav class="navbar navbar-expand-lg bg-light rounded" aria-label="main navigation">
         <div class="container">
@@ -27,9 +29,56 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Projets</a>
                 </li>
-                <li class="nav-item">
+
+                <?php
+
+
+/*
+Si l'utilisateur est connecté : 
+- rôle 1 : lien vers la page /projects.php avec le nom "Projets en cours"
+- rôle 2 : lien vers la page /creator.php avec le nom "Créer un projet"
+Si l'utilisateur n'est pas connecté :
+- lien vers la page /projects.php avec le nom "Découvrez nos projets"
+- rôle 0 : lien vers la page /admin/admin-dashboard.php avec le nom "Administration" plus les deux liens ci-dessus
+Un switch case est plus adapté qu'une condition if/else
+
+*/
+
+if (isConnected()) {
+    switch ($_SESSION['role']) {
+        case 1:
+            echo '<li class="nav-item">
+                    <a class="nav-link" href="/projects.php">Projets en cours</a>
+                </li>';
+            break;
+        case 2:
+            echo '<li class="nav-item">
+                    <a class="nav-link" href="/creator.php">Créer un projet</a>
+                </li>';
+            break;
+        case 0:
+            echo '<li class="nav-item">
                     <a class="nav-link" href="/admin/admin-dashboard.php">Administration</a>
-                </li>
+                </li>';
+            echo '<li class="nav-item">
+                    <a class="nav-link" href="/projects.php">Projets en cours</a>
+                </li>';
+            echo '<li class="nav-item">
+                    <a class="nav-link" href="/creator.php">Créer un projet</a>
+                </li>';
+            break;
+    }
+} else {
+    echo '<li class="nav-item">
+            <a class="nav-link" href="/projects.php">Découvrez nos projets</a>
+        </li>';
+} ?>
+
+    
+
+
+
+
                 <li class="nav-item">
                     <a class="nav-link" href="/#contact-form">Contact</a>
                 </li>
@@ -42,13 +91,12 @@
                     </ul>
                 </li>
                 </ul>
-                <form role="search" class="mt-1">
-                    <input class="form-control" type="search" placeholder="Rechercher" aria-label="Search">
-                </form>
-                <a href="/user/login.php">
-                    <button class="btn btn-primary ms-2 mt-1">
-                        Connexion
-                    </button>
+
+                <?php if (isConnected()){
+                    echo '<a href="/user/logout.php"> <button class="btn btn-primary ms-2 mt-1"> Déconnexion </button> </a>';
+                } else {
+                    echo '<a href="/user/login.php"> <button class="btn btn-primary ms-2 mt-1"> Connexion </button> </a>';
+                } ?>
                 </a>
             </div>
         </div>

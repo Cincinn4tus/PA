@@ -7,10 +7,6 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 saveLogs();
 ?>
 
-
-
-
-
 <div class="row">
 		<div class="col-12">
 			<h1>S'inscrire</h1>
@@ -41,76 +37,95 @@ saveLogs();
 <?php } ?> 
 
 
-	<form action="/core/userAdd.php" method="POST">
-		<div class="row mt-4">
+<div class="container">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image10"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                            </div>
+                            <?php if(isset($_SESSION['listOfErrors'])) {?>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        
+                                        <?php
 
-			<div class="col-lg-12">
-				<input type="radio" class="form-check-input" value="0"  <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["gender"]==0)?"checked":""; ?> name="gender" id="genderM">
-				<label for="genderM" class="form-label"> M.</label> 
-				
-				<input type="radio" class="form-check-input" value="1"
-				<?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["gender"]==1)?"checked":""; ?> name="gender" id="genderMme">
-				<label for="genderMme" class="form-label"> Mme. </label>
+                                        foreach ($_SESSION['listOfErrors'] as $error)
+                                        {
+                                            echo "<li>".$error."</li>";
+                                        }
+                                        unset($_SESSION['listOfErrors']);
+                                        ?>
 
-				<input type="radio" class="form-check-input" value="2"
-				<?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["gender"]==2)?"checked":""; ?> name="gender" id="genderO">
-				<label for="genderO" class="form-label"> Autre</label>
-			</div>
 
-		</div>
-		<div class="row mt-3">
-			<div class="col-lg-3">
-				<input type="text" class="form-control" name="firstname" placeholder="Votre prénom" required="required" 
+
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?> 
+                    <form action="../core/userAdd.php" method="POST" class="user">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" name="firstname" placeholder="Votre prénom" required="required" 
 				value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["firstname"]:""; ?>">
-			</div>
-
-			<div class="col-lg-3">
-				<input type="text" class="form-control" name="lastname" placeholder="Votre nom" required="required"
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" name="lastname" placeholder="Votre nom" required="required"
 				value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["lastname"]:""; ?>">
-			</div>
-			<div class="col-lg-6">
-				<input type="email" class="form-control" name="email" placeholder="Votre email" required="required"
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user" name="email" placeholder="Votre email" required="required"
 				value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["email"]:""; ?>">
-			</div>
-		</div>
-		<div class="row mt-3">
-			<div class="col-lg-6">
-				<input type="password" class="form-control" name="pwd" placeholder="Votre mot de passe" required="required">
-			</div>
-			<div class="col-lg-6">
-				<input type="password" class="form-control" name="pwdConfirm" placeholder="Confirmation" required="required">
-			</div>
-		</div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control form-control-user" name="phone_number" placeholder="Votre numéro de téléphone" required="required"
+				value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["phone_number"]:""; ?>">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="password" class="form-control form-control-user"
+                                            name="pwd" placeholder="Mot de passe" required="required">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control form-control-user"
+                                        name="pwdConfirm" placeholder="Confirmez le mot de passe" required="required">
+                                    </div>
+                                </div>
+								<div class="form-group row">
+								<div class="col-6">
 
-		<div class="row mt-3">
-			<div class="col-lg-6">
-				<select name="country"  class="form-select">
-					<option value="fr" <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["country"]=="fr")?"selected":""; ?>>France</option>
-					<option value="pl" <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["country"]=="pl")?"selected":""; ?>>Pologne</option>
-					<option value="al" <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["country"]=="al")?"selected":""; ?>>Algérie</option>
-					<option value="be" <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["country"]=="be")?"selected":""; ?>>Belgique</option>
-				</select>
-			</div>
-			<div class="col-lg-6">
-				<input type="date" class="form-control" name="birthday" required="required"
-				value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["birthday"]:""; ?>">
-			</div>
+								</br>
+									<input type="checkbox" class="form-check-input" id="cgu" name="cgu" required="required">
+									<label for="cgu" class="form-label"> J'accepte les CGUs</label>
+								</div>
+								
+                                <div class="col-6">
+								</br><input type="submit" value="S'inscrire" class="btn btn-primary btn-user btn-block">
+			                    </div>
+								
+									</div>
+							</div>
 
-		</div>
-		<div class="row mt-3">
-			<div class="col-12">
-				<input type="checkbox" class="form-check-input" id="cgu" name="cgu" required="required">
-				<label for="cgu" class="form-label">J'accepte les CGUs</label>
-			</div>
-
-		</div>
-		<div class="row mt-4">
-			<div class="col-12">
-				<input type="submit" value="S'inscrire" class="btn btn-primary">
-			</div>
-
-		</div>
-
-	</form>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="forgotpassword.php">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="login.php">Already have an account? Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>

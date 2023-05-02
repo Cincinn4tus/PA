@@ -7,66 +7,86 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 saveLogs();
 ?>
 
-<!-- Login form -->
 
-<div class="container mt-5">
-    <div class="row col-lg-4 m-auto text-center">
-        <h4>Je me connecte</h4>
-        <form action="" method="POST" class="mt-4">
-            <input class="form-control" type="email" name="email" placeholder="Votre email" required="required">
-            <input class="form-control mt-2" type="password" name="password" placeholder="Votre mot de passe" required="required">
-        </form>
-    </div>
-    <div class="row mt-5 col-lg-4 m-auto text-center">
-        <h4>Pas encore inscrit ?</h4>
-        <form action="" method="POST" class="mt-4">
-            <div class="row">
-                <div class="col-lg-12">
-                    <input type="radio" class="form-check-input" value="0"  <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["gender"]==0)?"checked":""; ?> name="gender" id="genderM">
-                    <label for="genderM" class="form-label"> M.</label> 
-                    
-                    <input type="radio" class="form-check-input" value="1"
-                    <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["gender"]==1)?"checked":""; ?> name="gender" id="genderMme">
-                    <label for="genderMme" class="form-label"> Mme. </label>
+<?php
+    if( !empty($_POST['email']) &&  !empty($_POST['pwd']) ){
 
-                    <input type="radio" class="form-check-input" value="2"
-                    <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["gender"]==2)?"checked":""; ?> name="gender" id="genderO">
-                    <label for="genderO" class="form-label"> Autre</label>
+            $email = cleanEmail($_POST["email"]);
+            $pwd = $_POST["pwd"];
+
+            //Récupérer en bdd le mot de passe hashé pour l'email
+            //provenant du formulaire
+            $connect = connectDB();
+            $queryPrepared = $connect->prepare("SELECT pwd FROM ".DB_PREFIX."user WHERE email=:email");
+            $queryPrepared->execute(["email"=>$email]);
+            $results = $queryPrepared->fetch();
+
+            if(!empty($results) && password_verify($pwd, $results["pwd"]) ){
+                $_SESSION['email'] = $email;
+                $_SESSION['login'] = true;
+                $_SESSION['role'] = $role;
+                header("Location: ../index.php");
+            }else{
+                echo "Identifiants incorrects";
+                }
+                }?>
+    <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image10"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    </div>
+                                   
+                                    <form class="user" method="POST">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user"
+                                            name="email"
+                                                placeholder="Votre email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user"
+                                            name="pwd" required="required" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">Remember
+                                                    Me</label>
+                                            </div>
+                                        </div>
+
+                                           
+                                        <button class="btn btn-primary btn-user btn-block">Se connecter</button>
+                                        
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="forgot-password.php">Forgot Password?</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="register.php">Create an Account!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
-            <div class="row mt-2">
 
-                <div class="mt-2">
-                    <!-- list of countries -->
-                    <select name="country" class="form-control">
-                        <option value="">Type de compte</option>
-                        <option value="enterprise">Entreprise</option>
-                        <option value="individual">Investisseur</option>
-                    </select>
-                </div>
+        </div>
 
-                <div class="mt-2">
-                    <input type="text" class="form-control" name="firstname" placeholder="Votre prénom" required="required" 
-                    value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["firstname"]:""; ?>">
-                </div>
-
-                <div class="mt-2">
-                    <input type="text" class="form-control" name="lastname" placeholder="Votre nom" required="required"
-                    value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["lastname"]:""; ?>">
-                </div>
-                <div class="mt-2">
-                    <input type="email" class="form-control" name="email" placeholder="Votre email" required="required"
-                    value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["email"]:""; ?>">
-                </div>
-                <div class="mt-2">
-                    <input type="submit" class="btn btn-primary" name="submit" value="Je m'inscris">
-                </div>
-            </div>
-        </form>
     </div>
-</div>
-
-
 
 
 <div class="fixed-bottom">

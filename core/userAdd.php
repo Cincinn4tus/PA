@@ -6,75 +6,37 @@
     saveLogs();
 
 
-//Récupérer les données de l'internaute
-//Variable super globale
-// -> Variable créée et alimentée par le serveur
-// -> Commence toujours $_ et en majuscule
-// -> contient un tableau 
 
-/*
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
-*/
 
-/*
-
-Array
-(
-    [gender] => 0
-    [firstname] => Yves
-    [lastname] => Skrzypczyk
-    [email] => y.skrzypczyk@gmail.com
-    [pwd] => Test1234
-    [pwdConfirm] => Test1234
-    [country] => fr
-    [birthday] => 1986-11-29
-    [cgu] => on
-)
-
-*/
-
-//Vérification des données
-
-// Vérifier que les champs obligatoires existent et non sont pas vides
-// FAILLE XSS
-if( count($_POST)!=9 
-	|| !isset($_POST['gender'])
+	if( count($_POST)!=7
 	|| empty($_POST['firstname'])
 	|| empty($_POST['lastname'])
 	|| empty($_POST['email'])
 	|| empty($_POST['pwd'])
 	|| empty($_POST['pwdConfirm'])
-	|| empty($_POST['country'])
-	|| empty($_POST['birthday'])
+	|| empty($_POST['phone_number'])
 	|| empty($_POST['cgu']) 
 ){
 	die ("Tentative de HACK");
 }
 
-
-
 //Nettoyage des données
-$gender = $_POST['gender'];
+
 $firstname = cleanFirstname($_POST['firstname']);
 $lastname = cleanLastname($_POST['lastname']);
 $email = cleanEmail($_POST['email']);
 $pwd = $_POST['pwd'];
 $pwdConfirm = $_POST['pwdConfirm'];
-$country = $_POST['country'];
-$birthday = $_POST['birthday'];
-$cgu = $_POST['cgu'];
+$phone_number = $_POST['phone_number'];
+
+
 
 
 
 $listOfErrors = [];
 
 // --> Est-ce que le genre est cohérent
-$listGenders = [0,1,2];
-if( !in_array($gender, $listGenders) ){
-	$listOfErrors[] = "Le genre n'existe pas";
-}
+
 // --> Nom plus de 2 caractères
 if(strlen($lastname) < 2){
 	$listOfErrors[] = "Le nom doit faire plus de 2 caractères";
@@ -95,7 +57,7 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 	$queryPrepared->execute([ "email" => $email ]);
 
 	$results = $queryPrepared->fetch();
-
+	
 	if(!empty($results)){
 		$listOfErrors[] = "L'email est déjà utilisé";
 	}
@@ -117,53 +79,50 @@ if( $pwd != $pwdConfirm){
 	$listOfErrors[] = "La confirmation du mot de passe ne correspond pas";
 }
 
-// --> Est-ce que le pays est cohérent
-$listCountries = ["fr", "pl", "al", "be"];
-if( !in_array($country, $listCountries) ){
-	$listOfErrors[] = "Le pays n'existe pas";
-}
 
 
-// --> Date de naissance entre 6ans et 99ans
 
-//$birthday = "1986-11-29";
-
-$birthdayExploded = explode("-", $birthday);
-//Vérification de la date
-if (!checkdate($birthdayExploded[1],$birthdayExploded[2],$birthdayExploded[0])){
-	$listOfErrors[] = "Date de naissance incorrecte";
-}else{
-	//Vérification de l'age
-	$todaySecond = time();
-	$birthdaySecond = strtotime($birthday);
-	$ageSecond = $todaySecond - $birthdaySecond;
-	$age = $ageSecond/60/60/24/365.25;
-	if( $age <= 6 || $age >= 99 ){
-		$listOfErrors[] = "Vous n'avez pas l'âge requis (entre 6 et 99 ans)";
-	}
-}
 
 //Si OK
 if(empty($listOfErrors)){
-	//Insertion en BDD
+	/* Insertion en BDD
+	
+
+les champs non rensignés sont enregistrées en base de données comme unset
+
+
+
+	*/
+
+
+	$connection = connectDB();
+
+
+
+
+
+
 	$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."user
-											(gender, firstname, lastname, email, pwd, birthday, country)
+											(firstname, lastname, email, pwd, phone_number, address, postal_code, role, created_at, updated_at)
 											VALUES 
-											(:gender, :firstname, :lastname, :email, :pwd, :birthday, :country)");
+											(:firstname, :lastname, :email, :pwd, :phone_number, :address, :postal_code, :role, :created_at, :updated_at)");
 
 	$queryPrepared->execute([
-								"gender"=>$gender,
 								"firstname"=>$firstname,
 								"lastname"=>$lastname,
 								"email"=>$email,
-								"pwd"=>password_hash($pwd, PASSWORD_DEFAULT),
-								"birthday"=>$birthday,
-								"country"=>$country
+								"pwd" => password_hash($pwd, PASSWORD_DEFAULT),
+                                "phone_number" =>$phone_number,
+								"address" => 'unset',
+								"postal_code" => '00000',
+								"role" => 1,
+								"created_at" => date('Y-m-d H:i:s'),
+								"updated_at" => date('Y-m-d H:i:s')
 							]);
 
 
 	//Redirection sur la page de connexion
-	header('location: ../login.php');
+	header('location: ../user/login.php');
 
 }else{
 
@@ -174,5 +133,5 @@ if(empty($listOfErrors)){
 	unset($_POST["pwdConfirm"]);
 	$_SESSION['data'] = $_POST;
 	//Redirection sur la page d'inscription
-	header('location: ../register.php');
+	header('location: ../user/register.php');
 }
