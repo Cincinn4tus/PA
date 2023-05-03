@@ -45,11 +45,4 @@
     </tbody>
 </table>
 
-
-
-
-
-
-<div class="fixed-bottom">
-    <?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>
-</div>
+<?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>

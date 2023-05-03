@@ -33,3 +33,12 @@ CREATE TABLE crowdhub.pa_logs (
 UPDATE crowdhub.pa_user SET role = 0 WHERE email = 'a.goumane@yahoo.com';
 
 
+-- créer l'utilisateur 'root'@'localhost' sans mot de passe et lui donner tous les droits
+
+CREATE USER 'root'@'localhost' IDENTIFIED BY '';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';
+FLUSH PRIVILEGES;
+
+-- supprimer l'utilisateur 'root'@'localhost'
+
+DROP USER 'root'@'localhost';
