@@ -29,7 +29,7 @@
             <th>page visitée</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="table_odd">
         <?php
             foreach ($results as $logs) {
                 echo "<tr>";
