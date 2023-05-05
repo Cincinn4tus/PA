@@ -31,28 +31,10 @@ Boutons d'action:
     <?php
         $connection = connectDB();
         $results = $connection->query("SELECT * FROM ".DB_PREFIX."user");
-        $results = $results->fetchAll()
-
-        /* Crée un tableau HTML avec les données de la table user
-
-            	CREATE TABLE crowdhub.pa_user (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    firstname VARCHAR(255) NOT NULL,
-    lastname VARCHAR(255) NOT NULL,
-    phone_number char(10) NOT NULL,
-    address VARCHAR(255) NOT NULL,
-    postal_code VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    role VARCHAR(255) NOT NULL,
-    pwd VARCHAR(255) NOT NULL,
-    created_at DATETIME NOT NULL,
-    updated_at DATETIME NOT NULL,
-    siret VARCHAR(255) NULL
-);
-        */
+        $results = $results->fetchAll();
     ?>
 
-    <table class="table">
+    <table class="table col-lg-12">
         <thead>
             <tr>
                 <th>id</th>
@@ -79,7 +61,7 @@ Boutons d'action:
                         echo "<td>".$user["email"]."</td>";
                         echo "<td>".$user["address"]."</td>";
                         echo "<td>".$user["postal_code"]."</td>";
-                        echo "<td>".$user["role"]."</td>";
+                        echo "<td>".$user["scope"]."</td>";
                         echo "<td>".$user["created_at"]."</td>";
                         echo "<td>".$user["updated_at"]."</td>";
                         // ajouter trois boutons pour modifier, supprimer et voir les détails de l'utilisateur

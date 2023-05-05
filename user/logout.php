@@ -1,8 +1,6 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
-    require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-    if(isConnected() && $_SESSION['email'] == $email){
-		session_destroy();
-	}
-    header("Location: /index.php");
-    ?>
+	session_start();
+	require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
+	unset($_SESSION['email']);
+	unset($_SESSION['login']);
+	header("Location: /index.php");

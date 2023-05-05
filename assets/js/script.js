@@ -12,4 +12,3 @@ function selectInput(input) {
     // Sélectionne l'input cliqué
     input.style.border = "2px solid red";
 }
-

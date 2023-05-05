@@ -6,8 +6,7 @@
     saveLogs();
     include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 
-
-    // création d'un graphique en utilisant GD
+// création d'un graphique en utilisant GD
 $width = 600;
 $height = 400;
 $image = imagecreatetruecolor($width, $height);
@@ -68,15 +67,14 @@ foreach($results as $row){
         imageline($image, $previous_x, $previous_y, $x, $y, $red);
     }
     $previous_x = $x;
-    $previous_y = $y;
 }
 
-// envoi de l'image dans le navigateur
-header('Content-type: image/png');
-imagepng($image);
+// affichage de l'image
 
+imagepng($image, "graph.png");
+imagedestroy($image);
 
-
+echo "<img src='graph.png' alt='graphique'>";
 
 include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php";
 

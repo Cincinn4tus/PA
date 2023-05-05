@@ -5,6 +5,11 @@
     require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
     saveLogs();
     include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
+
+    if($_SESSION['scope'] != 0 || !isConnected())
+    {
+        header("Location: /404.php");
+    }
 ?>
 <h1 class="text-center mt-5" id="main-title">
     Console d'administration
@@ -82,19 +87,6 @@
                         Gérer les templates d'email
                     </p>
                     <a href="admin-emails.php" class="btn btn-primary">Gérer</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Gestion des badges</h4>
-                </div>
-                <div class="card-body">
-                    <p>
-                        Gérer les badges
-                    </p>
-                    <a href="admin-badges.php" class="btn btn-primary">Gérer</a>
                 </div>
             </div>
         </div>
