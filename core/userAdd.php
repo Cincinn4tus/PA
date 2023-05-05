@@ -103,9 +103,9 @@ les champs non rensignés sont enregistrées en base de données comme unset
 
 
 	$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."user
-											(firstname, lastname, email, pwd, phone_number, address, postal_code, role, created_at, updated_at)
+											(firstname, lastname, email, pwd, phone_number, address, postal_code, scope, created_at, updated_at)
 											VALUES 
-											(:firstname, :lastname, :email, :pwd, :phone_number, :address, :postal_code, :role, :created_at, :updated_at)");
+											(:firstname, :lastname, :email, :pwd, :phone_number, :address, :postal_code, :scope, :created_at, :updated_at)");
 
 	$queryPrepared->execute([
 								"firstname"=>$firstname,
@@ -115,14 +115,16 @@ les champs non rensignés sont enregistrées en base de données comme unset
                                 "phone_number" =>$phone_number,
 								"address" => 'unset',
 								"postal_code" => '00000',
-								"role" => 1,
+								"scope" => 1,
 								"created_at" => date('Y-m-d H:i:s'),
 								"updated_at" => date('Y-m-d H:i:s')
 							]);
 
 
+
+
 	//Redirection sur la page de connexion
-	header('location: ../user/login.php');
+	header('location: /user/login.php');
 
 }else{
 
@@ -133,5 +135,5 @@ les champs non rensignés sont enregistrées en base de données comme unset
 	unset($_POST["pwdConfirm"]);
 	$_SESSION['data'] = $_POST;
 	//Redirection sur la page d'inscription
-	header('location: ../user/register.php');
+	header('location: /user/register.php');
 }
