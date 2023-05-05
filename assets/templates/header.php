@@ -39,11 +39,11 @@
                         </li>';
                     } else if($_SESSION['scope'] == 1){
                         echo '<li class="nav-item">
-                        <a class="nav-link" href="/user">Entreprise</a>
+                        <a class="nav-link" href="/user/enterprise-board.php">Entreprise</a>
                         </li>';
                     } else if($_SESSION['scope'] == 2){
                         echo '<li class="nav-item">
-                        <a class="nav-link" href="/user">Utilisateur</a>
+                        <a class="nav-link" href="/user/view-projects.php">Utilisateur</a>
                         </li>';
                     }
                 } else {
