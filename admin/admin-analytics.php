@@ -7,8 +7,8 @@
     include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 
 // création d'un graphique en utilisant GD
-$width = 600;
-$height = 400;
+$width = 1000;
+$height = 900;
 $image = imagecreatetruecolor($width, $height);
 
 // définition des couleurs
@@ -26,13 +26,6 @@ $connection = connectDB();
 $results = $connection->query("SELECT visit_hour, COUNT(*) as nb_visits FROM ".DB_PREFIX."logs GROUP BY visit_hour ORDER BY visit_hour");
 $results = $results->fetchAll();
 
-// recherche du maximum de visites pour une heure donnée
-$max_visits = 0;
-foreach($results as $row){
-    if($row["nb_visits"] > $max_visits){
-        $max_visits = $row["nb_visits"];
-    }
-}
 
 // définition des dimensions du graphique
 $graph_width = $width - 100;
