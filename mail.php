@@ -1,4 +1,6 @@
 <?php
+
+    ini_set("sendmail_from", "ne-pas-repondre@crowdhub.fr");
     // envoi du mail
     $to = "a.goumane@yahoo.com";
     $subject = "Test mail";
