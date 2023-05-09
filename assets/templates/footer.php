@@ -7,7 +7,7 @@
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Charte graphique</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">CGU</a></li>
     </ul>
-    <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
+    <p class="text-center text-muted">&copy; <?php echo date('Y'); ?> Crowdhub.fr</p>
   </footer>
 </div>
 

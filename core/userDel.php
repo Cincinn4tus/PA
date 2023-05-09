@@ -11,6 +11,6 @@
   $queryPrepared->execute(["id"=>$_GET['id']]);
 
 
-  header("Location: ../users.php");
+  header("Location: /indexsssssss.php");
 
 ?>
