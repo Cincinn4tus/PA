@@ -19,9 +19,32 @@
     // affichage des données de l'utilisateur à modifier
 ?>
 
+
+
+
 <div class="container mt-5">
     <div class="mx-auto col-lg-6">
         <h2 class="text-center">Modifications</h2>
     </div>
-    
 </div>
+
+<!--
+    Affichage des informations de l'utilisateur dans un formulaire :
+        CREATE TABLE crowdhub.pa_user (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255) NOT NULL,
+    phone_number char(10) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    postal_code VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    scope VARCHAR(255) NOT NULL,
+    pwd VARCHAR(255) NOT NULL,
+    created_at DATETIME NOT NULL,
+    updated_at DATETIME NOT NULL,
+    siret VARCHAR(255) NULL
+);
+
+tous les champs sont disabled sauf email numéro et mot de passe
+-->
+
