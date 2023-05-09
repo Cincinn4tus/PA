@@ -1,7 +1,11 @@
 <?php
 
-    require $_SERVER['DOCUMENT_ROOT'] . "/phpmailer/phpmailer";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
+require $_SERVER['DOCUMENT_ROOT'] . '/PHPMailer/src/Exception.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/PHPMailer/src/PHPMailer.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/PHPMailer/src/SMTP.php';
 
 // Créer une nouvelle instance de PHPMailer
 $mail = new PHPMailer();
@@ -21,7 +25,7 @@ $mail->addAddress('aligoumane@protonmail.com', 'Aligoumane');
 
 // Ajouter le sujet et le corps du message
 $mail->Subject = 'Sujet du message';
-$mail->Body    = 'Corps du message';
+$mail->msgHTML('Corps du message');
 
 // Envoyer le message
 if(!$mail->send()) {
@@ -31,3 +35,4 @@ if(!$mail->send()) {
 }
 
 ?>
+
