@@ -9,6 +9,8 @@
     $pwd = $_POST["pwd"];
     $pwdConfirm = $_POST["pwdConfirm"];
 
+
+    // nettoyage
     $phone = trim(strip_tags($phone));
     $address = trim(strip_tags($address));
     $postal_code = trim(strip_tags($postal_code));

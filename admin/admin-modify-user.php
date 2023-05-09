@@ -6,7 +6,6 @@
     saveLogs();
     include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 
-
     // récupérer l'id de l'utilisateur à modifier depuis l'url
     $id = $_GET["id"];
 
