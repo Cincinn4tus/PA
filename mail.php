@@ -1,6 +1,6 @@
 <?php
 
-    require $_SERVER['DOCUMENT_ROOT'] . "/phpmailer/PHPMailer.php";
+    require $_SERVER['DOCUMENT_ROOT'] . "/phpmailer/src/PHPMailer.php";
 
 
 // Créer une nouvelle instance de PHPMailer
