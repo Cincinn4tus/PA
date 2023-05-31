@@ -87,3 +87,59 @@ SHOW COLUMNS FROM crowdhub.pa_user;
 -- supprime tous les utilisateurs de la table pa_user
 
 DELETE FROM crowdhub.pa_user;
+
+
+-- rajoute dans la table pa_user status 1 par défaut
+
+ALTER TABLE crowdhub.pa_user ADD user_status INT NOT NULL DEFAULT 1;
+
+-- met 1 pour le status de tous les utilisateurs
+
+UPDATE crowdhub.pa_user SET user_status = 1;
+
+-- crée la table pa_newsletter avec les colonnes id, genre, nom,  prénom, email et subscribed. 
+
+CREATE TABLE crowdhub.pa_newsletter (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    genre VARCHAR(255) NOT NULL,
+    firstname VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    subscribed INT NOT NULL DEFAULT 1
+);
+
+-- ajoute dans la table pa_newsletter les données suivantes :
+-- genre : M, nom : Goumane, prénom : Ali, email : a.goumane@yahoo.com
+-- genre : M, nom : Goumane, prénom : Ali, email : aligoumane9@gmail.com
+
+INSERT INTO crowdhub.pa_newsletter (genre, firstname, lastname, email) VALUES ('M', 'Goumane', 'Ali', 'a.goumane@yahoo.com');
+INSERT INTO crowdhub.pa_newsletter (genre, firstname, lastname, email) VALUES ('M', 'Goumane', 'Ali', 'aligoumane9@gmail.com');
+
+
+
+    CREATE TABLE crowdhub.pa_newsletter (
+        id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        title varchar(255) NOT NULL,
+        content text NOT NULL,
+        recipient int(11) NOT NULL,
+        send_date date NOT NULL
+    );
+
+
+    $lastname = $_POST['lastname'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $message = $_POST['message'] . '<br><br> <hr>' . $lastname . '<br>' . $email . '<br>' . $phone;
+
+
+    -- creer la table pa_message avec les colonnes id, lastname, email, phone, message, created_at, status default 0
+
+    CREATE TABLE crowdhub.pa_message (
+        id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        lastname VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL,
+        phone VARCHAR(255) NOT NULL,
+        message TEXT NOT NULL,
+        created_at DATETIME NOT NULL,
+        status INT NOT NULL DEFAULT 0
+    );

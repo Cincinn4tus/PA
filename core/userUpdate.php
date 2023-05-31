@@ -1,6 +1,17 @@
 <?php
+
+    session_start();
+    require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
+    require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
+
 // récupérer les données du formulaire
-    $userId = $_GET["id"];
+
+    $pdo = connectDB();
+    $queryPrepared = $pdo->prepare("SELECT * FROM ".DB_PREFIX."user WHERE id=:id");
+    $queryPrepared->execute(["id"=>$_POST["id"]]);
+    $user = $queryPrepared->fetch();
+
+    $userId = $_POST["id"];
     $phone = $_POST["phone"];
     $address = $_POST["address"];
     $postal_code = $_POST["postal_code"];
@@ -8,7 +19,6 @@
     $scope = $_POST["scope"];
     $pwd = $_POST["pwd"];
     $pwdConfirm = $_POST["pwdConfirm"];
-
 
     // nettoyage
     $phone = trim(strip_tags($phone));
@@ -27,6 +37,15 @@
     } else {
         $pwd = $user["pwd"];
     }
+
+    if($scope == "admin"){
+        $scope = 0;
+    } elseif($scope == "entreprise"){
+        $scope = 1;
+    } else {
+        $scope = 2;
+    }
+
     $pdo = connectDB();
     $queryPrepared = $pdo->prepare("UPDATE ".DB_PREFIX."user SET phone_number=:phone, address=:address, postal_code=:postal_code, email=:email, scope=:scope, pwd=:pwd WHERE id=:id");
     $queryPrepared->execute([
@@ -38,5 +57,5 @@
         "pwd"=>$pwd,
         "id"=>$id
     ]);
-    header("Location: admin-users.php");
+    header("Location: /admin/admin-users.php");
 ?>

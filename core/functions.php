@@ -71,5 +71,14 @@
 		}
 	}
 
+	function getAllLogs(){
+		$connection = connectDB();
+		$results = $connection->query("SELECT * FROM ".DB_PREFIX."logs");
+		$results = $results->fetchAll();
+
+		return $results;
+	}
+
+
 
 

@@ -7,6 +7,19 @@
     include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
+<main id="main">
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
+  <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+
+    <h2>Logs</h2>
+    <ol>
+      <li><a href="/admin/admin-dashboard.php">Administration</a></li>
+      <li>Logs</li>
+    </ol>
+  </div>
+</div><!-- End Breadcrumbs -->
+
 
 <?php
 	$connection = connectDB();

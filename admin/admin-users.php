@@ -7,25 +7,47 @@
     include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
-<h1 class="text-center mt-5" id="main-title">
-    Gestion des utilisateurs
-</h1>
-
-<!-- 
-
-Boutons d'action:
-- Ajouter un utilisateur
-- Supprimer un utilisateur
-- Modifier un utilisateur
--->
-
-<div class="container-fluid text-center">
-    <div class="mt-3">
-        <a href="admin-add-user.php" class="btn btn-primary">Ajouter un utilisateur</a>
-        <a href="admin-delete-user.php" class="btn btn-primary">Supprimer un utilisateur</a>
-        <a href="admin-modify-user.php" class="btn btn-primary">Modifier un utilisateur</a>
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
+    <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+        <h2>Utilisateurs</h2>
+        <ol>
+        <li><a href="/">Accueil</a></li>
+        <li>Utilisateurs</li>
+        </ol>
     </div>
-</div>
+    </div><!-- End Breadcrumbs -->
+
+
+<div class="container-fluid">
+    <?php
+        $connection = connectDB();
+
+        // Recherche par mot-clé
+        $searchKeyword = isset($_GET['q']) ? $_GET['q'] : '';
+
+        $query = "SELECT * FROM " . DB_PREFIX . "user";
+        if (!empty($searchKeyword)) {
+            $query .= " WHERE firstname LIKE '%$searchKeyword%' OR lastname LIKE '%$searchKeyword%'";
+        }
+
+        $results = $connection->query($query);
+        $results = $results->fetchAll();
+    ?>
+
+    <!-- Barre de recherche -->
+    <form action="" method="GET" class="mb-3">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Rechercher par nom ou prénom" value="<?php echo $searchKeyword; ?>">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Rechercher</button>
+            </div>
+        </div>
+    </form>
+
+
+
 
 <div class="container-fluid">
     <?php
@@ -34,7 +56,7 @@ Boutons d'action:
         $results = $results->fetchAll();
     ?>
 
-    <table class="table col-lg-12">
+    <table id="user-array" class="table col-lg-12">
         <thead>
             <tr>
                 <th>id</th>
@@ -47,11 +69,10 @@ Boutons d'action:
                 <th>Date de création</th>
                 <th>Date de modification</th>
                 <th>Actions</th>
-
             </tr>
         </thead>
 
-        <tbody>
+        <tbody id="results">
             <?php
                 foreach ($results as $user) {
                     echo "<tr>";
@@ -64,7 +85,6 @@ Boutons d'action:
                         echo "<td>".$user["scope"]."</td>";
                         echo "<td>".$user["created_at"]."</td>";
                         echo "<td>".$user["updated_at"]."</td>";
-                        // ajouter trois boutons pour modifier, supprimer et voir les détails de l'utilisateur
                         echo "<td>
                             <a href='admin-modify-user.php?id=".$user["id"]."' class='btn btn-primary'>Modifier</a>
                             <a href='admin-delete-user.php?id=".$user["id"]."' class='btn btn-danger'>Supprimer</a>
@@ -73,11 +93,8 @@ Boutons d'action:
                 }
             ?>
         </tbody>
-    
-
-
-
-
-
-
+    </table>
 </div>
+
+
+<?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>
