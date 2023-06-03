@@ -1,23 +1,41 @@
 <?php
-  session_start();
-  require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
-  require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-  $pageTitle = "S'inscrire";
-  saveLogs();
-  getUserInfos();
-  include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
+session_start();
+require "../conf.inc.php";
+require "../core/functions.php";
+$pageTitle = "S'inscrire";
+saveLogs();
+getUserInfos();
+include "../assets/templates/header.php";
 ?>
+<style>
+    .containers {
+        display: flex;
+        flex-wrap: wrap;
+        width: 300px;
+        height: 300px;
+        border: 1px solid #000;
+        position: relative;
+    }
+
+    .puzzle-piece {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #000;
+        background-size: 300px 300px;
+        position: absolute;
+    }
+</style>
 
 <main id="main">
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
-    <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-        <h2>S'inscrire</h2>
-        <ol>
-        <li><a href="/">Accueil</a></li>
-        <li>S'inscrire</li>
-        </ol>
-    </div>
+        <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+            <h2>S'inscrire</h2>
+            <ol>
+                <li><a href="/">Accueil</a></li>
+                <li>S'inscrire</li>
+            </ol>
+        </div>
     </div><!-- End Breadcrumbs -->
 
     <div class="container">
@@ -52,11 +70,11 @@
                                 </div>
                             <?php } ?>
                             <form action="../core/userAdd.php" method="POST" class="user">
-                            <center>
-                                <div class="containers" id="d4" style="display: block" ;>
+                                <center>
+                                    <div class="containers" id="d4" style="display: block" ;>
 
-                                </div>
-                                        </center>
+                                    </div>
+                                </center>
                                 <div id="d2" style="display: none" ;>
                                     <center>
                                         <h1 class="h4 text-gray-900 mb-4">informations personnels</h1>
@@ -105,9 +123,6 @@
                             <center>
                                 <div class="form-group">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <label>Votre carte d'identité</label><input type="file" class="form-control form-control-user" name="IDcard">
-                                    </div>
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" name="Phone_numberE" placeholder="Le Numéro de téléphone de l'entreprise" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["Phone_number"] : ""; ?>">
                                     </div>
 
@@ -121,8 +136,8 @@
                                 <div class="col-6">
 
                                     </br>
-                                    <input type="checkbox" class="form-check-input" id="InvestisseurCheck" name="EntrepreneurCheck">
-                                    <label for="cgu" class="form-label"> Je confirme être un investisseur</label>
+                                    <input type="checkbox" class="form-check-input" id="InvestisseurCheck" name="InvestisseurCheck">
+                                    <label for="InvestisseurCheck" class="form-label"> Je confirme être un investisseur</label>
                                 </div>
                                 <div class="mb-5">
                                     <div id="d5" style="display: none" ;>
@@ -138,9 +153,6 @@
                             <center>
                                 <div class="form-group">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <label>Votre carte d'identité</label><input type="file" class="form-control form-control-user" name="IDcard">
-                                    </div>
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" name="Phone_numberE" placeholder="Le Numéro de téléphone de l'entreprise" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["Phone_number"] : ""; ?>">
                                     </div>
 
@@ -155,7 +167,7 @@
 
                                     </br>
                                     <input type="checkbox" class="form-check-input" id="EntrepreneurCheck" name="EntrepreneurCheck">
-                                    <label for="cgu" class="form-label"> Je confirme être un entrepreneur</label>
+                                    <label for="EntrepreneurCheck" class="form-label"> Je confirme être un entrepreneur</label>
                                 </div>
                                 <div class="mb-5">
                                     <div id="d6" style="display: none" ;>
@@ -163,19 +175,46 @@
                                     </div>
                                 </div>
                             </center>
+
+                        </div>
+                        <div id="d33" style="display: none" ;>
+                            <center>
+
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <div class="form-group col-md-12">
+                                        <label for="projetsInvestis"> avez-vous déjà investis dans des projets ? Expliquez-nous en détail.</label>
+                                        <textarea type="text" class="form-control" name="projetsInvestis" id="projetsInvestis"></textarea>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="projetFait"> avez-vous déjà fait des projets ? Expliquez-nous en détail.</label>
+                                        <textarea type="text" class="form-control" name="projetFait" id="projetFait"></textarea>
+                                    </div>
+                                    <br>
+                                    <br>
+                                </div>
+                            </center>
+
                         </div>
 
                         <div class="d-flex justify-content-around">
-                            <a class="btn btn-success" id="togg1"> Tu es un investisseur ? </a>
-                            <a class="btn btn-success" id="togg2">Principal</a>
-                            <a class="btn btn-success" id="togg3"> Tu es un entrepreneur ? </a>
+                            <div class="d-flex justify-content-around">
+                                <button class="btn btn-warning" id="back">Retourner</button>
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-around">
+                            <a class="btn btn-success" id="togg2">Principal 1/3</a>
+                            <a class="btn btn-success" id="togg33"> Informations complémentaires 2/3</a>
+                            <a class="btn btn-success" id="togg1"> Tu es un investisseur ? 3/3</a>
+                            <a class="btn btn-success" id="togg3"> Tu es un entrepreneur ? 3/3</a>
                         </div>
                         </form>
                         <hr>
                         <div class="text-center">
                             <a class="small" href="forgotpassword.php">Forgot Password?</a>
                         </div>
-                        <div class="text-center"> 
+                        <div class="text-center">
                             <a class="small" href="login.php">Already have an account? Login!</a>
                         </div>
                     </div>
@@ -187,138 +226,177 @@
     </div>
     </div>
 
-<script>
+    <script>
     let togg1 = document.getElementById("togg1");
+    let togg2 = document.getElementById("togg2");
+    let togg3 = document.getElementById("togg3");
+    let togg33 = document.getElementById("togg33");
 
     let d1 = document.getElementById("d1");
-
-    togg1.addEventListener("click", () => {
-        if (getComputedStyle(d1).display != "none") {
-            d1.style.display = "block";
-        } else {
-            d3.style.display = "none";
-            d2.style.display = "none";
-            d1.style.display = "block";
-        }
-    })
-
-    let togg2 = document.getElementById("togg2");
-
     let d2 = document.getElementById("d2");
+    let d3 = document.getElementById("d3");
+    let d33 = document.getElementById("d33");
+
+    let hideAllDivs = () => {
+        d1.style.display = "none";
+        d2.style.display = "none";
+        d3.style.display = "none";
+        d33.style.display = "none";
+    }
+
+    let hideAllButtons = () => {
+        togg1.style.display = "none";
+        togg2.style.display = "none";
+        togg3.style.display = "none";
+        togg33.style.display = "none";
+    }
+
+    hideAllButtons();
+    hideAllDivs();
+    togg2.style.display = "block"; // Show only the "Principal" button at first
+    d2.style.display = "block"; // Show only the "Principal" info at first
+
+    let back = document.getElementById("back");
+    back.style.display = "none"; // Hide the back button at first
 
     togg2.addEventListener("click", () => {
-        if (getComputedStyle(d2).display != "none") {
-            d2.style.display = "block";
-        } else {
-            d3.style.display = "none";
-            d2.style.display = "block";
-            d1.style.display = "none";
-        }
-    })
+        hideAllDivs();
+        hideAllButtons();
+        d33.style.display = "block"; // Show "Informations complémentaires" info
+        togg33.style.display = "block"; // Show "Informations complémentaires" button
+        back.style.display = "block"; // Show the "Back" button
+    });
 
-    let togg3 = document.getElementById("togg3");
+    togg33.addEventListener("click", () => {
+        hideAllDivs();
+        hideAllButtons();
+        // Show "Entrepreneur" and "Investisseur" buttons
+        togg1.style.display = "block";
+        togg3.style.display = "block";
+        back.style.display = "none"; // Hide the "Back" button
+    });
 
-    let d3 = document.getElementById("d3");
+    togg1.addEventListener("click", () => {
+        hideAllDivs();
+        back.style.display = "block"; // Show the "Back" button
+        d1.style.display = "block"; // Show "Investisseur" info
+    });
 
     togg3.addEventListener("click", () => {
-        if (getComputedStyle(d3).display != "none") {
-            d3.style.display = "block";
-        } else {
-            d3.style.display = "block";
-            d2.style.display = "none";
-            d1.style.display = "none";
+        hideAllDivs();
+        back.style.display = "block"; // Show the "Back" button
+        d3.style.display = "block"; // Show "Entrepreneur" info
+    });
+
+    // Logic to decide what happens when the back button is clicked
+    back.addEventListener("click", () => {
+        if (d1.style.display === "block" || d3.style.display === "block") {
+            hideAllDivs();
+            hideAllButtons();
+            d33.style.display = "block";
+            togg33.style.display = "block";
+            back.style.display = "block"; // Keep the "Back" button visible
+        } else if (d33.style.display === "block") {
+            hideAllDivs();
+            hideAllButtons();
+            d2.style.display = "block";
+            togg2.style.display = "block";
+            back.style.display = "none"; // Hide the back button when at the principal step
         }
-    })
+    });
     let d4 = document.getElementById("d4");
 </script>
 
-<script>
-    const containers = document.querySelector(".containers");
 
-    // Liste des images disponibles
-    const images = ["image2.jpg", "image3.jpg"];
 
-    // Choisir une image aléatoire
-    const randomImage = images[Math.floor(Math.random() * images.length)];
 
-    // Découper l'image en 9 morceaux et créer les pièces du puzzle
-    const pieces = [];
+    <script>
+        const containers = document.querySelector(".containers");
 
-    for (let i = 0; i < 9; i++) {
-        const piece = document.createElement("div");
-        piece.classList.add("puzzle-piece");
-        piece.style.backgroundImage = `url(${randomImage})`;
-        piece.style.backgroundPosition = `-${(i % 3) * 100}px -${Math.floor(i / 3) * 100}px`;
-        piece.setAttribute("data-index", i);
-        piece.setAttribute("draggable", "true");
-        pieces.push(piece);
-    }
+        // Liste des images disponibles
+        const images = ["image2.jpg", "image3.jpg"];
 
-    // Mélanger les morceaux
-    shuffleArray(pieces).forEach((piece, i) => {
-        piece.style.left = `${(i % 3) * 100}px`;
-        piece.style.top = `${Math.floor(i / 3) * 100}px`;
-        containers.appendChild(piece);
-    });
+        // Choisir une image aléatoire
+        const randomImage = images[Math.floor(Math.random() * images.length)];
 
-    containers.addEventListener("dragstart", dragStart);
-    containers.addEventListener("dragend", dragEnd);
+        // Découper l'image en 9 morceaux et créer les pièces du puzzle
+        const pieces = [];
 
-    function dragStart(event) {
-        if (event.target.classList.contains("puzzle-piece")) {
-            event.target.style.opacity = 0.5;
+        for (let i = 0; i < 9; i++) {
+            const piece = document.createElement("div");
+            piece.classList.add("puzzle-piece");
+            piece.style.backgroundImage = `url(${randomImage})`;
+            piece.style.backgroundPosition = `-${(i % 3) * 100}px -${Math.floor(i / 3) * 100}px`;
+            piece.setAttribute("data-index", i);
+            piece.setAttribute("draggable", "true");
+            pieces.push(piece);
         }
-    }
 
-    function dragEnd(event) {
-        if (event.target.classList.contains("puzzle-piece")) {
-            event.target.style.opacity = 1;
-        }
-    }
-
-    containers.addEventListener("dragover", (event) => {
-        event.preventDefault();
-    });
-
-    containers.addEventListener("drop", (event) => {
-        event.preventDefault();
-        const target = event.target;
-        if (target.classList.contains("puzzle-piece")) {
-            const dragged = document.querySelector(".puzzle-piece[style*='opacity: 0.5']");
-            const tempPos = {
-                left: target.style.left,
-                top: target.style.top
-            };
-
-            target.style.left = dragged.style.left;
-            target.style.top = dragged.style.top;
-
-            dragged.style.left = tempPos.left;
-            dragged.style.top = tempPos.top;
-
-            checkSolution();
-        }
-    });
-
-    // Fonction pour mélanger un tableau
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    }
-
-    // Vérifier si le puzzle est résolu
-    function checkSolution() {
-        const pieces = Array.from(document.querySelectorAll(".puzzle-piece"));
-        const sortedPieces = pieces.slice().sort((a, b) => {
-            return parseInt(a.style.top) - parseInt(b.style.top) || parseInt(a.style.left) - parseInt(b.style.left);
+        // Mélanger les morceaux
+        shuffleArray(pieces).forEach((piece, i) => {
+            piece.style.left = `${(i % 3) * 100}px`;
+            piece.style.top = `${Math.floor(i / 3) * 100}px`;
+            containers.appendChild(piece);
         });
-        if (sortedPieces.every((piece, index) => piece.getAttribute("data-index") == index)) {
-            d5.style.display = "block";
-            d6.style.display = "block";
+
+        containers.addEventListener("dragstart", dragStart);
+        containers.addEventListener("dragend", dragEnd);
+
+        function dragStart(event) {
+            if (event.target.classList.contains("puzzle-piece")) {
+                event.target.style.opacity = 0.5;
+            }
         }
-    }
-</script>
-<?php include "../assets/templates/footer.php"; ?>
+
+        function dragEnd(event) {
+            if (event.target.classList.contains("puzzle-piece")) {
+                event.target.style.opacity = 1;
+            }
+        }
+
+        containers.addEventListener("dragover", (event) => {
+            event.preventDefault();
+        });
+
+        containers.addEventListener("drop", (event) => {
+            event.preventDefault();
+            const target = event.target;
+            if (target.classList.contains("puzzle-piece")) {
+                const dragged = document.querySelector(".puzzle-piece[style*='opacity: 0.5']");
+                const tempPos = {
+                    left: target.style.left,
+                    top: target.style.top
+                };
+
+                target.style.left = dragged.style.left;
+                target.style.top = dragged.style.top;
+
+                dragged.style.left = tempPos.left;
+                dragged.style.top = tempPos.top;
+
+                checkSolution();
+            }
+        });
+
+        // Fonction pour mélanger un tableau
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Vérifier si le puzzle est résolu
+        function checkSolution() {
+            const pieces = Array.from(document.querySelectorAll(".puzzle-piece"));
+            const sortedPieces = pieces.slice().sort((a, b) => {
+                return parseInt(a.style.top) - parseInt(b.style.top) || parseInt(a.style.left) - parseInt(b.style.left);
+            });
+            if (sortedPieces.every((piece, index) => piece.getAttribute("data-index") == index)) {
+                d5.style.display = "block";
+                d6.style.display = "block";
+            }
+        }
+    </script>
+    <?php include "../assets/templates/footer.php"; ?>

@@ -1,22 +1,26 @@
-<?php 
-    session_start();
-    $pageTitle = "Nouvel utilisateur" . $_POST['email'];
-    require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
-    require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-    saveLogs();
+<?php
+session_start();
+require "functions.php";
 
+$projetsInvestis = $_POST['projetsInvestis'] ?? '';
+$projetFait = $_POST['projetFait'] ?? '';
 
-
-
-	if( count($_POST)!=7
+if( count($_POST)!=13
 	|| empty($_POST['firstname'])
 	|| empty($_POST['lastname'])
 	|| empty($_POST['email'])
 	|| empty($_POST['pwd'])
 	|| empty($_POST['pwdConfirm'])
 	|| empty($_POST['phone_number'])
-	|| empty($_POST['cgu']) 
-){
+	|| empty($_POST['cgu'])
+	|| empty($_POST['projetsInvestis'])
+	|| empty($_POST['projetFait'])  
+	|| empty($_POST['Phone_numberE']) 
+	|| empty($_POST['Siret']) 
+	|| empty($_POST['nameEntreprise']) 
+	|| empty($_POST['EntrepreneurCheck']) or empty($_POST['InvestisseurCheck']) 
+	
+	){
 	die ("Tentative de HACK");
 }
 
@@ -29,6 +33,12 @@ $pwd = $_POST['pwd'];
 $pwdConfirm = $_POST['pwdConfirm'];
 $phone_number = $_POST['phone_number'];
 
+
+$phone_numberE = $_POST['Phone_numberE'];
+$siret = $_POST['Siret'];
+$nameEntreprise = $_POST['nameEntreprise'];
+$entrepreneurCheck = $_POST['EntrepreneurCheck'];
+$investisseurCheck = $_POST['InvestisseurCheck'];
 
 
 
@@ -78,56 +88,37 @@ if(strlen($pwd) < 8
 if( $pwd != $pwdConfirm){
 	$listOfErrors[] = "La confirmation du mot de passe ne correspond pas";
 }
-
-
-
-
-
+if(!preg_match("#^[0-9]{14}$#", $siret)){
+	$listOfErrors[] = "Le SIRET est incorrect";
+}
 //Si OK
-if(empty($listOfErrors)){
-	/* Insertion en BDD
+if(isset($_POST['captcha_solved']) && $_POST['captcha_solved'] == '1'){
+	if (empty($listOfErrors)) {
 	
+		$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."user
+												(firstname, lastname, email, pwd, phone_number, projetsInvestis, projetFait, phone_numberE, siret, nameEntreprise, entrepreneurCheck, investisseurCheck)
+												VALUES 
+												(:firstname, :lastname, :email, :pwd, :phone_number, :projetsInvestis, :projetFait, :phone_numberE, :siret, :nameEntreprise, :entrepreneurCheck, :investisseurCheck)");
 
-les champs non rensignés sont enregistrées en base de données comme unset
+		$queryPrepared->execute([
+									"firstname"=>$firstname,
+									"lastname"=>$lastname,
+									"email"=>$email,
+									"pwd" => password_hash($pwd, PASSWORD_DEFAULT),
+									"phone_number" =>$phone_number,
+									"projetsInvestis" =>$projetsInvestis,
+									"projetFait" =>$projetFait,
+									"phone_numberE" =>$phone_numberE,
+									"siret" =>$siret,
+									"nameEntreprise" =>$nameEntreprise,
+									"entrepreneurCheck" =>$entrepreneurCheck,
+									"investisseurCheck" =>$investisseurCheck
+								]);
 
+		//Redirection sur la page de connexion
+		header('location: ../user/login.php');
 
-
-	*/
-
-
-	$connection = connectDB();
-
-
-
-
-
-
-	$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."user
-											(firstname, lastname, email, pwd, phone_number, address, postal_code, scope, created_at, updated_at)
-											VALUES 
-											(:firstname, :lastname, :email, :pwd, :phone_number, :address, :postal_code, :scope, :created_at, :updated_at)");
-
-	$queryPrepared->execute([
-								"firstname"=>$firstname,
-								"lastname"=>$lastname,
-								"email"=>$email,
-								"pwd" => password_hash($pwd, PASSWORD_DEFAULT),
-                                "phone_number" =>$phone_number,
-								"address" => 'unset',
-								"postal_code" => '00000',
-								"scope" => 1,
-								"created_at" => date('Y-m-d H:i:s'),
-								"updated_at" => date('Y-m-d H:i:s')
-							]);
-
-
-
-
-	//Redirection sur la page de connexion
-	header('location: /user/login.php');
-
-}else{
-
+	}else{
 	//Si NOK
 	//On stock les erreurs et la data
 	$_SESSION['listOfErrors'] = $listOfErrors;
@@ -135,5 +126,6 @@ les champs non rensignés sont enregistrées en base de données comme unset
 	unset($_POST["pwdConfirm"]);
 	$_SESSION['data'] = $_POST;
 	//Redirection sur la page d'inscription
-	header('location: /user/register.php');
+	header('location: ../user/register.php');
+	}
 }
