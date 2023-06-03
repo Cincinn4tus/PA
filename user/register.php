@@ -163,18 +163,11 @@
                                     </div>
                                 </div>
                             </center>
-
                         </div>
 
                         <div class="d-flex justify-content-around">
                             <a class="btn btn-success" id="togg1"> Tu es un investisseur ? </a>
-
-
-
                             <a class="btn btn-success" id="togg2">Principal</a>
-
-
-
                             <a class="btn btn-success" id="togg3"> Tu es un entrepreneur ? </a>
                         </div>
                         </form>
@@ -182,7 +175,7 @@
                         <div class="text-center">
                             <a class="small" href="forgotpassword.php">Forgot Password?</a>
                         </div>
-                        <div class="text-center">
+                        <div class="text-center"> 
                             <a class="small" href="login.php">Already have an account? Login!</a>
                         </div>
                     </div>
