@@ -91,8 +91,13 @@ if( $pwd != $pwdConfirm){
 if(!preg_match("#^[0-9]{14}$#", $siret)){
 	$listOfErrors[] = "Le SIRET est incorrect";
 }
+
+if(!isset($_POST['captcha_solved']) || $_POST['captcha_solved'] != '1'){
+    $listOfErrors[] = "Le captcha doit être résolu";
+}
+
 //Si OK
-if(isset($_POST['captcha_solved']) && $_POST['captcha_solved'] == '1'){
+
 	if (empty($listOfErrors)) {
 	
 		$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."user
@@ -128,4 +133,3 @@ if(isset($_POST['captcha_solved']) && $_POST['captcha_solved'] == '1'){
 	//Redirection sur la page d'inscription
 	header('location: ../user/register.php');
 	}
-}
