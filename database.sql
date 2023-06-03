@@ -143,3 +143,26 @@ INSERT INTO crowdhub.pa_newsletter (genre, firstname, lastname, email) VALUES ('
         created_at DATETIME NOT NULL,
         status INT NOT NULL DEFAULT 0
     );
+
+
+
+    CREATE TABLE crowdhub.pa_user (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255) NOT NULL,
+    phone_number char(10) NOT NULL,
+    address VARCHAR(255) NULL,
+    postal_code VARCHAR(255) NULL,
+    email VARCHAR(255) NOT NULL,
+    scope INT NOT NULL DEFAULT 1,
+    pwd VARCHAR(255) NOT NULL,
+    created_at DATETIME NOT NULL,
+    updated_at DATETIME NOT NULL,
+    siret INT(14) NULL,
+    projetsInvestis text,
+    projetFait text,
+    Phone_numberE char(10),
+    nameEntreprise VARCHAR(255),
+    EntrepreneurCheck varchar(10),
+    InvestisseurCheck varchar(10)
+    );
