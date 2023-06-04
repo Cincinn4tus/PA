@@ -45,7 +45,7 @@
           <li><a href="/" class="active">Accueil</a></li>
           <li><a href="/about.php">À propos</a></li>
           <li><a href="/services.php">Services</a></li>
-          <li><a href="/projects.php">Projets</a></li>
+          <li><a href="/listefinancement.php">Projets</a></li>
           <li><a href="/blog.php">Blog</a></li>
           <?php
                 if (isConnected()){

@@ -144,8 +144,6 @@ INSERT INTO crowdhub.pa_newsletter (genre, firstname, lastname, email) VALUES ('
         status INT NOT NULL DEFAULT 0
     );
 
-
-
     CREATE TABLE crowdhub.pa_user (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     firstname VARCHAR(255) NOT NULL,
@@ -162,6 +160,7 @@ INSERT INTO crowdhub.pa_newsletter (genre, firstname, lastname, email) VALUES ('
     projetsInvestis text,
     projetFait text,
     Phone_numberE char(10),
+    Siret INT(14),
     nameEntreprise VARCHAR(255),
     EntrepreneurCheck varchar(10),
     InvestisseurCheck varchar(10)

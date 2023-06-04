@@ -2,15 +2,19 @@
 session_start();
 require "functions.php";
 
+$projetsInvestis = $_POST['projetsInvestis'] ?? '';
+$projetFait = $_POST['projetFait'] ?? '';
 
-if( count($_POST)!=11
+if( count($_POST)!=13
 	|| empty($_POST['firstname'])
 	|| empty($_POST['lastname'])
 	|| empty($_POST['email'])
 	|| empty($_POST['pwd'])
 	|| empty($_POST['pwdConfirm'])
+	|| empty($_POST['phone_number'])
 	|| empty($_POST['cgu'])
-	|| empty($_POST['projetsInvestis']) or empty($_POST['projetFait']) 
+	|| empty($_POST['projetsInvestis'])
+	|| empty($_POST['projetFait'])  
 	|| empty($_POST['Phone_numberE']) 
 	|| empty($_POST['Siret']) 
 	|| empty($_POST['nameEntreprise']) 
@@ -29,8 +33,6 @@ $pwd = $_POST['pwd'];
 $pwdConfirm = $_POST['pwdConfirm'];
 $phone_number = $_POST['phone_number'];
 
-$projetFait = $_POST['projetFait'];
-$projetsInvestis = $_POST['projetsInvestis'];
 
 $phone_numberE = $_POST['Phone_numberE'];
 $siret = $_POST['Siret'];
@@ -89,13 +91,8 @@ if( $pwd != $pwdConfirm){
 if(!preg_match("#^[0-9]{14}$#", $siret)){
 	$listOfErrors[] = "Le SIRET est incorrect";
 }
-
-if(!isset($_POST['captcha_solved']) || $_POST['captcha_solved'] != '1'){
-    $listOfErrors[] = "Le captcha doit être résolu";
-}
-
 //Si OK
-
+if(isset($_POST['captcha_solved']) && $_POST['captcha_solved'] == '1'){
 	if (empty($listOfErrors)) {
 	
 		$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."user
@@ -131,3 +128,4 @@ if(!isset($_POST['captcha_solved']) || $_POST['captcha_solved'] != '1'){
 	//Redirection sur la page d'inscription
 	header('location: ../user/register.php');
 	}
+}
