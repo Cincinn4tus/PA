@@ -2,25 +2,37 @@
 session_start();
 require "functions.php";
 
-$projetsInvestis = $_POST['projetsInvestis'] ?? '';
-$projetFait = $_POST['projetFait'] ?? '';
 
-if( count($_POST)!=13
-	|| empty($_POST['firstname'])
+// Vérification des champs obligatoires
+if (empty($_POST['firstname']) 
 	|| empty($_POST['lastname'])
 	|| empty($_POST['email'])
 	|| empty($_POST['pwd'])
 	|| empty($_POST['pwdConfirm'])
 	|| empty($_POST['phone_number'])
-	|| empty($_POST['cgu'])
-	|| empty($_POST['projetsInvestis'])
-	|| empty($_POST['projetFait'])  
-	|| empty($_POST['Phone_numberE']) 
-	|| empty($_POST['Siret']) 
-	|| empty($_POST['nameEntreprise']) 
-	|| empty($_POST['EntrepreneurCheck']) or empty($_POST['InvestisseurCheck']) 
-	
-	){
+	|| empty($_POST['cgu']) //check if checkbox is checked
+	|| (!isset($_POST['EntrepreneurCheck']) && !isset($_POST['InvestisseurCheck']))
+){
+	die ("Tentative de HACK");
+}
+
+// Vérification des champs spécifiques en fonction de si l'utilisateur est un entrepreneur ou un investisseur
+if (!empty($_POST['EntrepreneurCheck']) 
+    && (
+        empty($_POST['Phone_numberE']) 
+    	|| empty($_POST['Siret']) 
+    	|| empty($_POST['nameEntreprise']) 
+    )
+) {
+	die ("Tentative de HACK");
+}
+
+if (!empty($_POST['InvestisseurCheck']) 
+    && (
+        empty($_POST['projetsInvestis']) 
+        || empty($_POST['projetFait'])
+    )
+) {
 	die ("Tentative de HACK");
 }
 
@@ -33,6 +45,8 @@ $pwd = $_POST['pwd'];
 $pwdConfirm = $_POST['pwdConfirm'];
 $phone_number = $_POST['phone_number'];
 
+$projetFait = $_POST['projetFait'];
+$projetsInvestis = $_POST['projetsInvestis'];
 
 $phone_numberE = $_POST['Phone_numberE'];
 $siret = $_POST['Siret'];
@@ -40,6 +54,16 @@ $nameEntreprise = $_POST['nameEntreprise'];
 $entrepreneurCheck = $_POST['EntrepreneurCheck'];
 $investisseurCheck = $_POST['InvestisseurCheck'];
 
+
+
+$cgu = $_POST['cgu']; 
+$entrepreneurCheck = $_POST['EntrepreneurCheck'];
+$investisseurCheck = $_POST['InvestisseurCheck'];
+
+
+if ($entrepreneurCheck != '1' && $investisseurCheck != '1'){
+	$listOfErrors[] = "Vous devez être soit un entrepreneur soit un investisseur";
+}
 
 
 
@@ -88,32 +112,35 @@ if(strlen($pwd) < 8
 if( $pwd != $pwdConfirm){
 	$listOfErrors[] = "La confirmation du mot de passe ne correspond pas";
 }
-if(!preg_match("#^[0-9]{14}$#", $siret)){
-	$listOfErrors[] = "Le SIRET est incorrect";
+
+
+if(!isset($_POST['captcha_solved']) || $_POST['captcha_solved'] != '1'){
+    $listOfErrors[] = "Le captcha doit être résolu";
 }
+
 //Si OK
-if(isset($_POST['captcha_solved']) && $_POST['captcha_solved'] == '1'){
+
 	if (empty($listOfErrors)) {
 	
 		$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."user
 												(firstname, lastname, email, pwd, phone_number, projetsInvestis, projetFait, phone_numberE, siret, nameEntreprise, entrepreneurCheck, investisseurCheck)
 												VALUES 
 												(:firstname, :lastname, :email, :pwd, :phone_number, :projetsInvestis, :projetFait, :phone_numberE, :siret, :nameEntreprise, :entrepreneurCheck, :investisseurCheck)");
-
-		$queryPrepared->execute([
-									"firstname"=>$firstname,
-									"lastname"=>$lastname,
-									"email"=>$email,
-									"pwd" => password_hash($pwd, PASSWORD_DEFAULT),
-									"phone_number" =>$phone_number,
-									"projetsInvestis" =>$projetsInvestis,
-									"projetFait" =>$projetFait,
-									"phone_numberE" =>$phone_numberE,
-									"siret" =>$siret,
-									"nameEntreprise" =>$nameEntreprise,
-									"entrepreneurCheck" =>$entrepreneurCheck,
-									"investisseurCheck" =>$investisseurCheck
-								]);
+												$queryPrepared->execute([
+													"firstname" => $firstname,
+													"lastname" => $lastname,
+													"email" => $email,
+													"pwd" => password_hash($pwd, PASSWORD_DEFAULT),
+													"phone_number" => $phone_number,
+													"projetsInvestis" => $projetsInvestis,
+													"projetFait" => $projetFait,
+													"phone_numberE" => $phone_numberE,
+													"siret" => $siret,
+													"nameEntreprise" => $nameEntreprise,
+													"entrepreneurCheck" => $entrepreneurCheck, // add these
+													"investisseurCheck" => $investisseurCheck, // add these
+													"cgu" => $cgu // add this
+												]);
 
 		//Redirection sur la page de connexion
 		header('location: ../user/login.php');
@@ -128,4 +155,3 @@ if(isset($_POST['captcha_solved']) && $_POST['captcha_solved'] == '1'){
 	//Redirection sur la page d'inscription
 	header('location: ../user/register.php');
 	}
-}
