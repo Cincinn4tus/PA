@@ -1,6 +1,5 @@
 <?php
 session_start();
-require "../conf.inc.php";
 require "../core/functions.php";
 $pageTitle = "S'inscrire";
 saveLogs();
@@ -123,14 +122,14 @@ include "../assets/templates/header.php";
                             <center>
                                 <div class="form-group">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" name="Phone_numberE" placeholder="Le Numéro de téléphone de l'entreprise" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["Phone_number"] : ""; ?>">
+                                        <input type="text" class="form-control form-control-user" name="Phone_numberEI" placeholder="Le Numéro de téléphone de l'entreprise" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["Phone_number"] : ""; ?>">
                                     </div>
 
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="number" class="form-control form-control-user" name="Siret" placeholder="Votre numéro Siret" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["Siret"] : ""; ?>">
+                                        <input type="number" class="form-control form-control-user" name="SiretEI" placeholder="Votre numéro Siret" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["Siret"] : ""; ?>">
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" name="nameEntreprise" placeholder="Le nom de l'entreprise" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["Siret"] : ""; ?>">
+                                        <input type="text" class="form-control form-control-user" name="nameEntrepriseEI" placeholder="Le nom de l'entreprise" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["Siret"] : ""; ?>">
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -153,14 +152,14 @@ include "../assets/templates/header.php";
                             <center>
                                 <div class="form-group">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" name="Phone_numberE" placeholder="Le Numéro de téléphone de l'entreprise" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["Phone_number"] : ""; ?>">
+                                        <input type="text" class="form-control form-control-user" name="Phone_numberEE" placeholder="Le Numéro de téléphone de l'entreprise" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["Phone_number"] : ""; ?>">
                                     </div>
 
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="number" class="form-control form-control-user" name="Siret" placeholder="Votre numéro Siret" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["Siret"] : ""; ?>">
+                                        <input type="number" class="form-control form-control-user" name="SiretEE" placeholder="Votre numéro Siret" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["Siret"] : ""; ?>">
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" name="nameEntreprise" placeholder="Le nom de l'entreprise" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["Siret"] : ""; ?>">
+                                        <input type="text" class="form-control form-control-user" name="nameEntrepriseEE" placeholder="Le nom de l'entreprise" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["Siret"] : ""; ?>">
                                     </div>
                                 </div>
                                 <div class="col-6">
