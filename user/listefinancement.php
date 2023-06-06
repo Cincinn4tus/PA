@@ -1,7 +1,7 @@
 <?php
 session_start();
-include "../core/functions.php";
-
+require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
 $connection = connectDB();
 $queryPrepared = $connection->prepare("SELECT * FROM ".DB_PREFIX."financement");
 $queryPrepared->execute();

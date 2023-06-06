@@ -90,7 +90,7 @@ if( !empty($_POST['email']) &&  !empty($_POST['pwd']) ){
                                 <div class="text-center">
                                     <a class="small" href="forgot-password.php">Mot de passe oublié ?</a>
                                     <span class="mx-2 text-gray-600">|</span>
-                                    <a class="small" href="register.php">Créer un compte !</a>
+                                    <a class="small" href="/user/getregistration.php">Créer un compte !</a>
                                 </div>
                             </div>
                         </div>

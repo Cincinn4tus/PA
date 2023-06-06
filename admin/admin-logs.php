@@ -19,7 +19,16 @@
     </ol>
   </div>
 </div><!-- End Breadcrumbs -->
+<?php
+            $dernieresVisites = 0;
+            $connection = connectDB();
+            $results = $connection->query("SELECT COUNT(*) AS derniereVisite FROM ".DB_PREFIX."logs WHERE visit_date >= DATE_SUB(NOW(), INTERVAL 24 HOUR)");
+            $row = $results->fetch();
+            $dernieresVisites = $row['derniereVisite'];
+            echo "<h3 class='mt-5'>Nombre de logs des dernières 24 heures : ".$dernieresVisites."</h3>";
 
+    
+?>
 
 <?php
 	$connection = connectDB();
@@ -57,5 +66,10 @@
         ?>
     </tbody>
 </table>
+
+<!-- récupérer le nombre de logs des dernières 24h
+-->
+
+
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>

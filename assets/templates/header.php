@@ -45,7 +45,6 @@
           <li><a href="/" class="active">Accueil</a></li>
           <li><a href="/about.php">À propos</a></li>
           <li><a href="/services.php">Services</a></li>
-          <li><a href="/listefinancement.php">Projets</a></li>
           <li><a href="/blog.php">Blog</a></li>
           <?php
                 if (isConnected()){
@@ -55,18 +54,18 @@
                         </li>';
                     } else if($_SESSION['scope'] == 1){
                         echo '<li class="nav-item">
-                        <a class="nav-link" href="/user/enterprise-board.php">Entreprise</a>
+                        <a class="nav-link" href="/user/pagefinancement.php">Créer un projet</a>
                         </li>';
-                    } else if($_SESSION['scope'] == 2){
+                    } else{
                         echo '<li class="nav-item">
-                        <a class="nav-link" href="/user/view-projects.php">Utilisateur</a>
+                        <a class="nav-link" href="/user/listefinancement.php">Projets</a>
                         </li>';
                     }
                 } else {
                     echo '<li class="nav-item">
-                    <a class="nav-link" href="/user/register.php">Non connecté</a>
+                        <a class="nav-link" href="/user/login.php">Projets</a>
                     </li>';
-                } 
+                }
                 ?>
           <li><a href="contact.html">Contact</a></li>
           <?php if (isConnected()){
