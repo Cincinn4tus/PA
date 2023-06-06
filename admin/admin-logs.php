@@ -11,7 +11,6 @@
 <!-- ======= Breadcrumbs ======= -->
 <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
   <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-
     <h2>Logs</h2>
     <ol>
       <li><a href="/admin/admin-dashboard.php">Administration</a></li>
@@ -19,16 +18,7 @@
     </ol>
   </div>
 </div><!-- End Breadcrumbs -->
-<?php
-            $dernieresVisites = 0;
-            $connection = connectDB();
-            $results = $connection->query("SELECT COUNT(*) AS derniereVisite FROM ".DB_PREFIX."logs WHERE visit_date >= DATE_SUB(NOW(), INTERVAL 24 HOUR)");
-            $row = $results->fetch();
-            $dernieresVisites = $row['derniereVisite'];
-            echo "<h3 class='mt-5'>Nombre de logs des dernières 24 heures : ".$dernieresVisites."</h3>";
 
-    
-?>
 
 <?php
 	$connection = connectDB();
