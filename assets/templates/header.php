@@ -63,7 +63,7 @@
                     }
                 } else {
                     echo '<li class="nav-item">
-                        <a class="nav-link" href="/user/login.php">Projets</a>
+                        <a class="nav-link" href="/user/listefinancement.php">Projets</a>
                     </li>';
                 }
                 ?>
