@@ -129,7 +129,7 @@ if(!isset($_POST['captcha_solved']) || $_POST['captcha_solved'] != '1'){
 												]);
 
 		//Redirection sur la page de connexion
-		header('location: ../user/login.php');
+		header('location: /user/login.php');
 
 	}else{
 	//Si NOK
