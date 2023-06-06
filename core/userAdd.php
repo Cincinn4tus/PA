@@ -2,7 +2,7 @@
 session_start();
 require "functions.php";
 
-
+/*
 if (count($_POST) != 12 // Update the number of expected POST parameters
 	|| empty($_POST['firstname'])
 	|| empty($_POST['lastname'])
@@ -19,7 +19,7 @@ if (count($_POST) != 12 // Update the number of expected POST parameters
 	){
 	die ("Tentative de HACK");
 }
-
+*/
 //Nettoyage des données
 
 $firstname = cleanFirstname($_POST['firstname']);
