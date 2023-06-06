@@ -2,24 +2,44 @@
 session_start();
 require "functions.php";
 
-/*
-if (count($_POST) != 12 // Update the number of expected POST parameters
-	|| empty($_POST['firstname'])
-	|| empty($_POST['lastname'])
-	|| empty($_POST['email'])
-	|| empty($_POST['pwd'])
-	|| empty($_POST['pwdConfirm'])
-	|| empty($_POST['cgu']) //check if checkbox is checked
-	|| empty($_POST['projetsInvestis']) 
-	&& empty($_POST['projetFait'])
-	|| empty($_POST['Phone_numberE']) 
-	|| empty($_POST['Siret']) 
-	|| empty($_POST['nameEntreprise']) 
-	|| !isset($_POST['EntrepreneurCheck']) && !isset($_POST['InvestisseurCheck']) 
-	){
-	die ("Tentative de HACK");
+$listOfErrors = [];
+
+// Fields common to both Entrepreneur and Investor
+$requiredFields = ['firstname', 'lastname', 'email', 'pwd', 'pwdConfirm', 'phone_number', 'cgu'];
+
+// Fields specific to Entrepreneur
+$entrepreneurFields = ['Phone_numberEE', 'SiretEE', 'nameEntrepriseEE'];
+
+// Fields specific to Investor
+$investorFields = ['Phone_numberEI', 'SiretEI', 'nameEntrepriseEI'];
+
+$roleFields = [];
+
+// Check if a role is selected
+if (!isset($_POST['EntrepreneurCheck']) && !isset($_POST['InvestisseurCheck'])) {
+    $listOfErrors[] = "Vous devez sélectionner soit entrepreneur soit investisseur";
+} else {
+    if (isset($_POST['EntrepreneurCheck'])) {
+        $roleFields = $entrepreneurFields;
+    } elseif (isset($_POST['InvestisseurCheck'])) {
+        $roleFields = $investorFields;
+    }
 }
-*/
+
+// Check if all required fields are present
+foreach ($requiredFields as $field) {
+    if (empty($_POST[$field])) {
+        $listOfErrors[] = "Le champ " . $field . " est obligatoire";
+    }
+}
+
+// Check if all role-specific fields are present
+foreach ($roleFields as $field) {
+    if (empty($_POST[$field])) {
+        $listOfErrors[] = "Le champ " . $field . " est obligatoire pour votre rôle";
+    }
+}
+
 //Nettoyage des données
 
 $firstname = cleanFirstname($_POST['firstname']);
@@ -32,9 +52,14 @@ $phone_number = $_POST['phone_number'];
 $projetFait = $_POST['projetFait'];
 $projetsInvestis = $_POST['projetsInvestis'];
 
-$phone_numberE = $_POST['Phone_numberE'];
-$siret = $_POST['Siret'];
-$nameEntreprise = $_POST['nameEntreprise'];
+$Phone_numberEE = $_POST['Phone_numberEE'];
+$SiretEE = $_POST['SiretEE'];
+$nameEntrepriseEE = $_POST['nameEntrepriseEE'];
+
+$Phone_numberEI = $_POST['Phone_numberEI'];
+$SiretEI = $_POST['SiretEI'];
+$nameEntrepriseEI = $_POST['nameEntrepriseEI']; 
+
 $entrepreneurCheck = $_POST['EntrepreneurCheck'];
 $investisseurCheck = $_POST['InvestisseurCheck'];
 
@@ -44,14 +69,13 @@ $cgu = $_POST['cgu'];
 $entrepreneurCheck = $_POST['EntrepreneurCheck'];
 $investisseurCheck = $_POST['InvestisseurCheck'];
 
-
 if ($entrepreneurCheck != '1' && $investisseurCheck != '1'){
 	$listOfErrors[] = "Vous devez être soit un entrepreneur soit un investisseur";
 }
 
 
 
-$listOfErrors = [];
+
 
 // --> Est-ce que le genre est cohérent
 
@@ -96,9 +120,7 @@ if(strlen($pwd) < 8
 if( $pwd != $pwdConfirm){
 	$listOfErrors[] = "La confirmation du mot de passe ne correspond pas";
 }
-if(!preg_match("#^[0-9]{14}$#", $siret)){
-	$listOfErrors[] = "Le SIRET est incorrect";
-}
+
 
 if(!isset($_POST['captcha_solved']) || $_POST['captcha_solved'] != '1'){
     $listOfErrors[] = "Le captcha doit être résolu";
@@ -106,30 +128,39 @@ if(!isset($_POST['captcha_solved']) || $_POST['captcha_solved'] != '1'){
 
 //Si OK
 
-	if (empty($listOfErrors)) {
-	
-		$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."user
-												(firstname, lastname, email, pwd, phone_number, projetsInvestis, projetFait, phone_numberE, siret, nameEntreprise, entrepreneurCheck, investisseurCheck)
-												VALUES 
-												(:firstname, :lastname, :email, :pwd, :phone_number, :projetsInvestis, :projetFait, :phone_numberE, :siret, :nameEntreprise, :entrepreneurCheck, :investisseurCheck)");
-												$queryPrepared->execute([
-													"firstname" => $firstname,
-													"lastname" => $lastname,
-													"email" => $email,
-													"pwd" => password_hash($pwd, PASSWORD_DEFAULT),
-													"phone_number" => $phone_number,
-													"projetsInvestis" => $projetsInvestis,
-													"projetFait" => $projetFait,
-													"phone_numberE" => $phone_numberE,
-													"siret" => $siret,
-													"nameEntreprise" => $nameEntreprise,
-													"entrepreneurCheck" => $entrepreneurCheck, // add these
-													"investisseurCheck" => $investisseurCheck, // add these
-													"cgu" => $cgu // add this
-												]);
+if (empty($listOfErrors)) {
+    // Determine if the user is an entrepreneur or an investor and save data accordingly
+    if (isset($_POST['EntrepreneurCheck'])) {
+        $phone_numberE = $Phone_numberEE;
+        $siret = $SiretEE;
+        $nameEntreprise = $nameEntrepriseEE;
+    } elseif (isset($_POST['InvestisseurCheck'])) {
+        $phone_numberE = $Phone_numberEI;
+        $siret = $SiretEI;
+        $nameEntreprise = $nameEntrepriseEI;
+    }
+
+    $queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."user
+        (firstname, lastname, email, pwd, phone_number, projetsInvestis, projetFait, phone_numberE, siret, nameEntreprise, entrepreneurCheck, investisseurCheck)
+        VALUES 
+        (:firstname, :lastname, :email, :pwd, :phone_number, :projetsInvestis, :projetFait, :phone_numberE, :siret, :nameEntreprise, :entrepreneurCheck, :investisseurCheck)");
+    $queryPrepared->execute([
+        "firstname" => $firstname,
+        "lastname" => $lastname,
+        "email" => $email,
+        "pwd" => password_hash($pwd, PASSWORD_DEFAULT),
+        "phone_number" => $phone_number,
+        "projetsInvestis" => $projetsInvestis ?? null, // if not set, set to null
+        "projetFait" => $projetFait ?? null, // if not set, set to null
+        "phone_numberE" => $phone_numberE,
+        "siret" => $siret,
+        "nameEntreprise" => $nameEntreprise,
+        "entrepreneurCheck" => $entrepreneurCheck,
+        "investisseurCheck" => $investisseurCheck,
+    ]);
 
 		//Redirection sur la page de connexion
-		header('location: /user/login.php');
+		header('location: ../user/login.php');
 
 	}else{
 	//Si NOK
