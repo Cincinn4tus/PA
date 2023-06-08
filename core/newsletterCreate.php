@@ -26,7 +26,6 @@ $queryPrepared->execute([
                             ":send_date" => $date
                         ]);
 
-$connection = connectDB();
 if ($recipient == 1) {
     $results = $connection->query("SELECT * FROM ".DB_PREFIX."user WHERE scope = 1");
 } elseif ($recipient == 2) {
@@ -60,7 +59,7 @@ foreach($results as $result) {
 
     // Configurer l'expéditeur et le destinataire
     $mail->setFrom('ne-pas-repondre@crowdhub.fr', 'Crowdhub');
-    $mail->addAddress($result['email']);
+    $mail->addAddress($result['email'], $result['firstname'] . ' ' . $result['lastname']);
 
     // Ajouter le sujet et le corps du message
     $mail->Subject = $title;

@@ -1,4 +1,7 @@
 <?php
+    require $_SERVER['DOCUMENT_ROOT'] . '/conf.inc.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/core/functions.php';
+
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
@@ -69,6 +72,5 @@ $queryPrepared->execute([
     if($mail->send()) {
         echo 'Message envoyé avec succès !';
     }
-
 ?>
 

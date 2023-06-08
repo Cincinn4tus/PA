@@ -2587,3 +2587,35 @@ section {
 #day-analytics{
   height: 50vh;
 }
+
+.emailform{
+  height: 80vh;
+}
+
+
+
+/* Désactive les contours bleus pour les éléments de formulaire */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+
+.containers {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 50px;
+  border: 1px solid #ccc;
+}
+
+.puzzle-piece {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background-size: 300px 300px;
+  border: 1px solid #ccc;
+}

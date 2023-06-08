@@ -95,7 +95,7 @@
                         <p>
                             Gérer les templates d'email
                         </p>
-                        <a href="admin-emails.php" class="btn btn-primary">Gérer</a>
+                        <a href="admin-news.php" class="btn btn-primary">Gérer</a>
                     </div>
                 </div>
             </div>

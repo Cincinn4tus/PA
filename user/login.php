@@ -2,27 +2,11 @@
   session_start();
   require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
   require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-  $pageTitle = "Accueil";
+  $pageTitle = "Connexion";
   saveLogs();
   getUserInfos();
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
-
-  <main id="main">
-
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
-      <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-
-        <h2>Connexion</h2>
-        <ol>
-          <li><a href="/">Accueil</a></li>
-          <li>Connexion</li>
-        </ol>
-
-      </div>
-    </div><!-- End Breadcrumbs -->
-
 
 
 <?php
@@ -90,7 +74,7 @@ if( !empty($_POST['email']) &&  !empty($_POST['pwd']) ){
                                 <div class="text-center">
                                     <a class="small" href="forgot-password.php">Mot de passe oublié ?</a>
                                     <span class="mx-2 text-gray-600">|</span>
-                                    <a class="small" href="/user/register.php">Créer un compte !</a>
+                                    <a class="small" href="/user/getregistration.php">Créer un compte !</a>
                                 </div>
                             </div>
                         </div>
