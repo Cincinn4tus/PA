@@ -1,10 +1,16 @@
 const containers = document.querySelector(".containers");
+const preview = document.querySelector(".preview");
 
 // Liste des images disponibles
 const images = ["/assets/img/captcha/image2.jpg", "/assets/img/captcha/image3.jpg"];
 
 // Choisir une image aléatoire
 const randomImage = images[Math.floor(Math.random() * images.length)];
+
+// Afficher l'image choisie taille 300x300
+
+
+preview.innerHTML = `<img src="${randomImage}" width="350" height="350" alt="Puzzle preview" />`;
 
 // Découper l'image en 9 morceaux et créer les pièces du puzzle
 const pieces = [];

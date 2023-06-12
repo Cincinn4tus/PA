@@ -19,7 +19,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 text-center">
+            <div class="col-md-6 text-center mt-3">
+                <div class="preview"></div>
+            </div>
+            <div class="col-md-6 text-center">
                 <div class="containers"></div>
             </div>
         </div>

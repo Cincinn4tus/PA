@@ -7,9 +7,22 @@
   getUserInfos();
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
-
+<?php
+    if(isset($_GET['validation'])){
+        ?>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="alert alert-success">
+                        <?php echo $_GET['validation'];?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
 
 <?php
+
 
 
 //On va vérifier que l'on a quelque chose dans $_POST

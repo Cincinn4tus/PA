@@ -6,7 +6,7 @@ function verifyFields() {
     var lastname = document.getElementById("lastname").value;
     var email = document.getElementById("email").value;
     var birthdate = document.getElementById("birthdate").value;
-    var acceptCGU = document.getElementById("accept-cgu");
+    var acceptCGU = document.getElementById("cgu");
     var errorMessage = "";
 
     if (!genderM.checked && !genderF.checked && !genderO.checked) {

@@ -1,26 +1,17 @@
 <?php
     session_start();
-    $pageTitle = "Analytics";
+    $pageTitle = "Profil";
     require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
     require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
     saveLogs();
     include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
     ?>
 
-    <main id="main">
-        <!-- ======= Breadcrumbs ======= -->
-        <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
-            <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-
-                <h2>Mon profil</h2>
-                <ol>
-                <li><a href="/admin/admin-dashboard.php">Administration</a></li>
-                <li>Profil</li>
-                </ol>
-            </div>
-        </div><!-- End Breadcrumbs -->
 
     <?php
+            if(isset($_GET["email"])){
+                $_SESSION["email"] = $_GET["email"];
+            }
             $pdo = connectDB();
             $queryPrepared = $pdo->prepare("SELECT * FROM ".DB_PREFIX."user WHERE email=:email");
             $queryPrepared->execute(["email"=>$_SESSION["email"]]);

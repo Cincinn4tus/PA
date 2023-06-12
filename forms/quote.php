@@ -1,11 +1,19 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . '/conf.inc.php';
-    require $_SERVER['DOCUMENT_ROOT'] . '/core/functions.php';
+    $pageTitle = "Analytics";
+    require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
+    require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
+    saveLogs();
+    include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-    $message = $_POST['message'] . '<br><br> <hr>' . $lastname . '<br>' . $email . '<br>' . $phone;
+    $message = "Merci de  valider votre adresse mail en cliquant sur le lien suivant : <a href='/user/profile.php?email=$email'>Confirmer mon adresse mail</a>";
+
+
+    echo '<h1 class="text-center">Merci pour votre message !</h1>';
+
+
 
     /*
         CREATE TABLE crowdhub.pa_message (
@@ -62,15 +70,17 @@ $queryPrepared->execute([
 
     // Configurer l'expéditeur et le destinataire
     $mail->setFrom('ne-pas-repondre@crowdhub.fr', 'Crowdhub');
-    $mail->addAddress('aligoumane@protonmail.com', 'Aligoumane');
+    $mail->addAddress($email, $firstname . ' ' . $lastname);
 
     // Ajouter le sujet et le corps du message
-    $mail->Subject = 'Crowdhub - Un nouveau message de ' . $lastname . ' !';
+    $mail->Subject = 'Confirmez votre adresse mail';
     $mail->msgHTML($message);
 
     // Envoyer le message
     if($mail->send()) {
         echo 'Message envoyé avec succès !';
     }
+
+
 ?>
 

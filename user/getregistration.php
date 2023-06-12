@@ -7,8 +7,22 @@
   getUserInfos();
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
-
-
+<?php
+if(isset($_SESSION['listOfErrors'])){
+        ?>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="alert alert-danger">
+                        <?php echo implode('<br>', $_SESSION['listOfErrors']);
+                        // détruire la variable de session
+                        unset($_SESSION['listOfErrors']);
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
 <div class="container mt-5">
     <div class="row justify-content-center"> <!-- Ajout de la classe justify-content-center -->
         <h3 class="mt-5 text-center">Inscription</h3>
@@ -21,7 +35,7 @@
                     <p>
                         Inscription d'un investisseur
                     </p>
-                    <a href="verify.php" class="btn btn-danger">Gérer</a>
+                    <a href="verify.php?scope=1" class="btn btn-danger">Gérer</a>
                 </div>
             </div>
         </div>
@@ -34,7 +48,7 @@
                     <p>
                         Enregistrement d'une entreprise
                     </p>
-                    <a href="#sendRegistration" class="btn btn-danger">Voir</a>
+                    <a href="verify.php?scope=2" class="btn btn-danger">Voir</a>
                 </div>
             </div>
         </div>

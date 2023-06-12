@@ -165,3 +165,41 @@ INSERT INTO crowdhub.pa_newsletter (genre, firstname, lastname, email) VALUES ('
     EntrepreneurCheck varchar(10),
     InvestisseurCheck varchar(10)
     );
+
+
+
+    /*
+
+
+        $queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."user
+    (firstname, lastname, email, gender, birthdate, scope, created_at, updated_at)
+    VALUES 
+    (:firstname, :lastname, :email, :gender, :birthdate, :scope, :created_at, :updated_at)");
+    $queryPrepared->execute([
+        "firstname" => $firstname,
+        "lastname" => $lastname,
+        "email" => $email,
+        "gender" => $gender,
+        "birthdate" => $birthdate,
+        "scope" => 1,
+        "created_at" => date('Y-m-d H:i:s'),
+        "updated_at" => date('Y-m-d H:i:s')
+    ]);
+
+    */
+CREATE TABLE crowdhub.pa_user (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    firstname VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    gender VARCHAR(10) NOT NULL,
+    birthdate DATE NOT NULL,
+    scope INT NOT NULL,
+    created_at DATETIME NOT NULL,
+    updated_at DATETIME NOT NULL,
+    postal_code VARCHAR(20),
+    address VARCHAR(255),
+    city VARCHAR(255),
+    phone_number VARCHAR(20)
+);
+

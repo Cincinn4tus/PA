@@ -39,7 +39,6 @@
 		} else {
 			$user = "Non connecté";
 		}
-		
 		$connection = connectDB();
 		$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."logs
 												(visit_date, visit_hour, ip, page_visited, user)

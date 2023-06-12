@@ -38,8 +38,6 @@ $nameEntreprise = $_POST['nameEntreprise'];
 $entrepreneurCheck = $_POST['EntrepreneurCheck'];
 $investisseurCheck = $_POST['InvestisseurCheck'];
 
-
-
 $cgu = $_POST['cgu']; 
 $entrepreneurCheck = $_POST['EntrepreneurCheck'];
 $investisseurCheck = $_POST['InvestisseurCheck'];
