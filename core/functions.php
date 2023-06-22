@@ -1,4 +1,8 @@
 <?php
+
+ini_set('display_errors', 1);
+
+
 	function cleanFirstname($firstName){
 		return ucwords(strtolower(trim($firstName)));
 	}
