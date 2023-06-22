@@ -1,7 +1,11 @@
 <?php
-session_start();
-require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
-require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
+  session_start();
+  require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
+  require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
+  $pageTitle = "Connexion";
+  saveLogs();
+  getUserInfos();
+
 $connection = connectDB();
 $queryPrepared = $connection->prepare("SELECT * FROM ".DB_PREFIX."financement");
 $queryPrepared->execute();

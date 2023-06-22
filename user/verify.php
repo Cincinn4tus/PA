@@ -8,8 +8,13 @@
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
-
-
+<?php
+    if(isset($_GET['scope'])) {
+        $_SESSION['scope'] = $_GET['scope'];
+    } else {
+        header ('Location : /user/getregistration.php');
+    }
+    ?>
 
     <div class="container mb-5">
         <div class="row">
@@ -28,9 +33,6 @@
         </div>
     </div>
 
-
-
 <script src="/assets/js/captcha.js"></script>
-
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>

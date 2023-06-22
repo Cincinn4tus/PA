@@ -8,7 +8,7 @@
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-    $message = "Merci de  valider votre adresse mail en cliquant sur le lien suivant : <a href='/user/profile.php?email=$email'>Confirmer mon adresse mail</a>";
+    $message = "Nous avons bien reçu votre message, nous vous recontacterons dans les plus brefs délais. <br> <br> Merci de votre confiance !";
 
 
     echo '<h1 class="text-center">Merci pour votre message !</h1>';
@@ -70,17 +70,16 @@ $queryPrepared->execute([
 
     // Configurer l'expéditeur et le destinataire
     $mail->setFrom('ne-pas-repondre@crowdhub.fr', 'Crowdhub');
-    $mail->addAddress($email, $firstname . ' ' . $lastname);
+    $mail->addAddress($email, $lastname);
 
-    // Ajouter le sujet et le corps du message
-    $mail->Subject = 'Confirmez votre adresse mail';
+    // Ajouter le sujet et le corps du message en utf-8
+    $mail->Subject = 'Message reçu !';
     $mail->msgHTML($message);
 
     // Envoyer le message
     if($mail->send()) {
         echo 'Message envoyé avec succès !';
     }
-
 
 ?>
 

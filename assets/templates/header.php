@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>UpConstruction Bootstrap Template - Projects</title>
+  <title><?php echo "CrowdHub | " . $pageTitle; ?></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 

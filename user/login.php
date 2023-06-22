@@ -10,18 +10,17 @@
 <?php
     if(isset($_GET['validation'])){
         ?>
-        <div class="container-fluid">
+        <div class="container-fluid mt-3">
             <div class="row">
-                <div class="col-12">
-                    <div class="alert alert-success">
+                <div class="col-4 mx-auto">
+                    <div class="alert alert-success text-center">
                         <?php echo $_GET['validation'];?>
                     </div>
                 </div>
             </div>
         </div>
-    <?php } ?>
+    <?php }
 
-<?php
 
 
 
@@ -45,14 +44,25 @@ if( !empty($_POST['email']) &&  !empty($_POST['pwd']) ){
         $_SESSION['login'] = true;
         header("Location: /index.php");
     }else{
-        echo "Identifiants incorrects";
+        $errors = "Identifiants incorrects";
     }
 }
 
+
+if(isset($errors)){
+    ?>
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-4 mx-auto">
+                <div class="alert alert-danger text-center">
+                    <?php echo $errors;?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php }
+
 ?>
-
-
-
 
 <div class="container">
     <div class="row justify-content-center">

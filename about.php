@@ -1,324 +1,189 @@
 <?php 
     session_start();
-    $pageTitle = "Logs";
+    $pageTitle = "À propos";
     require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
     require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
     saveLogs();
     include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
-<main id="main">
-<!-- ======= Breadcrumbs ======= -->
-<div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
-  <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+<!-- ======= Section À propos ======= -->
+<section id="about" class="about">
+  <div class="container" data-aos="fade-up">
+    <div class="row position-relative">
+      <div class="col-lg-7 about-img" style="background-image: url(assets/img/about.jpg);"></div>
+      <div class="col-lg-7">
+        <h2>Notre histoire et notre mission</h2>
+        <div class="our-story">
+          <h4>Fondé en 2023</h4>
+          <h3>Notre histoire</h3>
+          <p>Nous sommes une plateforme de financement participatif qui encourage l'innovation et soutient les projets créatifs. Notre mission est de connecter les porteurs de projets talentueux avec des donateurs passionnés pour les aider à réaliser leurs rêves. Nous croyons en l'importance de l'entrepreneuriat et de l'économie collaborative.</p>
+          <ul>
+            <li><i class="bi bi-check-circle"></i> <span>Offrir des opportunités aux créateurs et aux entrepreneurs</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Promouvoir l'innovation et la créativité</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Soutenir des projets à fort potentiel</span></li>
+          </ul>
+          <p>Nous croyons que chaque idée mérite d'être soutenue et que l'union fait la force. Rejoignez-nous dans notre mission de donner vie aux projets innovants et de créer un impact positif dans la société.</p>
 
-    <h2>À propos</h2>
-    <ol>
-      <li><a href="/admin/admin-dashboard.php">Accueil</a></li>
-      <li>À propos</li>
-    </ol>
+          <div class="watch-video d-flex align-items-center position-relative">
+            <i class="bi bi-play-circle"></i>
+            <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox stretched-link">Regarder la vidéo</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div><!-- End Breadcrumbs -->
+</section><!-- End About Section -->
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
 
-        <div class="row position-relative">
+<!-- ======= Section Statistiques ======= -->
+<section id="stats-counter" class="stats-counter section-bg">
+  <div class="container">
 
-          <div class="col-lg-7 about-img" style="background-image: url(assets/img/about.jpg);"></div>
+  <div class="row gy-4">
 
-          <div class="col-lg-7">
-            <h2>Consequatur eius et magnam</h2>
-            <div class="our-story">
-              <h4>Est 1988</h4>
-              <h3>Our Story</h3>
-              <p>Inventore aliquam beatae at et id alias. Ipsa dolores amet consequuntur minima quia maxime autem. Quidem id sed ratione. Tenetur provident autem in reiciendis rerum at dolor. Aliquam consectetur laudantium temporibus dicta minus dolor.</p>
-              <ul>
-                <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commo</span></li>
-                <li><i class="bi bi-check-circle"></i> <span>Duis aute irure dolor in reprehenderit in</span></li>
-                <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea</span></li>
-              </ul>
-              <p>Vitae autem velit excepturi fugit. Animi ad non. Eligendi et non nesciunt suscipit repellendus porro in quo eveniet. Molestias in maxime doloremque.</p>
+<div class="col-lg-3 col-md-6">
+  <div class="stats-item d-flex align-items-center w-100 h-100">
+    <i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
+    <div>
+      <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+      <p>Clients Satisfaits</p>
+    </div>
+  </div>
+</div><!-- Fin de l'élément de statistiques -->
 
-              <div class="watch-video d-flex align-items-center position-relative">
-                <i class="bi bi-play-circle"></i>
-                <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox stretched-link">Watch Video</a>
-              </div>
-            </div>
+<div class="col-lg-3 col-md-6">
+  <div class="stats-item d-flex align-items-center w-100 h-100">
+    <i class="bi bi-journal-richtext color-orange flex-shrink-0"></i>
+    <div>
+      <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+      <p>Projets</p>
+    </div>
+  </div>
+</div><!-- Fin de l'élément de statistiques -->
+
+<div class="col-lg-3 col-md-6">
+  <div class="stats-item d-flex align-items-center w-100 h-100">
+    <i class="bi bi-headset color-green flex-shrink-0"></i>
+    <div>
+      <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
+      <p>Heures de Support</p>
+    </div>
+  </div>
+</div><!-- Fin de l'élément de statistiques -->
+
+<div class="col-lg-3 col-md-6">
+  <div class="stats-item d-flex align-items-center w-100 h-100">
+    <i class="bi bi-people color-pink flex-shrink-0"></i>
+    <div>
+      <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+      <p>Travailleurs Acharnés</p>
+    </div>
+  </div>
+</div><!-- Fin de l'élément de statistiques -->
+
+</div>
+</div>
+</section><!-- Fin de la section Statistiques -->
+
+
+
+<!-- ======= Section Services Alternatifs ======= -->
+<section id="alt-services" class="alt-services">
+  <div class="container" data-aos="fade-up">
+  <div class="row justify-content-around gy-4">
+  <div class="col-lg-6 img-bg" style="background-image: url(assets/img/alt-services.jpg);" data-aos="zoom-in" data-aos-delay="100"></div>
+
+  <div class="col-lg-5 d-flex flex-column justify-content-center">
+    <h3>Une autre approche pour vos besoins</h3>
+    <p>Nous offrons une expérience unique pour répondre à vos besoins spécifiques. Notre approche personnalisée vous permet d'obtenir les résultats que vous souhaitez. Nous mettons à votre disposition une équipe d'experts dévoués pour vous accompagner tout au long de votre projet.</p>
+
+    <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100">
+      <i class="bi bi-easel flex-shrink-0"></i>
+      <div>
+        <h4><a href="" class="stretched-link">Créativité</a></h4>
+        <p>Nous vous offrons des solutions créatives pour atteindre vos objectifs. Faites confiance à notre expertise pour créer des expériences uniques et engageantes.</p>
+      </div>
+    </div><!-- Fin de la boîte d'icône -->
+
+    <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="200">
+      <i class="bi bi-patch-check flex-shrink-0"></i>
+      <div>
+        <h4><a href="" class="stretched-link">Performance</a></h4>
+        <p>Nous mettons tout en œuvre pour vous offrir des résultats exceptionnels. Notre équipe qualifiée travaille avec passion pour répondre à vos attentes et dépasser vos objectifs.</p>
+      </div>
+    </div><!-- Fin de la boîte d'icône -->
+
+    <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="300">
+      <i class="bi bi-brightness-high flex-shrink-0"></i>
+      <div>
+        <h4><a href="" class="stretched-link">Innovation</a></h4>
+        <p>Nous vous proposons une approche innovante pour améliorer votre expérience utilisateur. Grâce à nos solutions avancées, vous pouvez offrir une expérience de qualité supérieure à vos clients.</p>
+      </div>
+    </div><!-- Fin de la boîte d'icône -->
+
+    <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="400">
+      <i class="bi bi-brightness-high flex-shrink-0"></i>
+      <div>
+        <h4><a href="" class="stretched-link">Accompagnement</a></h4>
+        <p>Nous vous accompagnons dans l'élaboration de stratégies gagnantes pour votre entreprise. Notre approche axée sur les résultats vous permet d'atteindre vos objectifs commerciaux de manière efficace et durable.</p>
+      </div>
+    </div><!-- Fin de la boîte d'icône -->
+  </div>
+</div>
+</div>
+</section><!-- Fin de la section Services Alternatifs -->
+
+<!-- ======= Section Services Alternatifs 2 ======= -->
+<section id="alt-services-2" class="alt-services section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="row justify-content-around gy-4">
+      <div class="col-lg-5 d-flex flex-column justify-content-center">
+        <h3>Une autre approche pour vos besoins</h3>
+        <p>Nous offrons une expérience unique pour répondre à vos besoins spécifiques. Notre approche personnalisée vous permet d'obtenir les résultats que vous souhaitez. Nous mettons à votre disposition une équipe d'experts dévoués pour vous accompagner tout au long de votre projet.</p>
+
+        <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100">
+          <i class="bi bi-easel flex-shrink-0"></i>
+          <div>
+            <h4><a href="" class="stretched-link">Service Créatif</a></h4>
+            <p>Nous vous offrons des solutions créatives pour atteindre vos objectifs. Faites confiance à notre expertise pour créer des expériences uniques et engageantes.</p>
           </div>
+        </div><!-- Fin de la boîte d'icône -->
 
-        </div>
-
-      </div>
-    </section>
-    <!-- End About Section -->
-
-    <!-- ======= Stats Counter Section ======= -->
-    <section id="stats-counter" class="stats-counter section-bg">
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item d-flex align-items-center w-100 h-100">
-              <i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
-              <div>
-                <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Happy Clients</p>
-              </div>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item d-flex align-items-center w-100 h-100">
-              <i class="bi bi-journal-richtext color-orange flex-shrink-0"></i>
-              <div>
-                <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Projects</p>
-              </div>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item d-flex align-items-center w-100 h-100">
-              <i class="bi bi-headset color-green flex-shrink-0"></i>
-              <div>
-                <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Hours Of Support</p>
-              </div>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item d-flex align-items-center w-100 h-100">
-              <i class="bi bi-people color-pink flex-shrink-0"></i>
-              <div>
-                <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Hard Workers</p>
-              </div>
-            </div>
-          </div><!-- End Stats Item -->
-
-        </div>
-
-      </div>
-    </section><!-- End Stats Counter Section -->
-
-    <!-- ======= Alt Services Section ======= -->
-    <section id="alt-services" class="alt-services">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row justify-content-around gy-4">
-          <div class="col-lg-6 img-bg" style="background-image: url(assets/img/alt-services.jpg);" data-aos="zoom-in" data-aos-delay="100"></div>
-
-          <div class="col-lg-5 d-flex flex-column justify-content-center">
-            <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
-            <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi</p>
-
-            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100">
-              <i class="bi bi-easel flex-shrink-0"></i>
-              <div>
-                <h4><a href="" class="stretched-link">Lorem Ipsum</a></h4>
-                <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-              </div>
-            </div><!-- End Icon Box -->
-
-            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="200">
-              <i class="bi bi-patch-check flex-shrink-0"></i>
-              <div>
-                <h4><a href="" class="stretched-link">Nemo Enim</a></h4>
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-              </div>
-            </div><!-- End Icon Box -->
-
-            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="300">
-              <i class="bi bi-brightness-high flex-shrink-0"></i>
-              <div>
-                <h4><a href="" class="stretched-link">Dine Pad</a></h4>
-                <p>Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
-              </div>
-            </div><!-- End Icon Box -->
-
-            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="400">
-              <i class="bi bi-brightness-high flex-shrink-0"></i>
-              <div>
-                <h4><a href="" class="stretched-link">Tride clov</a></h4>
-                <p>Est voluptatem labore deleniti quis a delectus et. Saepe dolorem libero sit non aspernatur odit amet. Et eligendi</p>
-              </div>
-            </div><!-- End Icon Box -->
-
+        <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="200">
+          <i class="bi bi-patch-check flex-shrink-0"></i>
+          <div>
+            <h4><a href="" class="stretched-link">Satisfaction Garantie</a></h4>
+            <p>Nous mettons tout en œuvre pour vous offrir des résultats exceptionnels. Notre équipe qualifiée travaille avec passion pour répondre à vos attentes et dépasser vos objectifs.</p>
           </div>
-        </div>
+        </div><!-- Fin de la boîte d'icône -->
 
-      </div>
-    </section><!-- End Alt Services Section -->
-
-    <!-- ======= Alt Services Section 2 ======= -->
-    <section id="alt-services-2" class="alt-services section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row justify-content-around gy-4">
-          <div class="col-lg-5 d-flex flex-column justify-content-center">
-            <h3>Non quasi officia eum nobis et rerum epudiandae rem voluptatem</h3>
-            <p>Maxime quia dolorum alias perspiciatis. Earum voluptatem sint at non. Ducimus maxime minima iste magni sit praesentium assumenda minus. Amet rerum saepe tempora vero.</p>
-
-            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100">
-              <i class="bi bi-easel flex-shrink-0"></i>
-              <div>
-                <h4><a href="" class="stretched-link">Lorem Ipsum</a></h4>
-                <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-              </div>
-            </div><!-- End Icon Box -->
-
-            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="200">
-              <i class="bi bi-patch-check flex-shrink-0"></i>
-              <div>
-                <h4><a href="" class="stretched-link">Nemo Enim</a></h4>
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-              </div>
-            </div><!-- End Icon Box -->
-
-            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="300">
-              <i class="bi bi-brightness-high flex-shrink-0"></i>
-              <div>
-                <h4><a href="" class="stretched-link">Dine Pad</a></h4>
-                <p>Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
-              </div>
-            </div><!-- End Icon Box -->
-
-            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="400">
-              <i class="bi bi-brightness-high flex-shrink-0"></i>
-              <div>
-                <h4><a href="" class="stretched-link">Tride clov</a></h4>
-                <p>Est voluptatem labore deleniti quis a delectus et. Saepe dolorem libero sit non aspernatur odit amet. Et eligendi</p>
-              </div>
-            </div><!-- End Icon Box -->
+        <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="300">
+          <i class="bi bi-brightness-high flex-shrink-0"></i>
+          <div>
+            <h4><a href="" class="stretched-link">Expérience Utilisateur</a></h4>
+            <p>Nous vous proposons une approche innovante pour améliorer votre expérience utilisateur. Grâce à nos solutions avancées, vous pouvez offrir une expérience de qualité supérieure à vos clients.</p>
           </div>
+        </div><!-- Fin de la boîte d'icône -->
 
-          <div class="col-lg-6 img-bg" style="background-image: url(assets/img/alt-services-2.jpg);" data-aos="zoom-in" data-aos-delay="100"></div>
-        </div>
-
+        <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="400">
+          <i class="bi bi-brightness-high flex-shrink-0"></i>
+          <div>
+            <h4><a href="" class="stretched-link">Stratégie Gagnante</a></h4>
+            <p>Nous vous accompagnons dans l'élaboration de stratégies gagnantes pour votre entreprise. Notre approche axée sur les résultats vous permet d'atteindre vos objectifs commerciaux de manière efficace et durable.</p>
+          </div>
+        </div><!-- Fin de la boîte d'icône -->
       </div>
-    </section><!-- End Alt Services Section 2 -->
 
-    <!-- ======= Our Team Section ======= -->
-    <section id="team" class="team">
-      <div class="container" data-aos="fade-up">
+      <div class="col-lg-6 img-bg" style="background-image: url(assets/img/alt-services-2.jpg);" data-aos="zoom-in" data-aos-delay="100"></div>
+    </div>
 
-        <div class="section-header">
-          <h2>Our Team</h2>
-          <p>Aperiam dolorum et et wuia molestias qui eveniet numquam nihil porro incidunt dolores placeat sunt id nobis omnis tiledo stran delop</p>
-        </div>
+  </div>
+</section>
 
-        <div class="row gy-5">
 
-          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
-            <div class="member-img">
-              <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
-              <div class="social">
-                <a href="#"><i class="bi bi-twitter"></i></a>
-                <a href="#"><i class="bi bi-facebook"></i></a>
-                <a href="#"><i class="bi bi-instagram"></i></a>
-                <a href="#"><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-            <div class="member-info text-center">
-              <h4>Walter White</h4>
-              <span>Chief Executive Officer</span>
-              <p>Aliquam iure quaerat voluptatem praesentium possimus unde laudantium vel dolorum distinctio dire flow</p>
-            </div>
-          </div><!-- End Team Member -->
 
-          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="200">
-            <div class="member-img">
-              <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
-              <div class="social">
-                <a href="#"><i class="bi bi-twitter"></i></a>
-                <a href="#"><i class="bi bi-facebook"></i></a>
-                <a href="#"><i class="bi bi-instagram"></i></a>
-                <a href="#"><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-            <div class="member-info text-center">
-              <h4>Sarah Jhonson</h4>
-              <span>Product Manager</span>
-              <p>Labore ipsam sit consequatur exercitationem rerum laboriosam laudantium aut quod dolores exercitationem ut</p>
-            </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="300">
-            <div class="member-img">
-              <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
-              <div class="social">
-                <a href="#"><i class="bi bi-twitter"></i></a>
-                <a href="#"><i class="bi bi-facebook"></i></a>
-                <a href="#"><i class="bi bi-instagram"></i></a>
-                <a href="#"><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-            <div class="member-info text-center">
-              <h4>William Anderson</h4>
-              <span>CTO</span>
-              <p>Illum minima ea autem doloremque ipsum quidem quas aspernatur modi ut praesentium vel tque sed facilis at qui</p>
-            </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="400">
-            <div class="member-img">
-              <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
-              <div class="social">
-                <a href="#"><i class="bi bi-twitter"></i></a>
-                <a href="#"><i class="bi bi-facebook"></i></a>
-                <a href="#"><i class="bi bi-instagram"></i></a>
-                <a href="#"><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-            <div class="member-info text-center">
-              <h4>Amanda Jepson</h4>
-              <span>Accountant</span>
-              <p>Magni voluptatem accusamus assumenda cum nisi aut qui dolorem voluptate sed et veniam quasi quam consectetur</p>
-            </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="500">
-            <div class="member-img">
-              <img src="assets/img/team/team-5.jpg" class="img-fluid" alt="">
-              <div class="social">
-                <a href="#"><i class="bi bi-twitter"></i></a>
-                <a href="#"><i class="bi bi-facebook"></i></a>
-                <a href="#"><i class="bi bi-instagram"></i></a>
-                <a href="#"><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-            <div class="member-info text-center">
-              <h4>Brian Doe</h4>
-              <span>Marketing</span>
-              <p>Qui consequuntur quos accusamus magnam quo est molestiae eius laboriosam sunt doloribus quia impedit laborum velit</p>
-            </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="600">
-            <div class="member-img">
-              <img src="assets/img/team/team-6.jpg" class="img-fluid" alt="">
-              <div class="social">
-                <a href="#"><i class="bi bi-twitter"></i></a>
-                <a href="#"><i class="bi bi-facebook"></i></a>
-                <a href="#"><i class="bi bi-instagram"></i></a>
-                <a href="#"><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-            <div class="member-info text-center">
-              <h4>Josepha Palas</h4>
-              <span>Operation</span>
-              <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
-            </div>
-          </div><!-- End Team Member -->
-
-        </div>
-
-      </div>
-    </section><!-- End Our Team Section -->
 
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials section-bg">

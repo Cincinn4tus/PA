@@ -11,7 +11,9 @@
 
 
 
-
+<?php
+if($_SESSION['scope'] == 1){
+    ?>
 <div class="container mt-3 mb-5 emailform">
     <div class="row text-center">
         <div class="col-lg-4 col-md-6 col-sm-12 mx-auto">
@@ -56,6 +58,10 @@
         </div>
     </div>
 </div>
+
+<?php
+}
+?>
 
 <script src="/assets/js/verify.js"></script>
 

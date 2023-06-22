@@ -54,31 +54,24 @@
               <h3>Obtenez un conseil</h3>
               <p>Vous êtes prêt à franchir le pas ? Contactez-nous dès maintenant pour obtenir un conseil personnalisé.</p>
               <div class="row gy-3">
-        
                 <div class="col-md-12">
                   <input type="text" name="lastname" class="form-control" placeholder="Nom" required>
                 </div>
-        
                 <div class="col-md-12 ">
                   <input type="email" class="form-control" name="email" placeholder="Email" required>
                 </div>
-        
                 <div class="col-md-12">
                   <input type="text" class="form-control" name="phone" placeholder="Téléphone" required>
                 </div>
-        
                 <div class="col-md-12">
                   <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
                 </div>
-        
                 <div class="col-md-12 text-center">
                   <div class="loading">Chargement</div>
                   <div class="error-message"></div>
                   <div class="sent-message">Votre demande a été envoyée avec succès. Merci !</div>
-        
                   <button type="submit">Envoyer</button>
                 </div>
-        
               </div>
             </form>
           </div><!-- End Quote Form -->

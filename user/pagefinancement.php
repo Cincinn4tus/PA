@@ -1,6 +1,10 @@
 <?php
-session_start();
-include "../core/functions.php";
+  session_start();
+  require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
+  require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
+  $pageTitle = "Connexion";
+  saveLogs();
+  getUserInfos();
 
 if (!isset($_SESSION['last_project_id'])) {
     die("Projet introuvable.");
