@@ -12,6 +12,7 @@ CREATE TABLE crowdhub.pa_enterprise (
 
 CREATE TABLE crowdhub.pa_user (
     id INT PRIMARY KEY AUTO_INCREMENT,
+    pwd VARCHAR(255),
     firstname VARCHAR(255) NOT NULL,
     lastname VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
@@ -29,6 +30,7 @@ CREATE TABLE crowdhub.pa_user (
 );
 
 ALTER TABLE crowdhub.pa_user ADD PRIMARY KEY (id);
+ALTER TABLE crowdhub.pa_user MODIFY pwd VARCHAR(255) NULL;
 
 
 CREATE TABLE crowdhub.pa_financement (

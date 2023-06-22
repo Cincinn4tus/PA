@@ -75,7 +75,7 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 	$results = $queryPrepared->fetch();
 	
 	if(!empty($results)){
-		$listOfErrors[] = "L'email est déjà utilisé";
+		$listOfErrors[] = "L'email n'est pas valide";
 	}
 
 }

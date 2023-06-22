@@ -41,10 +41,8 @@ $queryPrepared->execute([ "email" => $email ]);
 $results = $queryPrepared->fetch();
 
 if(!empty($results)){
-    $listOfErrors[] = "L'email est déjà utilisé";
+    $listOfErrors[] = "L'email n'est pas valide";
 }
-
-
 if(!empty($listOfErrors)){
     $_SESSION['listOfErrors'] = $listOfErrors;
     $_SESSION['data'] = $_POST;
@@ -102,6 +100,11 @@ if(!empty($listOfErrors)){
 
 ?>
 
+
+
+<?php
+include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php";
+?>
 
 
 

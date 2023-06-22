@@ -7,8 +7,6 @@
   getUserInfos();
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 
-require "../core/functions.php";
-include "../assets/templates/header.php";
 ?>
 <!doctype html>
 <html lang="fr">
