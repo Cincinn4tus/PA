@@ -95,6 +95,8 @@ if(!empty($listOfErrors)){
     if($mail->send()) {
         $validation = "Votre compte a bien été créé, vous allez recevoir un mail de confirmation";
         header('Location: /user/login.php?validation='.$validation);
+    } else {
+        $validation = "Une erreur est survenue lors de l'envoi du mail de confirmation. Veuillez réessayer plus tard";
     }
 
 
