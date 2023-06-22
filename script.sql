@@ -32,7 +32,6 @@ CREATE TABLE crowdhub.pa_user (
 ALTER TABLE crowdhub.pa_user ADD PRIMARY KEY (id);
 ALTER TABLE crowdhub.pa_user MODIFY pwd VARCHAR(255) NULL;
 
-
 CREATE TABLE crowdhub.pa_financement (
   id int(11) NOT NULL,
   projectTitle varchar(255) NOT NULL,
@@ -52,7 +51,6 @@ CREATE TABLE crowdhub.pa_relation (
   id_bloqueur INT DEFAULT NULL,
   PRIMARY KEY (id)
 );
-
 
 CREATE TABLE crowdhub.pa_logs (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
