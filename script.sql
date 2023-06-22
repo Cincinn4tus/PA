@@ -16,7 +16,7 @@ CREATE TABLE crowdhub.pa_user (
     firstname VARCHAR(255) NOT NULL,
     lastname VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    gender VARCHAR(10) NOT NULL,
+    gender INT(1) NOT NULL,
     birthdate DATE NOT NULL,
     scope INT(1) DEFAULT 1,
     created_at DATETIME NOT NULL,
