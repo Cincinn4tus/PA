@@ -28,6 +28,7 @@ if(
 ) {
     $error = "Merci de remplir tous les champs";
     header('Location: /user/sendRegistration.php');
+    exit;
 }
 
 $firstname = cleanFirstname($_POST['firstname']);
@@ -95,8 +96,10 @@ if(!empty($listOfErrors)){
     if($mail->send()) {
         $validation = "Votre compte a bien été créé, vous allez recevoir un mail de confirmation";
         header('Location: /user/login.php?validation='.$validation);
+        exit;
     } else {
         $validation = "Une erreur est survenue lors de l'envoi du mail de confirmation. Veuillez réessayer plus tard";
+        header('Location: /user/login.php?validation='.$validation);
     }
 
 
