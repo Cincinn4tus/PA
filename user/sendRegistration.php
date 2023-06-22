@@ -48,7 +48,7 @@ if($_SESSION['scope'] == 1){
                     <?php
                         if(isset($_SESSION["listOfErrors"])) {
                             foreach($_SESSION["listOfErrors"] as $error) {
-                                echo "<p class='text-danger'>$error</p>";
+                                echo $error . "<br>";
                             }
                             unset($_SESSION["listOfErrors"]);
                         }
