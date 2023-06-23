@@ -99,7 +99,7 @@ if(!empty($listOfErrors)){
         exit;
     } else {
         $validation = "Une erreur est survenue lors de l'envoi du mail de confirmation. Veuillez réessayer plus tard";
-        header('Location: /user/login.php?validation='.$validation);
+        header('Location: https://crowdhub.fr/user/login.php?validation='.$validation);
     }
 ?>
 
