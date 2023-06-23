@@ -14,7 +14,7 @@ $firstname = $_POST["firstname"];
 $lastname = $_POST["lastname"];
 $email = $_POST["email"];
 $birthdate = $_POST["birthdate"];
-$message = "Merci de  valider votre adresse mail en cliquant sur le lien suivant : <a href='https://crowdhub.fr/user/completeProfile.php?email=".$email."'>Confirmer mon adresse mail</a>";ss
+$message = "Merci de  valider votre adresse mail en cliquant sur le lien suivant : <a href='https://crowdhub.fr/user/completeProfile.php?email=".$email."'>Confirmer mon adresse mail</a>";
 
 
 if(
