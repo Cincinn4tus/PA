@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    $pageTitle = "À propos";
+    $pageTitle = "À propos de nous";
     require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
     require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
     saveLogs();
