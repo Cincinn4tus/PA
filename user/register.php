@@ -14,7 +14,7 @@ $firstname = $_POST["firstname"];
 $lastname = $_POST["lastname"];
 $email = $_POST["email"];
 $birthdate = $_POST["birthdate"];
-$message = "Merci de  valider votre adresse mail en cliquant sur le lien suivant : <a href='".$_SERVER['DOCUMENT_ROOT']."/user/completeProfile.php?email=$email'>Confirmer mon adresse mail</a>";
+$message = "Merci de  valider votre adresse mail en cliquant sur le lien suivant : <a href='https://crowdhub.fr/user/completeProfile.php?email=".$email."'>Confirmer mon adresse mail</a>";ss
 
 
 if(
@@ -99,7 +99,7 @@ if(!empty($listOfErrors)){
         exit;
     } else {
         $validation = "Une erreur est survenue lors de l'envoi du mail de confirmation. Veuillez réessayer plus tard";
-        header('Location: https://crowdhub.fr/user/login.php?validation='.$validation);
+        header('Location: /user/login.php?validation='.$validation);
     }
 ?>
 
