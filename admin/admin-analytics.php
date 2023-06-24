@@ -15,3 +15,4 @@
     echo 'Continent: ' . $ipinfo->geoplugin_continentName . "\n";
 
 include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php";?>
+

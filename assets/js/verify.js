@@ -34,7 +34,7 @@ function verifyFields() {
         document.getElementById("email").style.border = "2px solid green";
     }
 
-    if (!birthdate.match(/^(19[2-9][0-9]|200[0-2])-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[01])$/)) {
+    if (!birthdate.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/i)) {
         document.getElementById("birthdate").style.border = "2px solid red";
         errorMessage += "<li>Date de naissance invalide.</li>";
     } else {
