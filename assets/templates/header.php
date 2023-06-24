@@ -85,6 +85,7 @@
                 } else {
                     echo '<a href="/user/login.php"> <button class="btn btn-primary ms-2 mt-1"> Connexion </button> </a>';
                 } ?>
+          <li><button id="theme-button">Passer en mode sombre</button></li>
         </ul>
       </nav><!-- .navbar -->
     </div>
@@ -106,3 +107,14 @@
 </div><!-- End Breadcrumbs -->
 
 <?php } ?>
+<script>
+  document.querySelector('#theme-button').addEventListener('click', function() {
+    if (document.documentElement.getAttribute('data-theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      this.textContent = 'Passer en mode sombre';
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      this.textContent = 'Passer en mode clair';
+    }
+  });
+</script>
