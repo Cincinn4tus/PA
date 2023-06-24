@@ -13,6 +13,7 @@ CREATE TABLE crowdhub.pa_enterprise (
 CREATE TABLE crowdhub.pa_user (
     id INT PRIMARY KEY AUTO_INCREMENT,
     pwd VARCHAR(255),
+    token VARCHAR(255),
     firstname VARCHAR(255) NOT NULL,
     lastname VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,

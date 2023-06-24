@@ -52,9 +52,9 @@
                         echo '<li class="nav-item">
                             <a class="nav-link" href="/admin/admin-dashboard.php">Administration</a>
                         </li>';
-                    } else if($_SESSION['scope'] == 1){
+                    } else if($_SESSION['scope'] == 2){
                         echo '<li class="nav-item">
-                        <a class="nav-link" href="/user/pagefinancement.php">Créer un projet</a>
+                        <a class="nav-link" href="/user/demandefinancement.php">Créer un projet</a>
                         </li>';
                     } else{
                         echo '<li class="nav-item">
