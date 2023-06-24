@@ -8,7 +8,6 @@
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
-
     <div class="container mt-5">
         <div class="row">
         <h3 class="mt-5">Gestion des données</h3>
