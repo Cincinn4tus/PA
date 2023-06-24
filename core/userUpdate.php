@@ -50,5 +50,5 @@
         "pwd"=>$pwd,
         "id"=>$id
     ]);
-    header("Location: /admin/admin-users.php");
+    header("Location: /index.php");
 ?>

@@ -44,7 +44,7 @@ if( !empty($_POST['email']) &&  !empty($_POST['pwd']) ){
         $_SESSION['login'] = true;
         header("Location: /index.php");
     }else{
-        $errors = "Identifiants incorrects";
+        $errors = "Email et / ou mot de passe incorrect";
     }
 }
 

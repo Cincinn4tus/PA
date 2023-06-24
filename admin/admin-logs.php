@@ -7,8 +7,6 @@
     include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
-
-
 <?php
 	$connection = connectDB();
 	$results = $connection->query("SELECT * FROM ".DB_PREFIX."logs");

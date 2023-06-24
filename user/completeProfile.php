@@ -46,7 +46,6 @@
                                 <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Mot de passe" required="required"><br>
                                 <input type="password" class="form-control" name="pwdConfirm" id="pwdConfirm" placeholder="Confirmer le mot de passe" required="required" onblur="passwordVerify()"><br>
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-secondary previous-step" onclick="previousStep('step-1', 'step-1')">Précédent</button>
                                     <button type="button" class="btn btn-primary next-step" id="step-2" disabled onclick="nextStep('step-1', 'step-2')">Suivant</button>
                                 </div>
                             </div>
@@ -72,7 +71,7 @@
                             <div class="step-3" style="display: none;">
                                 <h4>Importer une photo de profil</h4>
                                 <p>
-                                    <i>*La photo de profil peut être modifiée ultérieurement</i>
+                                    <i>*La photo de profil peut être ajoutée ultérieurement</i>
                                 </p>
                                 
                                 <div class="text-center">
