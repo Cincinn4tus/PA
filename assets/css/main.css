@@ -12,14 +12,14 @@
   --color-primary-light: blue !important;
   --color-secondary-light: #52565e !important;
   --color-background-light: #ffffff !important;
-  --color-text-light: #000000 !important; /* texte noir */
-  --header-background: gray;
+  --color-text-light: #000000 !important; /* texte noir /
+ 
 
   --color-default-dark: #1a1a1a !important;
   --color-primary-dark: #90caf9 !important;
   --color-secondary-dark: #bdbdbd !important;
   --color-background-dark: #000000 !important;
-  --color-text-dark: #ffffff !important; /* texte blanc */
+  --color-text-dark: #ffffff !important; / texte blanc */
 
   --color-default: var(--color-default-light) !important;
   --color-primary: var(--color-primary-light) !important;
@@ -33,7 +33,16 @@
   --color-primary: var(--color-primary-dark) !important;
   --color-secondary: var(--color-secondary-dark) !important;
   --color-background: var(--color-background-dark) !important;
-  --color-text: var(--color-text-dark) !important;
+  --color-text: var(--color-text-dark) !important; 
+  --header-background: gray;
+}
+.container {
+  color: var(--color-text) !important;
+  background-color: var(--color-background) !important;
+}
+.card-body {
+  color: var(--color-text) !important;
+  background-color: var(--header-background) !important;
 }
 .container {
   color: var(--color-text) !important;
