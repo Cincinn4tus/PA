@@ -29,7 +29,7 @@
                         echo "<td>".$user["lastname"]."</td>";
                         echo "<td>".$user["firstname"]."</td>";
                         echo "<td>".$user["email"]."</td>";
-                        echo "<td>".$user["address"]."</td>";
+                        echo "<td>".$user["postal_address"]."</td>";
                         echo "<td>".$user["postal_code"]."</td>";
                         echo "<td>".$user["scope"]."</td>";
                         echo "<td>".$user["created_at"]."</td>";

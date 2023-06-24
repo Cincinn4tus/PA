@@ -7,18 +7,6 @@
     include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
     ?>
 
-    <main id="main">
-        <!-- ======= Breadcrumbs ======= -->
-        <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
-            <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-
-                <h2>Créer une newsletter</h2>
-                <ol>
-                <li><a href="/admin/admin-dashboard.php">Administration</a></li>
-                <li>Newsletter</li>
-                </ol>
-            </div>
-        </div><!-- End Breadcrumbs -->
 
         <!-- ======= Formulaire d'écriture de la newsletter ======= -->
 

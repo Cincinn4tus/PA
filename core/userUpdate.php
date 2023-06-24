@@ -7,20 +7,21 @@
 // récupérer les données du formulaire
 
     $pdo = connectDB();
-    $queryPrepared = $pdo->prepare("SELECT * FROM ".DB_PREFIX."user WHERE id=:id");
-    $queryPrepared->execute(["id"=>$_POST["id"]]);
+    $queryPrepared = $pdo->prepare("SELECT * FROM ".DB_PREFIX."user WHERE email=:email");
+    $queryPrepared->execute(["email"=>$_SESSION["email"]]);
     $user = $queryPrepared->fetch();
 
-    $userId = $_POST["id"];
+    $userId = $user["id"];
     $phone = $_POST["phone"];
     $address = $_POST["address"];
     $postal_code = $_POST["postal_code"];
-    $email = $_POST["email"];
-    $scope = $_POST["scope"];
+    $email = $user["email"];
+    $scope = $user["scope"];
     $pwd = $_POST["pwd"];
     $pwdConfirm = $_POST["pwdConfirm"];
 
     // nettoyage
+    $id = trim(strip_tags($userId));
     $phone = trim(strip_tags($phone));
     $address = trim(strip_tags($address));
     $postal_code = trim(strip_tags($postal_code));
@@ -38,19 +39,11 @@
         $pwd = $user["pwd"];
     }
 
-    if($scope == "admin"){
-        $scope = 0;
-    } elseif($scope == "entreprise"){
-        $scope = 1;
-    } else {
-        $scope = 2;
-    }
-
     $pdo = connectDB();
-    $queryPrepared = $pdo->prepare("UPDATE ".DB_PREFIX."user SET phone_number=:phone, address=:address, postal_code=:postal_code, email=:email, scope=:scope, pwd=:pwd WHERE id=:id");
+    $queryPrepared = $pdo->prepare("UPDATE ".DB_PREFIX."user SET phone_number=:phone, postal_address=:postal_address, postal_code=:postal_code, email=:email, scope=:scope, pwd=:pwd WHERE id=:id");
     $queryPrepared->execute([
         "phone"=>$phone,
-        "address"=>$address,
+        "postal_address"=>$address,
         "postal_code"=>$postal_code,
         "email"=>$email,
         "scope"=>$scope,

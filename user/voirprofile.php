@@ -112,17 +112,6 @@
             }
     }
     ?>
-<main id="main">
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
-        <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-            <h2><?php echo $voir_utilisateur["firstname"]; ?></h2>
-            <ol>
-                <li><a href="/">Accueil</a></li>
-                <li><?php echo $voir_utilisateur["firstname"]; ?></li>
-            </ol>
-        </div>
-    </div><!-- End Breadcrumbs -->
 
     <div class="container mt-5" id="profile-form">
         <div class="mx-auto col-lg-6">

@@ -41,14 +41,12 @@ function verifyFields() {
         document.getElementById("birthdate").style.border = "2px solid green";
     }
 
-
     if (!acceptCGU.checked) {
         errorMessage += "<li>Veuillez accepter les CGU.</li>";
         acceptCGU.classList.add("error");
     } else {
         acceptCGU.classList.add("success");
     }
-
         
     var submitButton = document.getElementById("submit");
     var cardFooter = document.getElementById("card-footer");
@@ -59,5 +57,67 @@ function verifyFields() {
     } else {
         cardFooter.innerHTML = "";
         submitButton.disabled = false;
+    }
+}
+
+
+function passwordVerify() {
+    var pwd = document.getElementById("pwd").value;
+    var pwdConfirm = document.getElementById("pwdConfirm").value;
+    var errorMessage = "";
+
+    var errorDiv = document.getElementById("errors");
+    errorDiv.style.display = "none";
+    var submitButton = document.getElementById("step-2");
+
+    if (pwd !== pwdConfirm) {
+        errorMessage += "<li>Les mots de passe ne correspondent pas.</li>";
+    }
+
+    if (!/[A-Z]/.test(pwd) || !/[a-z]/.test(pwd) || !/[0-9]/.test(pwd)) {
+        errorMessage += "<li>Le mot de passe doit contenir au moins une majuscule, une minuscule et un chiffre.</li>";
+    }
+
+    if (errorMessage !== "") {
+        errorDiv.innerHTML = "<ul>" + errorMessage + "</ul>";
+        errorDiv.style.display = "block";
+        submitButton.disabled = true;
+    } else {
+        errorDiv.style.display = "none";
+        submitButton.disabled = false;
+    }
+}
+
+function nextStep(currentStep, nextStep) {
+    var currentStepElement = document.querySelector('.' + currentStep);
+    var nextStepElement = document.querySelector('.' + nextStep);
+    var progressBar = document.querySelector('.progress-bar');
+
+    currentStepElement.classList.add('slide-left');
+    setTimeout(function () {
+        currentStepElement.style.display = "none";
+        nextStepElement.style.display = "block";
+        nextStepElement.classList.add('slide-from-left');
+    }, 500);
+
+    progressBar.style.width = (parseInt(progressBar.style.width) + 33) + "%";
+}
+
+function previousStep(currentStep, previousStep) {
+    var currentStepElement = document.querySelector('.' + currentStep);
+    var previousStepElement = document.querySelector('.' + previousStep);
+    var progressBar = document.querySelector('.progress-bar');
+
+
+    currentStepElement.classList.add('slide-right');
+    setTimeout(function () {
+        currentStepElement.style.display = "none";
+        previousStepElement.style.display = "block";
+        previousStepElement.classList.add('slide-from-right');
+    }, 500);
+
+    progressBar.style.width = (parseInt(progressBar.style.width) - 33) + "%";
+    if (progressBar.style.width == "0%") {
+        progressBar.style.width = "33%";
     }
 }

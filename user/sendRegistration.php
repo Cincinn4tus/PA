@@ -22,7 +22,7 @@ if($_SESSION['scope'] == 1){
                     <h4>Inscription - investisseur</h4>
                 </div>
                 <div class="card-body">
-                    <form class="form" action="/user/register.php" method="post" onload="disabledBtn()">
+                    <form class="form" action="/user/register.php" method="post">
                     <label id="gender" for="gender">
                             <input type="radio" id="genderM" name="gender" value="1" onclick="verifyFields()">
                             <label for="genderM">M.</label>

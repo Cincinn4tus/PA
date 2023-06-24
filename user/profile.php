@@ -8,18 +8,6 @@
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
-    <main id="main">
-        <!-- ======= Breadcrumbs ======= -->
-        <div class="breadcrumbs d-flex align-items-center" style="background-image: url('../assets/img/breadcrumbs-bg.jpg');">
-            <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-
-                <h2>Mon profil</h2>
-                <ol>
-                <li><a href="/admin/admin-dashboard.php">Administration</a></li>
-                <li>Profil</li>
-                </ol>
-            </div>
-        </div><!-- End Breadcrumbs -->
 
     <?php
             $connection = connectDB();
@@ -59,10 +47,10 @@
                 <input type="hidden" name="id" value="<?php echo $user["id"];?>">
                 <input type="text" class="form-control" value="<?php  echo $user["firstname"];?>" disabled="disabled"><br>
                 <input type="text" class="form-control" value="<?php  echo $user["lastname"];?>" disabled="disabled"><br>
-                <input type="text" class="form-control" name="phone_number" value="<?php  if ($user["phone_number"] != "0100000000"){echo $user["phone_number"];}else {echo "Votre numéro de téléphone";} ?>"><br>
-                <input type="text" class="form-control" name="address" value="<?php  if ($user["address"] != "unset"){echo $user["address"];}else {echo "Votre adresse";} ?>"><br>
-                <input type="text" class="form-control" name="postal_code" value="<?php  if ($user["postal_code"] != "00000"){echo $user["postal_code"];}else {echo "Votre code postal";} ?>"><br>
-                <input type="text" class="form-control" name="email" value="<?php  echo $user["email"];?>"><br>
+                <input type="text" class="form-control" name="phone" value="<?php  echo $user["phone_number"];?>"><br>
+            <input type="text" class="form-control" name="address" value="<?php  echo $user["postal_address"];?>"><br>
+            <input type="text" class="form-control" name="postal_code" value="<?php  echo $user["postal_code"];?>"><br>
+            <input type="text" class="form-control" name="email" value="<?php  echo $user["email"];?>"><br>
                 <input type="submit" class="btn btn-primary" value="Modifier">
             </form>
         </div>

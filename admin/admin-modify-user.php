@@ -7,20 +7,6 @@
     include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
-<main id="main">
-
-<!-- ======= Breadcrumbs ======= -->
-<div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
-  <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-
-    <h2>Administration</h2>
-    <ol>
-      <li><a href="/">Accueil</a></li>
-      <li>Profil</li>
-    </ol>
-  </div>
-</div><!-- End Breadcrumbs -->
-
 <?php
     // récupérer les données de l'utilisateur à modifier
     $pdo = connectDB();
@@ -48,7 +34,7 @@
             <input type="text" class="form-control" value="<?php  echo $user["firstname"];?>" disabled="disabled"><br>
             <input type="text" class="form-control" value="<?php  echo $user["lastname"];?>" disabled="disabled"><br>
             <input type="text" class="form-control" name="phone" value="<?php  echo $user["phone_number"];?>"><br>
-            <input type="text" class="form-control" name="address" value="<?php  echo $user["address"];?>"><br>
+            <input type="text" class="form-control" name="address" value="<?php  echo $user["postal_address"];?>"><br>
             <input type="text" class="form-control" name="postal_code" value="<?php  echo $user["postal_code"];?>"><br>
             <input type="text" class="form-control" name="email" value="<?php  echo $user["email"];?>"><br>
 
