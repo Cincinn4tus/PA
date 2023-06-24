@@ -8,10 +8,40 @@
 
 /* Colors */
 :root {
-  --color-default: #364d59;
-  --color-primary: blue;
-  --color-secondary: #52565e;
+  --color-default-light: #364d59 !important;
+  --color-primary-light: blue !important;
+  --color-secondary-light: #52565e !important;
+  --color-background-light: #ffffff !important;
+  --color-text-light: #000000 !important; /* texte noir */
+
+  --color-default-dark: #1a1a1a !important;
+  --color-primary-dark: #90caf9 !important;
+  --color-secondary-dark: #bdbdbd !important;
+  --color-background-dark: #000000 !important;
+  --color-text-dark: #ffffff !important; /* texte blanc */
+
+  --color-default: var(--color-default-light) !important;
+  --color-primary: var(--color-primary-light) !important;
+  --color-secondary: var(--color-secondary-light) !important;
+  --color-background: var(--color-background-light) !important;
+  --color-text: var(--color-text-light) !important;
 }
+
+[data-theme="dark"] {
+  --color-default: var(--color-default-dark) !important;
+  --color-primary: var(--color-primary-dark) !important;
+  --color-secondary: var(--color-secondary-dark) !important;
+  --color-background: var(--color-background-dark) !important;
+  --color-text: var(--color-text-dark) !important;
+}
+
+.site-content {
+  background-color: var(--color-background) !important;
+}
+body {
+  background-color: var(--color-background) !important;
+}
+
 
 /* Smooth scroll behavior */
 :root {
@@ -23,9 +53,12 @@
 --------------------------------------------------------------*/
 body {
   font-family: var(--font-default);
-  color: var(--color-default);
+  color: var(--color-text);
+  background-color: var(--color-background);
   overflow-x: hidden;
 }
+
+
 
 a {
   color: var(--color-primary);
@@ -55,8 +88,9 @@ section {
 }
 
 .section-bg {
-  background-color: #f5f6f7;
+  background-color: var(--color-background);
 }
+
 
 .section-header {
   text-align: center;
@@ -552,9 +586,10 @@ section {
 }
 
 .get-started .php-email-form {
-  background: #fff;
-  padding: 30px;
-  height: 100%;
+  background: var(--color-background);
+    color: var(--color-text);
+    padding: 30px;
+    height: 100%;
 }
 
 @media (max-width: 575px) {
@@ -664,9 +699,10 @@ section {
 --------------------------------------------------------------*/
 .constructions .card-item {
   border: 1px solid rgba(82, 86, 94, 0.2);
-  background: #fff;
+  background: var(--color-background);
   position: relative;
   border-radius: 0;
+  color: var(--color-text);
 }
 
 .constructions .card-item .card-bg {
@@ -684,20 +720,22 @@ section {
   font-weight: 700;
   font-size: 20px;
   margin-bottom: 15px;
-  color: var(--color-secondary);
+  color: var(--color-text);
 }
 
 .constructions .card-item p {
-  color: var(--color-secondary);
+  color: var(--color-text);
   margin: 0;
 }
+
 
 /*--------------------------------------------------------------
 # Services Section
 --------------------------------------------------------------*/
 .services .service-item {
   padding: 40px;
-  background: #fff;
+  background: var(--color-background);
+  color: var(--color-text);
   height: 100%;
 }
 
@@ -709,7 +747,7 @@ section {
 }
 
 .services .service-item .icon i {
-  color: var(--color-secondary);
+  color: var(--color-text);
   font-size: 40px;
   transition: ease-in-out 0.3s;
   z-index: 2;
@@ -722,7 +760,7 @@ section {
   content: "";
   height: 100%;
   width: 100%;
-  background: #f0f1f2;
+  background: var(--color-background);
   border-radius: 50px;
   z-index: 1;
   top: 10px;
@@ -731,14 +769,14 @@ section {
 }
 
 .services .service-item h3 {
-  color: var(--color-default);
+  color: var(--color-text);
   font-weight: 700;
   margin: 0 0 20px 0;
   padding-bottom: 8px;
   font-size: 22px;
   position: relative;
   display: inline-block;
-  border-bottom: 4px solid #ebebed;
+  border-bottom: 4px solid var(--color-background);
   transition: 0.3s;
 }
 
@@ -746,6 +784,7 @@ section {
   line-height: 24px;
   font-size: 14px;
   margin-bottom: 0;
+  color: var(--color-text);
 }
 
 .services .service-item .readmore {
@@ -761,6 +800,7 @@ section {
 .services .service-item:hover h3 {
   border-color: var(--color-primary);
 }
+
 
 /*--------------------------------------------------------------
 # Features Section
@@ -874,13 +914,14 @@ section {
   min-height: 200px;
   box-shadow: 0px 2px 20px rgba(82, 86, 94, 0.1);
   position: relative;
-  background: #fff;
+  background: var(--color-background);
+  color: var(--color-text);
 }
 
 .testimonials .testimonial-item .testimonial-img {
   width: 90px;
   border-radius: 10px;
-  border: 6px solid #fff;
+  border: 6px solid var(--color-background);
   position: absolute;
   left: -45px;
 }
@@ -889,12 +930,12 @@ section {
   font-size: 18px;
   font-weight: bold;
   margin: 10px 0 5px 0;
-  color: #000;
+  color: var(--color-text);
 }
 
 .testimonials .testimonial-item h4 {
   font-size: 14px;
-  color: #999;
+  color: var(--color-secondary);
   margin: 0;
 }
 
@@ -931,6 +972,7 @@ section {
 .testimonials .testimonial-item p {
   font-style: italic;
   margin: 15px auto 15px auto;
+  color: var(--color-text);
 }
 
 .testimonials .swiper-pagination {
@@ -962,6 +1004,8 @@ section {
   .testimonials .testimonial-item {
     padding: 30px;
     margin: 15px;
+    background: var(--color-background);
+    color: var(--color-text);
   }
 
   .testimonials .testimonial-item .testimonial-img {
@@ -969,6 +1013,7 @@ section {
     left: auto;
   }
 }
+
 
 /*--------------------------------------------------------------
 # Alt Services Section
