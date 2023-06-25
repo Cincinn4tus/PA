@@ -10,7 +10,7 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero">
     <div class="info d-flex align-items-center">
-      <div class="container">
+
         <div class="row justify-content-center">
           <div class="col-lg-6 text-center">
             <h2 data-aos="fade-down">Bienvenue sur <span>CrowdHub</span></h2>
@@ -18,7 +18,7 @@
             <a data-aos="fade-up" data-aos-delay="200" href="#get-started" class="btn-get-started">Commencer</a>
           </div>
         </div>
-      </div>
+
     </div>
 
     <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
