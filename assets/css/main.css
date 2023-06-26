@@ -2730,3 +2730,17 @@ COMPLETE PROFILE FORM
       transform: translateX(0);
   }
 }
+
+
+.card-body {
+  color: var(--color-text) !important;
+  background-color: var(--header-background) !important;
+}
+.container h1,
+.container h2,
+.container h3,
+.container h4,
+.container h5,
+.container h6 {
+  color: var(--color-text) !important;
+}
