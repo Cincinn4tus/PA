@@ -80,6 +80,17 @@ CREATE TABLE crowdhub.pa_message (
     status INT NOT NULL DEFAULT 0
 );
 
+CREATE TABLE crowdhub.pa_relation (
+  id INT NOT NULL AUTO_INCREMENT,
+  id_demandeur INT NOT NULL,
+  id_receveur INT NOT NULL,
+  statut INT NOT NULL,
+  id_bloqueur INT DEFAULT NULL,
+  PRIMARY KEY (id)
+);
+
+
+
 -- modify scope for user where email = 'admin'
 
 UPDATE crowdhub.pa_user SET scope = 0 WHERE email = 'aligoumane@protonmail.com';
