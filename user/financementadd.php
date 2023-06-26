@@ -1,11 +1,7 @@
 <?php
-  session_start();
-  require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
-  require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-  $pageTitle = "Création de demande de financement";
-  saveLogs();
-  getUserInfos();
-  include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
+session_start();
+require "functions.php";
+require "../conf.inc.php";
 
 if (
     count($_POST) != 6 ||
