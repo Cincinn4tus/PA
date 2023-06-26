@@ -90,6 +90,10 @@ CREATE TABLE crowdhub.pa_relation (
 );
 
 
+-- modify pa_financmement and add auto increment 
+
+ALTER TABLE crowdhub.pa_financement MODIFY id INT AUTO_INCREMENT;
+
 
 -- modify scope for user where email = 'admin'
 
