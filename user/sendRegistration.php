@@ -66,4 +66,7 @@ if($_SESSION['scope'] == 1){
 <script src="/assets/js/verify.js"></script>
 
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>
+  <?php
+    include $_SERVER["DOCUMENT_ROOT"] . "/assets/templates/footer.php";
+    page_load_time();
+    ?>

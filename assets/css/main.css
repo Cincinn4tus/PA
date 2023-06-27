@@ -2744,3 +2744,8 @@ COMPLETE PROFILE FORM
 .container h6 {
   color: var(--color-text) !important;
 }
+
+
+#main h2, #footer h4{
+  color: white !important;
+}

@@ -52,4 +52,7 @@
 </div>
 
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>
+  <?php
+    include $_SERVER["DOCUMENT_ROOT"] . "/assets/templates/footer.php";
+    page_load_time();
+    ?>

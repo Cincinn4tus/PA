@@ -23,6 +23,7 @@
             <th>id</th>
             <th>Utilisateur</th>
             <th>Adresse IP</th>
+            <th>Région</th>
             <th>date</th>
             <th>heure</th>
             <th>page visitée</th>
@@ -35,6 +36,7 @@
                     echo "<td>".$logs["id"]."</td>";
                     echo "<td>".$logs["user"]."</td>";
                     echo "<td>".$logs["ip"]."</td>";
+                    echo "<td>".$logs["region"]."</td>";
                     echo "<td>".$logs["visit_date"]."</td>";
                     echo "<td>".$logs["visit_hour"]."</td>";
                     echo "<td>".$logs["page_visited"]."</td>";
@@ -44,9 +46,9 @@
     </tbody>
 </table>
 
-<!-- récupérer le nombre de logs des dernières 24h
--->
 
 
-
-<?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>
+  <?php
+    include $_SERVER["DOCUMENT_ROOT"] . "/assets/templates/footer.php";
+    page_load_time();
+    ?>

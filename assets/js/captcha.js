@@ -2,35 +2,43 @@ const containers = document.querySelector(".containers");
 const preview = document.querySelector(".preview");
 
 // Liste des images disponibles
-const images = ["/assets/img/captcha/image2.jpg", "/assets/img/captcha/image3.jpg"];
+fetch('get_images.php')
+    .then(response => response.json())
+    .then(data => {
+        const images = data;
+        const randomImage = images[Math.floor(Math.random() * images.length)];
 
-// Choisir une image aléatoire
-const randomImage = images[Math.floor(Math.random() * images.length)];
+        // Afficher l'image choisie taille 300x300
+        preview.innerHTML = `<img src="${randomImage}" width="350" height="350" alt="Puzzle preview" />`;
 
-// Afficher l'image choisie taille 300x300
+        // Découper l'image en 9 morceaux et créer les pièces du puzzle
+        const pieces = [];
+        for (let i = 0; i < 9; i++) {
+            const piece = document.createElement("div");
+            piece.classList.add("puzzle-piece");
+            piece.style.backgroundImage = `url(${randomImage})`;
+            piece.style.backgroundPosition = `-${(i % 3) * 100}px -${Math.floor(i / 3) * 100}px`;
+            piece.setAttribute("data-index", i);
+            piece.setAttribute("draggable", "true");
+            pieces.push(piece);
+        }
 
+        // Mélanger les morceaux
+        shuffleArray(pieces).forEach((piece, i) => {
+            piece.style.left = `${(i % 3) * 100}px`;
+            piece.style.top = `${Math.floor(i / 3) * 100}px`;
+            containers.appendChild(piece);
+        });
+    })
+    .catch(error => console.error('Error:', error));
 
-preview.innerHTML = `<img src="${randomImage}" width="350" height="350" alt="Puzzle preview" />`;
-
-// Découper l'image en 9 morceaux et créer les pièces du puzzle
-const pieces = [];
-
-for (let i = 0; i < 9; i++) {
-  const piece = document.createElement("div");
-  piece.classList.add("puzzle-piece");
-  piece.style.backgroundImage = `url(${randomImage})`;
-  piece.style.backgroundPosition = `-${(i % 3) * 100}px -${Math.floor(i / 3) * 100}px`;
-  piece.setAttribute("data-index", i);
-  piece.setAttribute("draggable", "true");
-  pieces.push(piece);
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
 }
-
-// Mélanger les morceaux
-shuffleArray(pieces).forEach((piece, i) => {
-  piece.style.left = `${(i % 3) * 100}px`;
-  piece.style.top = `${Math.floor(i / 3) * 100}px`;
-  containers.appendChild(piece);
-});
 
 containers.addEventListener("dragstart", dragStart);
 containers.addEventListener("dragend", dragEnd);
@@ -70,15 +78,6 @@ containers.addEventListener("drop", (event) => {
     checkSolution();
   }
 });
-
-// Fonction pour mélanger un tableau
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
 
 // Vérifier si le puzzle est résolu
 function checkSolution() {

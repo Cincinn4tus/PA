@@ -40,6 +40,7 @@ CREATE TABLE crowdhub.pa_financement (
   requestedAmount int(11) NOT NULL,
   contactInfo varchar(535) NOT NULL,
   projectDescription text NOT NULL,
+  argentactuel int(11) NOT NULL,
   fundingGoals text NOT NULL
 );
 ALTER TABLE crowdhub.pa_financement ADD PRIMARY KEY (id);
@@ -58,6 +59,7 @@ CREATE TABLE crowdhub.pa_logs (
     visit_date VARCHAR(255) NOT NULL,
     visit_hour VARCHAR(255) NOT NULL,
     ip VARCHAR(255) NOT NULL,
+    region VARCHAR(255) NOT NULL,
     page_visited VARCHAR(255) NOT NULL,
     user VARCHAR(255) NULL
 );
@@ -89,12 +91,18 @@ CREATE TABLE crowdhub.pa_relation (
   PRIMARY KEY (id)
 );
 
-
--- modify pa_financmement and add auto increment 
-
 ALTER TABLE crowdhub.pa_financement MODIFY id INT AUTO_INCREMENT;
 
 
 -- modify scope for user where email = 'admin'
 
 UPDATE crowdhub.pa_user SET scope = 0 WHERE email = 'aligoumane@protonmail.com';
+
+-- créer un table pour gérer les performances du site
+-- nom de la page (clé primaire) et temps  de chargement (float), SATUS PAR DÉFAUT 1
+
+CREATE TABLE crowdhub.pa_performance (
+    page VARCHAR(255) PRIMARY KEY,
+    time FLOAT NOT NULL,
+    status INT NOT NULL DEFAULT 1
+);

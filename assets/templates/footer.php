@@ -10,7 +10,7 @@
 
           <div class="col-lg-4 col-md-6">
             <div class="footer-info">
-              <h3>CrowdHub</h3>
+              <h3>Crowdhub</h3>
               <p>
                 21, rue Érard <br>
                 75012, Paris<br><br>

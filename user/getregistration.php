@@ -59,5 +59,8 @@ if(isset($_SESSION['listOfErrors'])){
 
 
 <div class="fixed-bottom">
-    <?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>
+      <?php
+    include $_SERVER["DOCUMENT_ROOT"] . "/assets/templates/footer.php";
+    page_load_time();
+    ?>
 </div>

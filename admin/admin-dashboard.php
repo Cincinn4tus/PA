@@ -1,8 +1,8 @@
 <?php
   session_start();
+  $pageTitle = "Console d'administration";
   require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
   require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-  $pageTitle = "Console d'administration";
   saveLogs();
   getUserInfos();
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
@@ -145,4 +145,7 @@
     </div>
 
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>
+  <?php
+    include $_SERVER["DOCUMENT_ROOT"] . "/assets/templates/footer.php";
+    page_load_time();
+    ?>
