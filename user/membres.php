@@ -1,11 +1,10 @@
 <?php
-    session_start();
-    require "../conf.inc.php";
-    require "../core/functions.php";
-    $pageTitle = "Membres";
-    saveLogs();
-    getUserInfos();
-    include "../assets/templates/header.php";
+  session_start();
+  require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
+  require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
+  include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
+  $pageTitle = "Connexion";
+  getUserInfos();
 ?>
 
 <div class="container-fluid">
@@ -38,3 +37,7 @@
         </tbody>
     </table>
 </div>
+
+<?php
+    include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php";
+?>

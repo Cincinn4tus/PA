@@ -41,7 +41,6 @@ if (!isset($project['argentactuel'])) {
 
 
 <body>
-    <?php include "../assets/templates/header.php"; ?>
 
     <main>
         <section class="featured-project py-5">

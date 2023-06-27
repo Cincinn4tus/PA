@@ -38,7 +38,6 @@ if (!isset($project['argentactuel'])) {
 ?>
 
 <body>
-    <?php include "../assets/templates/header.php"; ?>
 
     <main>
         <section class="featured-project py-5">
@@ -76,4 +75,6 @@ if (!isset($project['argentactuel'])) {
         </section>
     </main>
 
-    <?php include "../assets/templates/footer.php"; ?>
+<?php
+include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php";
+?>

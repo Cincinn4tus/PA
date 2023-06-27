@@ -2,6 +2,7 @@
   session_start();
   require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
   require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
+  include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
   $pageTitle = "Connexion";
   getUserInfos();
 
@@ -13,7 +14,6 @@ $projects = $queryPrepared->fetchAll();
 ?>
 
 <body>
-    <?php include "../assets/templates/header.php"; ?>
 
 <main>
     <section class="current-funding py-5">
@@ -46,6 +46,6 @@ $projects = $queryPrepared->fetchAll();
     </section>
 </main>
     
-    <?php include "../assets/templates/footer.php"; ?>
-</body>
-</html>
+<?php
+    include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php";
+?>
