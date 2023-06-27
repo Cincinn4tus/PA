@@ -61,4 +61,3 @@
 page_load_time();
 include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php";
 ?>
-

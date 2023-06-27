@@ -108,3 +108,4 @@ CREATE TABLE crowdhub.pa_performance (
     time FLOAT NOT NULL,
     status INT NOT NULL DEFAULT 1
 );
+
