@@ -3,13 +3,8 @@
     $pageTitle = "Analytics";
     require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
     require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-    saveLogs();
-    include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
-
     
-	$connection = connectDB();
-	$results = $connection->query("SELECT * FROM ".DB_PREFIX."logs");
-	$results = $results->fetchAll();
+    include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
 
@@ -30,10 +25,6 @@
                                 <li><?php todayLogs(); ?></li>
                                 <li><?php countLogs();?></li>
                             </ul>
-                            <?php 
-                           
-                           // compter le nombre de $results dont $results['visit_date'] == date("d/m/Y")
-                           ?>
                         </p>
                         <a href="admin-visits.php" class="btn btn-success">Détails</a>
                     </div>

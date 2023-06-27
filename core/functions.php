@@ -1,8 +1,6 @@
 <?php
 
 ini_set('display_errors', 1);
-
-
 	function cleanFirstname($firstName){
 		return ucwords(strtolower(trim($firstName)));
 	}
@@ -43,13 +41,12 @@ ini_set('display_errors', 1);
 		} else {
 			$user = "Non connecté";
 		}
-		$ip = '77.159.252.140';
+		$ip = $_SERVER['REMOTE_ADDR'];
 
 		$query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
 		if($query && $query['status'] == 'success'){
 			$region = $query['region'];
 		}
-
 		$connection = connectDB();
 		$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."logs
 												(visit_date, visit_hour, ip, region, page_visited, user)
@@ -82,7 +79,6 @@ ini_set('display_errors', 1);
 			$_SESSION['scope'] = $user['scope'];
 		}
 	}
-
 	function todayLogs(){
 		$connection = connectDB();
 		$results = $connection->query("SELECT * FROM ".DB_PREFIX."logs");
@@ -99,7 +95,6 @@ ini_set('display_errors', 1);
 			echo "Aucun résultat trouvé.";
 		}
 	}
-
 	function countLogs(){
 		$connection = connectDB();
 		$results = $connection->query("SELECT * FROM ".DB_PREFIX."logs");

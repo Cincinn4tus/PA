@@ -4,7 +4,7 @@
   require $_SERVER['document_root'] . "/conf.inc.php";
   require $_SERVER['document_root'] . "/core/functions.php";
   redirectIfNotConnected(); 
-  saveLogs();
+  
 
   $connection = connectDB();
   $queryPrepared = $connection->prepare("DELETE FROM ".DB_PREFIX."user WHERE id=:id");

@@ -3,7 +3,7 @@
     $pageTitle = "Captchas";
     require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
     require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-    saveLogs();
+    
     include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
@@ -37,7 +37,7 @@
             echo "<div class='row'>";
         }
         echo "<div class='col-lg-4 col-md-6 col-sm-12'>";
-        echo "<img src='../assets/img/captcha/$file' class='img-fluid'>";
+        echo "<img src='/assets/img/captcha/$file' class='img-fluid'>";
         echo "<button class='btn btn-danger mt-2' onclick='removeCaptcha(\"$file\")'>Supprimer</button>";
         echo "</div>";
         $i++;

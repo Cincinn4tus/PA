@@ -1,11 +1,11 @@
 <?php
     session_start();
-    require "../conf.inc.php";
-    require "../core/functions.php";
+    require "/conf.inc.php";
+    require "/core/functions.php";
 
     if (isset($_FILES['captcha-file'])) {
         $file = $_FILES['captcha-file'];
-        move_uploaded_file($file['tmp_name'], "../assets/img/captcha/" . $file['name']);
+        move_uploaded_file($file['tmp_name'], "/assets/img/captcha/" . $file['name']);
     }
 ?>
 

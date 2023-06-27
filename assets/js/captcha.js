@@ -2,7 +2,7 @@ const containers = document.querySelector(".containers");
 const preview = document.querySelector(".preview");
 
 // Liste des images disponibles
-fetch('get_images.php')
+fetch('/user/get_images.php')
     .then(response => response.json())
     .then(data => {
         const images = data;
