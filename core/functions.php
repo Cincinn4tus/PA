@@ -118,13 +118,8 @@ ini_set('display_errors', 1);
 		global $pageTitle;
 
 		$loadTime = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
-		// deux chiffres après virgule pour $loadTime
-
 		$loadTime = round($loadTime, 2);
-
-
-		// Si la page existe dans la table pa_performance, on fait une moyenne des temps de chargement
-
+		
 		$connection = connectDB();
 		$queryPrepared = $connection->prepare("SELECT * FROM ".DB_PREFIX."performance WHERE page=:page");
 		$queryPrepared->execute(["page" => $pageTitle]);
@@ -156,8 +151,25 @@ ini_set('display_errors', 1);
 
 		$results = 0;
 		foreach($time as $time){
-			$results = round(array_sum($time)/count($time), 2);
+			$results = round(array_sum($time)/2, 2);
 		}
-
 		echo "Temps de chargement moyen : ". $results . " secondes";
+	}
+
+	function disabled_pages(){
+		// Afficher les pages qui ont un temps de chargement supérieur à 1 seconde
+
+		$connection = connectDB();
+		$queryPrepared = $connection->prepare("SELECT * FROM ".DB_PREFIX."performance WHERE status=0");
+		$queryPrepared->execute();
+		$results = $queryPrepared->fetchAll();
+
+		if ($results !== null) {
+			echo "Toutes les pages sont actives";
+			foreach ($results as $results) {
+				echo $results['page'] . " ";
+			}
+		} else {
+			echo count($results) . " pages sont désactivées";
+		}
 	}

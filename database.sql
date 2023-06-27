@@ -40,10 +40,12 @@ CREATE TABLE crowdhub.pa_financement (
   requestedAmount int(11) NOT NULL,
   contactInfo varchar(535) NOT NULL,
   projectDescription text NOT NULL,
-  argentactuel int(11) NOT NULL,
+  argentactuel int(11) NOT NULL DEFAULT 0,
   fundingGoals text NOT NULL
 );
 ALTER TABLE crowdhub.pa_financement ADD PRIMARY KEY (id);
+ALTER TABLE crowdhub.pa_financement MODIFY id INT AUTO_INCREMENT;
+
 
 CREATE TABLE crowdhub.pa_relation (
   id INT NOT NULL AUTO_INCREMENT,

@@ -49,19 +49,13 @@
                         <p>
                             <ul>
                                 <li><?php average_load_time(); ?></li>
+                                <li><?php disabled_pages(); ?></li>
                             </ul>
                         </p>
                         <a href="admin-users.php" class="btn btn-success">Détails</a>
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
 
 <?php
 page_load_time();
