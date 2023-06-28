@@ -137,5 +137,5 @@ if(!isset($_POST['captcha_solved']) || $_POST['captcha_solved'] != '1'){
 	unset($_POST["pwdConfirm"]);
 	$_SESSION['data'] = $_POST;
 	//Redirection sur la page d'inscription
-	header('location: ../user/register.php');
+	header('location: /registration/register.php');
 	}

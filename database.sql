@@ -1,13 +1,17 @@
 
 CREATE DATABASE crowdhub;
 
-CREATE TABLE crowdhub.pa_enterprise (
+CREATE TABLE crowdhub.pa_company (
     siren INT(9) PRIMARY KEY,
-    enterprise_name VARCHAR(45) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    pwd VARCHAR(255),
+    company_name VARCHAR(45) NOT NULL,
     phone_number INT(10),
     billing_address VARCHAR(120),
     billing_zipcode INT(5),
-    city VARCHAR(30)
+    city VARCHAR(30),
+    created_at DATETIME NOT NULL,
+    updated_at DATETIME NOT NULL
 );
 
 CREATE TABLE crowdhub.pa_user (
@@ -26,12 +30,9 @@ CREATE TABLE crowdhub.pa_user (
     postal_address VARCHAR(255),
     city VARCHAR(255),
     phone_number VARCHAR(20),
-    siren INT(9),
-    FOREIGN KEY (siren) REFERENCES crowdhub.pa_enterprise(siren)
+    siren INT(9) DEFAULT NULL,
+    FOREIGN KEY (siren) REFERENCES crowdhub.pa_company(siren)
 );
-
-ALTER TABLE crowdhub.pa_user ADD PRIMARY KEY (id);
-ALTER TABLE crowdhub.pa_user MODIFY pwd VARCHAR(255) NULL;
 
 CREATE TABLE crowdhub.pa_financement (
   id int(11) NOT NULL,
@@ -108,4 +109,3 @@ CREATE TABLE crowdhub.pa_performance (
     time FLOAT NOT NULL,
     status INT NOT NULL DEFAULT 1
 );
-

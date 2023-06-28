@@ -10,7 +10,6 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero">
     <div class="info d-flex align-items-center">
-
         <div class="row justify-content-center">
           <div class="col-lg-6 text-center">
             <h2 data-aos="fade-down">Bienvenue sur <span>CrowdHub</span></h2>
@@ -18,7 +17,6 @@
             <a data-aos="fade-up" data-aos-delay="200" href="#get-started" class="btn-get-started">Commencer</a>
           </div>
         </div>
-
     </div>
 
     <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
@@ -74,10 +72,12 @@
               </div>
             </form>
           </div><!-- End Quote Form -->
-        </div>        
+        </div>
       </div>
     </section><!-- End Get Started Section -->
-    <!-- ======= Constructions Section ======= -->
+
+
+    <!-- ======= Projects Section ======= -->
     <section id="constructions" class="constructions">
       <div class="container" data-aos="fade-up">
         <div class="section-header">
@@ -99,7 +99,8 @@
                 </div>
               </div>
             </div>
-          </div><!-- Fin de l'élément de carte -->
+          </div>
+
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <div class="card-item">
               <div class="row">
@@ -114,7 +115,8 @@
                 </div>
               </div>
             </div>
-          </div><!-- Fin de l'élément de carte -->
+          </div>
+
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
             <div class="card-item">
               <div class="row">
@@ -129,7 +131,8 @@
                 </div>
               </div>
             </div>
-          </div><!-- Fin de l'élément de carte -->
+          </div>
+          
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
             <div class="card-item">
               <div class="row">
@@ -144,10 +147,13 @@
                 </div>
               </div>
             </div>
-          </div><!-- End Card Item -->
+          </div>
         </div>
       </div>
     </section><!-- End Constructions Section -->
+
+
+
     <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
@@ -189,6 +195,9 @@
         </div>
       </div>
     </section><!-- End Services Section -->
+
+
+
     <!-- ======= Section des services alternatifs ======= -->
     <section id="alt-services" class="alt-services">
       <div class="container" data-aos="fade-up">
@@ -263,7 +272,6 @@
               <h4>Sécurité et Confidentialité</h4>
             </a>
           </li><!-- End tab nav item -->
-    
         </ul>
         <div class="tab-content">
           <div class="tab-pane active show" id="tab-1">
@@ -348,6 +356,8 @@
       </div>
     </section><!-- End Features Section -->
 
+
+    
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials section-bg">
       <div class="container" data-aos="fade-up">

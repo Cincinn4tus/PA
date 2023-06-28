@@ -1,16 +1,15 @@
 <?php
   session_start();
+  $pageTitle = "Financements";
   require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
   require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
-  $pageTitle = "Connexion";
   getUserInfos();
 
 $connection = connectDB();
 $queryPrepared = $connection->prepare("SELECT * FROM ".DB_PREFIX."financement");
 $queryPrepared->execute();
 $projects = $queryPrepared->fetchAll();
-
 ?>
 
 <body>

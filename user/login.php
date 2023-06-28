@@ -34,7 +34,11 @@ if( !empty($_POST['email']) &&  !empty($_POST['pwd']) ){
     //Récupérer en bdd le mot de passe hashé pour l'email
     //provenant du formulaire
     $connect = connectDB();
-    $queryPrepared = $connect->prepare("SELECT pwd FROM ".DB_PREFIX."user WHERE email=:email");
+    
+    $queryPrepared = $connect->prepare("SELECT pwd FROM ".DB_PREFIX."user WHERE email=:email UNION SELECT pwd FROM ".DB_PREFIX."company WHERE email=:email");
+
+
+
     $queryPrepared->execute(["email"=>$email]);
     $results = $queryPrepared->fetch();
 
@@ -93,7 +97,7 @@ if(isset($errors)){
                                     Mot de passe oublié ?
                                 </button>
                                     <span class="mx-2 text-gray-600">|</span>
-                                    <a class="small" href="/user/getregistration.php">Créer un compte !</a>
+                                    <a class="small" href="/registration/getRegistration.php">Créer un compte !</a>
                                 </div>
                             </div>
                         </div>

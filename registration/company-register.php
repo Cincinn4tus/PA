@@ -7,37 +7,39 @@
   getUserInfos();
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 
+  // afficher toutes les erreurs et les avertissements
+
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
+
+
 // récupérer les données du formulaire
 
-$gender = $_POST["gender"];
-$firstname = $_POST["firstname"];
-$lastname = $_POST["lastname"];
+$name = $_POST["company_name"];
+$siren = $_POST["siren"];
 $email = $_POST["email"];
-$birthdate = $_POST["birthdate"];
-$message = "Merci de  valider votre adresse mail en cliquant sur le lien suivant : <a href='https://crowdhub.fr/user/completeProfile.php?email=".$email."'>Confirmer mon adresse mail</a>";
+$message = "Merci de  valider votre adresse mail en cliquant sur le lien suivant : <a href='https://crowdhub.fr/user/completeProfile.php?siren=".$siren."'>Confirmer mon adresse mail</a>";
 
 
 if(
-    empty($_POST['gender']) ||
-    empty($_POST['firstname']) ||
-    empty($_POST['lastname']) ||
+    empty($_POST['company_name']) ||
+    empty($_POST['siren']) ||
     empty($_POST['email']) ||
-    empty($_POST['birthdate']) ||
-    empty($_POST['cgu']) ||
-    count($_POST) != 6
+    !isset($_POST['cgu']) ||
+    count($_POST) != 4
 ) {
-    $error = "Merci de remplir tous les champs";
-    header('Location: /user/sendRegistration.php');
-    exit;
+    header('Location: /registration/sendRegistration.php');
+    exit();
 }
 
-$firstname = cleanFirstname($_POST['firstname']);
-$lastname = cleanLastname($_POST['lastname']);
+$name = cleanLastname($_POST['company_name']);
 $email = cleanEmail($_POST['email']);
 
 $connection = connectDB();
-$queryPrepared = $connection->prepare("SELECT * FROM ".DB_PREFIX."user WHERE email=:email");
-$queryPrepared->execute([ "email" => $email ]);
+$queryPrepared = $connection->prepare("SELECT * FROM ".DB_PREFIX."company WHERE siren=:siren");
+$queryPrepared->execute([ "siren" => $siren ]);
 
 $results = $queryPrepared->fetch();
 
@@ -47,22 +49,19 @@ if(!empty($results)){
 if(!empty($listOfErrors)){
     $_SESSION['listOfErrors'] = $listOfErrors;
     $_SESSION['data'] = $_POST;
-    header('Location: /user/sendRegistration.php');
+    header('Location: /registration/sendRegistration.php');
     exit();
 } else{
-    $queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."user
-    (firstname, lastname, email, gender, birthdate, scope, created_at, updated_at)
+    $queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."company
+    (siren, company_name, email, created_at, updated_at)
     VALUES 
-    (:firstname, :lastname, :email, :gender, :birthdate, :scope, :created_at, :updated_at)");
+    (:siren, :company_name, :email, :created_at, :updated_at)");
     $queryPrepared->execute([
-        "firstname" => $firstname,
-        "lastname" => $lastname,
+        "siren" => $siren,
+        "company_name" => $name,
         "email" => $email,
-        "gender" => $gender,
-        "birthdate" => $birthdate,
-        "scope" => 1,
-        "created_at" => date('Y-m-d H:i:s'),
-        "updated_at" => date('Y-m-d H:i:s')
+        "created_at" => date("Y-m-d H:i:s"),
+        "updated_at" => date("Y-m-d H:i:s")
     ]);
 }
 
@@ -87,14 +86,14 @@ if(!empty($listOfErrors)){
 
     // Configurer l'expéditeur et le destinataire
     $mail->setFrom('ne-pas-repondre@crowdhub.fr', 'Crowdhub');
-    $mail->addAddress($email, $firstname . ' ' . $lastname);
+    $mail->addAddress($email, $name);
 
     // Ajouter le sujet et le corps du message
     $mail->Subject = 'Confirmez votre adresse mail';
     $mail->msgHTML($message);
 
     if($mail->send()) {
-        $validation = "Votre compte a bien été créé, vous allez recevoir un mail de confirmation";
+        $validation = "Votre entreprise a bien été enregistrée, vous allez recevoir un mail de confirmation";
         header('Location: /user/login.php?validation='.$validation);
         exit;
     } else {

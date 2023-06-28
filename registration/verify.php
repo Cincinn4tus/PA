@@ -16,7 +16,7 @@
     }
     ?>
 
-    <div class="container mb-5">
+    <div class="container mb-5" >
         <div class="row">
             <div class="col-md-12 text-center">
                 <h2>Vérification</h2>
@@ -24,8 +24,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 text-center mt-3">
-                <div class="preview"></div>
+            <div class="col-md-6 text-center mt-5">
+                <div id="preview"></div>
             </div>
             <div class="col-md-6 text-center">
                 <div class="containers"></div>

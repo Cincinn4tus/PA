@@ -1,10 +1,12 @@
-<?php 
-    session_start();
-    $pageTitle = "Captchas";
-    require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
-    require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-    
-    include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
+<?php
+ session_start();
+ require "/conf.inc.php";
+ require "/core/functions.php";
+ include "/assets/templates/header.php";
+
+ $pageTitle = "Connexion";
+ saveLogs();
+ getUserInfos();
 ?>
 
 
@@ -28,7 +30,7 @@
     <?php
     // for each image in /assets/img/captcha folder, display it (3 images per row for large screens, 2 for medium screens, 1 for small screens)
     // in each image, display a remove button that will delete the image from the folder
-    $dir = $_SERVER['DOCUMENT_ROOT'] . "/assets/img/captcha";
+    $dir = "/assets/img/captcha";
     $files = scandir($dir);
     $files = array_diff(scandir($dir), array('.', '..'));
     $i = 0;
@@ -89,8 +91,4 @@ function removeCaptcha(fileName) {
 </script>
 
 
-
-  <?php
-    include $_SERVER["DOCUMENT_ROOT"] . "/assets/templates/footer.php";
-    page_load_time();
-    ?>
+<?php include "/assets/templates/footer.php"; ?>

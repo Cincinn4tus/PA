@@ -6,6 +6,11 @@ const images = ["/assets/img/captcha/image2.jpg", "/assets/img/captcha/image3.jp
 // Choisir une image aléatoire
 const randomImage = images[Math.floor(Math.random() * images.length)];
 
+// Afficher l'image choisie en 300x300 dans l'id preview
+
+const preview = document.getElementById("preview");
+preview.innerHTML = `<img src="${randomImage}" width="320" height="320" alt="Puzzle preview" />`;
+
 // Découper l'image en 9 morceaux et créer les pièces du puzzle
 const pieces = [];
 
