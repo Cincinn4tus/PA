@@ -57,7 +57,7 @@ if (!isset($project['argentactuel'])) {
                         <form method="post">
                             <label for="donation">Donation:</label>
                             <input type="number" id="donation" name="donation" min="0" required>
-                            <input type="submit" value="Faire un don">
+                            <button type="submit" id="donate-button">Faire un don</button>
                         </form>
                         <p>Montant actuel: €<?php echo htmlspecialchars($project['argentactuel']); ?></p>
                         <div class="progress">
@@ -74,6 +74,37 @@ if (!isset($project['argentactuel'])) {
             </div>
         </section>
     </main>
+
+
+    <script src="https://js.stripe.com/v3/%22%3E"></script>
+
+    <script>
+    var stripe = Stripe('pk_test_51NMwrfICe4bkMjF5qhnUJJErh2MUR8eWkluA5GZa9hLiMkhIdyfM4Q2Cu4Sd1D0BWDeGVTltZWw8BKRsDYni8mlb00QHCFqaA6');
+
+    var donateButton = document.getElementById('donate-button');
+    donateButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    // Créer une nouvelle session de paiement
+    fetch('/create-checkout-session', {
+        method: 'POST',
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(session) {
+        return stripe.redirectToCheckout({ sessionId: session.id });
+    })
+    .then(function(result) {
+        if (result.error) {
+        alert(result.error.message);
+        }
+    })
+    .catch(function(error) {
+        console.error('Error:', error);
+    });
+    });
+</script>
+
 
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php";
