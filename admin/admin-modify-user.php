@@ -9,19 +9,12 @@
 
 <?php
     // récupérer les données de l'utilisateur à modifier
+    $id = $_GET["id"];
     $pdo = connectDB();
     $queryPrepared = $pdo->prepare("SELECT * FROM ".DB_PREFIX."user WHERE id=:id");
-    $queryPrepared->execute(["id"=>$_GET["id"]]);
+    $queryPrepared->execute(["id"=>$id]);
     $user = $queryPrepared->fetch();
-    $id = $user["id"];
 
-    if($user["scope"] == 0){
-        $scope = "admin";
-    } elseif($user["scope"] == 1){
-        $scope = "entreprise";
-    } else {
-        $scope = "investisseur";
-    }
     ?>
 
 <div class="container mt-5">
@@ -39,13 +32,10 @@
             <input type="text" class="form-control" name="email" value="<?php  echo $user["email"];?>"><br>
 
             <select class="form-control" name="scope">
-                <option value="admin" <?php if($scope == "admin"){echo "selected";} ?>>Administrateur</option>
-                <option value="entreprise" <?php if($scope == "entreprise"){echo "selected";} ?>>Entreprise</option>
-                <option value="investisseur" <?php if($scope == "investisseur"){echo "selected";} ?>>Investisseur</option>
+                <option value="0" <?php if($user["scope"] == '0'){echo "selected";} ?>>Administrateur</option>
+                <option value="1" <?php if($user["scope"] == '1'){echo "selected";} ?>>Investisseur</option>
+                <option value="2" <?php if($user["scope"] == '2'){echo "selected";} ?>>Entreprise</option>
             </select><br>
-
-            <input type="text" class="form-control" name="pwd" placeholder="Saisir le nouveau mot de passe"><br>
-            <input type="text" class="form-control" name="pwdConfirm" placeholder="Saisir le nouveau mot de passe"><br>
             <input type="submit" class="btn btn-primary" value="Modifier">
         </form>
     </div>
