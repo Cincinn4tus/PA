@@ -31,7 +31,7 @@
             <input type="text" class="form-control" name="postal_code" value="<?php  echo $user["postal_code"];?>"><br>
             <input type="text" class="form-control" name="email" value="<?php  echo $user["email"];?>"><br>
 
-            <select class="form-control" name="scope">
+            <select class="form-control" name="scope"  id="scope">
                 <option value="0" <?php if($user["scope"] == '0'){echo "selected";} ?>>Administrateur</option>
                 <option value="1" <?php if($user["scope"] == '1'){echo "selected";} ?>>Investisseur</option>
                 <option value="2" <?php if($user["scope"] == '2'){echo "selected";} ?>>Entreprise</option>
