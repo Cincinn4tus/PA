@@ -11,50 +11,40 @@
 
     <?php
             $connection = connectDB();
-            $req = $connection->prepare("SELECT * FROM ".DB_PREFIX."user WHERE id = ?");
+            
+            $pdo = connectDB();
+            $queryPrepared = $pdo->prepare("SELECT * FROM ".DB_PREFIX.$_SESSION['type']." WHERE ".$_SESSION['key']."=".$_SESSION['key']."");
+            $queryPrepared->execute([$_SESSION['key']=>$_SESSION['key_value']]);
+            $results = $queryPrepared->fetch();
 
-            if (isset($_SESSION['id'])) {
-                $req->execute([$_SESSION['id']]);
-            } else {
-                header('Location: login.php');
+
+
+            if($_SESSION['key'] == "id"){
+                foreach($results as $user){
+                    // crée un formulaire rempli avec les infos de l'utilisateur
+
+                    echo "<form action='/core/userUpdate.php' method='post'>";
+                    echo "<input type='hidden' name='id' value='".$user['id']."'>";
+                    echo "<input type='text' class='form-control' value='".$user['firstname']."' disabled='disabled'><br>";
+                    echo "<input type='text' class='form-control' value='".$user['lastname']."' disabled='disabled'><br>";
+                    echo "<input type='text' class='form-control' name='phone' value='".$user['phone_number']."'><br>";
+                    echo "<input type='text' class='form-control' name='address' value='".$user['postal_address']."'><br>";
+                    echo "<input type='text' class='form-control' name='postal_code' value='".$user['postal_code']."'><br>";
+                    echo "<input type='text' class='form-control' name='email' value='".$user['email']."'><br>";
+                    echo "<input type='submit' class='btn btn-primary' value='Modifier'>";
+                    echo "</form>";
+                }
             }
 
-            $req_user = $req->fetch();
 
-            if ($req_user && !empty($req_user)) {
-                $user = $req_user;
-            } else {
-                echo 'Utilisateur non trouvé';
-            }
-                        
+               
     ?>
 
-    <!-- Récupération des éléments non modifiables :
-    - Nom
-    - Prénom
-    - Date de naissance
-    -->
 
-    <div class="container mt-5" id="profile-form">
-        <div class="mx-auto col-lg-6">
-            <h2 class="text-center">Mon profil</h2>
-            <p class="text-center">
-                <i class="bi bi-person-circle" style="font-size: 10rem;"></i>
-            </p>
-        </div>
-        <div class="col-lg-5 mx-auto text-center">
-            <form action="/core/userUpdate.php" method="post">
-                <input type="hidden" name="id" value="<?php echo $user["id"];?>">
-                <input type="text" class="form-control" value="<?php  echo $user["firstname"];?>" disabled="disabled"><br>
-                <input type="text" class="form-control" value="<?php  echo $user["lastname"];?>" disabled="disabled"><br>
-                <input type="text" class="form-control" name="phone" value="<?php  echo $user["phone_number"];?>"><br>
-            <input type="text" class="form-control" name="address" value="<?php  echo $user["postal_address"];?>"><br>
-            <input type="text" class="form-control" name="postal_code" value="<?php  echo $user["postal_code"];?>"><br>
-            <input type="text" class="form-control" name="email" value="<?php  echo $user["email"];?>"><br>
-                <input type="submit" class="btn btn-primary" value="Modifier">
-            </form>
-        </div>
-    </div>
+
+<h1>
+    <?php echo $_SESSION['type']; ?>
+</h1>
 <?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php";?>
 
     

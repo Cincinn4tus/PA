@@ -4,7 +4,6 @@
   require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
   $pageTitle = "Accueil";
   
-
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
   <!-- ======= Hero Section ======= -->
