@@ -92,7 +92,7 @@ ini_set('display_errors', 1);
 				$_SESSION["siren"] = $user["siren"];
 				$_SESSION["company_name"] = $user["company_name"];
 				$_SESSION["phone_number"] = $user["phone_number"];
-				$_SESSION["scope"] = $user["scope"];
+				$_SESSION["scope"] = 2;
 			}
 		}
 	}
