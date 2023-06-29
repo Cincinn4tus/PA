@@ -6,7 +6,7 @@
                         <h4>Inscription - investisseur</h4>
                     </div>
                     <div class="card-body">
-                        <form action="/core/userUpdate.php" method="post">
+                        <form action="/core/companyUpdate.php" method="post">
                             <div class="step-1">
                                 <h4>Mot de passe</h4><br>
                                 <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Mot de passe" required="required"><br>

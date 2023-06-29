@@ -9,13 +9,15 @@
     $pdo = connectDB();
     $queryPrepared = $pdo->prepare("SELECT * FROM ".DB_PREFIX."company WHERE siren=:siren");
     $queryPrepared->execute(["siren"=>$_SESSION["siren"]]);
-    $user = $queryPrepared->fetch();
+    $company = $queryPrepared->fetch();
 
     $phone = $_POST["phone"];
     $address = $_POST["address"];
     $postal_code = $_POST["postal_code"];
     $city = $_POST["city"];
     $pwd = $_POST["pwd"];
+    $pwdConfirm = $_POST["pwdConfirm"];
+    $email = $company["email"];
 
     // nettoyage
     $phone = trim(strip_tags($phone));
@@ -27,8 +29,19 @@
         if($pwd == $pwdConfirm){
             $pwd = password_hash($pwd, PASSWORD_DEFAULT);
         } else {
-            echo "Les mots de passe ne correspondent pas";
+            $error = "Les mots de passe ne correspondent pas";
         }
-    } else {
-        $pwd = $user["pwd"];
     }
+    
+    $pdo = connectDB();
+    $queryPrepared = $pdo->prepare("UPDATE ".DB_PREFIX."company SET phone_number=:phone_number, billing_address=:billing_address, billing_zipcode=:billing_zipcode, email=:email, pwd=:pwd WHERE siren=:siren");
+    $queryPrepared->execute([
+        "phone_number"=>$phone,
+        "billing_address"=>$address,
+        "billing_zipcode"=>$postal_code,
+        "email"=>$email,
+        "pwd"=>$pwd,
+        "siren"=>$_SESSION["siren"]
+    ]);
+
+    header("Location: /index.php");

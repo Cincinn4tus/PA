@@ -76,7 +76,7 @@
                         <li><a href="/user/profile.php">Mon Profil</a></li>
                         <li><a href="/user/membres.php">Membres</a></li>
                         <li><a href="/user/demandes.php">Mes Demandes</a></li>
-                        <li><a href="/user/amis.php">Mes Amis</a></li>w
+                        <li><a href="/user/amis.php">Mes Amis</a></li>
                         <li><a href="/user/logout.php" class="btn btn-started ms-2 mt-1">Déconnexion</a></li>
                       </ul>
                     </li>

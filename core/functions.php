@@ -62,23 +62,41 @@ ini_set('display_errors', 1);
 								]);
 	}
 
+	
 	function getUserInfos(){
 		if(!isConnected()){
 			return false;
 		} else {
 			$pdo = connectDB();
-			$queryPrepared = $pdo->prepare("SELECT * FROM ".DB_PREFIX."user WHERE email=:email");
-			$queryPrepared->execute(["email"=>$_SESSION['email']]);
+			$queryPrepared = $pdo->prepare("SELECT id, firstname, lastname, phone_number, scope FROM ".DB_PREFIX."user WHERE email=:email");
+			$queryPrepared->execute(["email"=>$_SESSION["email"]]);
 			$user = $queryPrepared->fetch();
+	
+			// Si $results n'est pas vide, on récupère les infos de l'utilisateur
 
-			$_SESSION['firstname'] = $user['firstname'];
-			$_SESSION['lastname'] = $user['lastname'];
-			$_SESSION['email'] = $user['email'];
-			$_SESSION['phone_number'] = $user['phone_number'];
-			$_SESSION['id'] = $user['id'];
-			$_SESSION['scope'] = $user['scope'];
+
+	
+			if(!empty($user)){
+				$_SESSION["id"] = $user["id"];
+				$user["email"] = $_SESSION["email"];
+				$_SESSION["firstname"] = $user["firstname"];
+				$_SESSION["lastname"] = $user["lastname"];
+				$_SESSION["phone_number"] = $user["phone_number"];
+				$_SESSION["scope"] = $user["scope"];
+			} else {
+				// Sinon, on récupère les infos de l'entreprise
+				$pdo = connectDB();
+				$queryPrepared = $pdo->prepare("SELECT id, company_name, phone_number, scope FROM ".DB_PREFIX."company WHERE email=:email");
+				$queryPrepared->execute(["email"=>$_SESSION["email"]]);
+				$user = $queryPrepared->fetch();
+				$_SESSION["siren"] = $user["siren"];
+				$_SESSION["company_name"] = $user["company_name"];
+				$_SESSION["phone_number"] = $user["phone_number"];
+				$_SESSION["scope"] = $user["scope"];
+			}
 		}
 	}
+	
 	function todayLogs(){
 		$connection = connectDB();
 		$results = $connection->query("SELECT * FROM ".DB_PREFIX."logs");
@@ -105,7 +123,6 @@ ini_set('display_errors', 1);
 			echo "Aucun résultat trouvé.";
 		}
 	}
-
 
 	// calcul vitesse de chargement de la page
 

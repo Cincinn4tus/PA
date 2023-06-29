@@ -36,17 +36,25 @@ if( !empty($_POST['email']) &&  !empty($_POST['pwd']) ){
     $connect = connectDB();
     
     $queryPrepared = $connect->prepare("SELECT pwd FROM ".DB_PREFIX."user WHERE email=:email UNION SELECT pwd FROM ".DB_PREFIX."company WHERE email=:email");
-
-
-
     $queryPrepared->execute(["email"=>$email]);
     $results = $queryPrepared->fetch();
 
+
     if(!empty($results) && password_verify($pwd, $results["pwd"]) ){
-        $_SESSION['scope'] = $results['scope'];
-        $_SESSION['email'] = $email;
-        $_SESSION['login'] = true;
-        header("Location: /index.php");
+            // si $results['scope'] existe, c'est que l'utilisateur, on crée $_SESSION['scope'] = $results['scope']; sinon on crée $_SESSION['scope'] = 2;
+
+            if(!empty($results['scope'])){
+                $_SESSION['scope'] = $results['scope'];
+                $_SESSION['email'] = $email;
+                $_SESSION['login'] = true;
+            }else{
+                $_SESSION['scope'] = 2;
+                $_SESSION['email'] = $email;
+                $_SESSION['login'] = true;
+            }
+        
+                header("Location: /index.php");
+       
     }else{
         $errors = "Email et / ou mot de passe incorrect";
     }
