@@ -3,7 +3,6 @@
     $pageTitle = "Modifier l'utilisateur";
     require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
     require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-    
     include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
@@ -14,7 +13,6 @@
     $queryPrepared = $pdo->prepare("SELECT * FROM ".DB_PREFIX."user WHERE id=:id");
     $queryPrepared->execute(["id"=>$id]);
     $user = $queryPrepared->fetch();
-
     ?>
 
 <div class="container mt-5">
@@ -40,7 +38,6 @@
         </form>
     </div>
 </div>
-
 
   <?php
     include $_SERVER["DOCUMENT_ROOT"] . "/assets/templates/footer.php";

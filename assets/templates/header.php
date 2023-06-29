@@ -74,10 +74,9 @@
                       <a href="#"><span>Mon compte</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                       <ul>
                         <li><a href="/user/profile.php">Mon Profil</a></li>
-                        <li><a href="#">Mes Commandes</a></li>
-                        <li><a href="#">Mes Favoris</a></li>
-                        <li><a href="#">Mes Messages</a></li>
-                        <li><a href="#">Paramètres</a></li>
+                        <li><a href="/user/membres.php">Membres</a></li>
+                        <li><a href="/user/demandes.php">Mes Demandes</a></li>
+                        <li><a href="/user/amis.php">Mes Amis</a></li>w
                         <li><a href="/user/logout.php" class="btn btn-started ms-2 mt-1">Déconnexion</a></li>
                       </ul>
                     </li>

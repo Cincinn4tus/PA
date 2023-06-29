@@ -12,12 +12,12 @@
     $user = $queryPrepared->fetch();
 
     $userId = $user["id"];
-    $phone = $_POST["phone_number"];
-    $address = $_POST["postal_address"];
+    $phone = $_POST["phone"];
+    $address = $_POST["address"];
     $postal_code = $_POST["postal_code"];
     $email = $user["email"];
-    $scope = $_POST["scope"];
-    $pwd = $user["pwd"];
+    $scope = $user["scope"];
+    $pwd = $_POST["pwd"];
     $pwdConfirm = $_POST["pwdConfirm"];
 
     // nettoyage
