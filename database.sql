@@ -1,10 +1,8 @@
 
 CREATE DATABASE crowdhub;
 
-CREATE TABLE crowdhub.pa_company (  
+CREATE TABLE crowdhub.pa_company (
     siren INT(9) PRIMARY KEY,
-    email VARCHAR(255) NOT NULL,
-    pwd VARCHAR(255),
     company_name VARCHAR(45) NOT NULL,
     phone_number INT(10),
     billing_address VARCHAR(120),

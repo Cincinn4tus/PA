@@ -2,16 +2,17 @@
   session_start();
   require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
   require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-  $pageTitle = "Connexion";
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
+  $pageTitle = "Connexion";
+  getUserInfos();
 
     $connection = connectDB();
 
     $utilisateur_id = (int) trim($_GET['id']);
 
     if(empty($utilisateur_id)){
-        header('Location: /user/membres.php');
-        exit;
+    	header('Location: /membres.php');
+    	exit;
     }
 
     if(isset($_SESSION['id'])){
@@ -35,18 +36,8 @@
     $voir_utilisateur = $req->fetch();
 
     if(!isset($voir_utilisateur['id'])){
-        header('Location: /user/membres.php');
-        exit;
-    }
-
-    $isBlocked = false; // Variable pour vérifier si l'utilisateur est bloqué
-
-    $requete_bloquer = $connection->prepare("SELECT id FROM relation WHERE (id_receveur = :id1 AND id_demandeur = :id2 AND id_bloqueur IS NOT NULL) OR (id_receveur = :id2 AND id_demandeur = :id1 AND id_bloqueur IS NOT NULL)");
-    $requete_bloquer->execute(array('id1' => $voir_utilisateur['id'], 'id2' => $_SESSION['id']));
-    $verif_bloqueur = $requete_bloquer->fetch();
-
-    if(isset($verif_bloqueur['id'])){
-        $isBlocked = true;
+    	header('Location: membres.php');
+    	exit;
     }
     
     if(!empty($_POST)){
@@ -120,27 +111,6 @@
             }
     }
     ?>
-<main id="main">
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
-        <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-            <h2><?php echo $voir_utilisateur["firstname"]; ?></h2>
-            <ol>
-                <li><a href="/">Accueil</a></li>
-                <li><?php echo $voir_utilisateur["firstname"]; ?></li>
-            </ol>
-        </div>
-    </div><!-- End Breadcrumbs -->
-
-    <div id="chat-messages"></div>
-
-    <!-- Code HTML pour la zone de saisie du message et le bouton d'envoi -->
-    <div>
-        <textarea id="message-input" placeholder="Saisissez votre message"></textarea>
-        <button id="send-button">Envoyer</button>
-    </div>
-
-
 
     <div class="container mt-5" id="profile-form">
         <div class="mx-auto col-lg-6">
@@ -160,36 +130,37 @@
         <div>
             <form method="post">
                 <?php
-                    if (!isset($voir_utilisateur['statut'])) {
+                    if(!isset($voir_utilisateur['statut'])){
                 ?>
                 <input type="submit" name="user-ajouter" value="Ajouter">
                 <?php
-                    } elseif (isset($voir_utilisateur['statut']) && $voir_utilisateur['id_demandeur'] == $_SESSION['id'] && !isset($voir_utilisateur['id_bloqueur']) && $voir_utilisateur['statut'] <> 2) {
+                    }elseif (isset($voir_utilisateur['statut']) && $voir_utilisateur['id_demandeur'] == $_SESSION['id'] && !isset($voir_utilisateur['id_bloqueur']) && $voir_utilisateur['statut'] <> 2){
                 ?>
                 <div>Demande en attente</div>
                 <?php
-                    } elseif (isset($voir_utilisateur['statut']) && $voir_utilisateur['id_receveur'] == $_SESSION['id'] && !isset($voir_utilisateur['id_bloqueur']) && $voir_utilisateur['statut'] <> 2) {
+                    }elseif (isset($voir_utilisateur['statut']) && $voir_utilisateur['id_receveur'] == $_SESSION['id'] && !isset($voir_utilisateur['id_bloqueur']) && $voir_utilisateur['statut'] <> 2){
                 ?>
                 <div>Vous avez une demande à accepter</div>
                 <?php
-                    } elseif (isset($voir_utilisateur['statut']) && $voir_utilisateur['statut'] == 2 && !isset($voir_utilisateur['id_bloqueur'])) {
+                    }elseif(isset($voir_utilisateur['statut']) && $voir_utilisateur['statut'] == 2 && !isset($voir_utilisateur['id_bloqueur'])){
                 ?>
-                <div>Vous êtes amis</div>
+                <div>Vous etes amis</div>
+                <?php
+                    }
+                    if(isset($voir_utilisateur['statut']) && !isset($voir_utilisateur['id_bloqueur']) && $voir_utilisateur['id_demandeur'] == $_SESSION['id'] && $voir_utilisateur['statut'] <> 2){
+                ?>
                 <input type="submit" name="user-supprimer" value="Supprimer">
                 <?php
-                    } elseif (isset($voir_utilisateur['statut']) && !isset($voir_utilisateur['id_bloqueur']) && $voir_utilisateur['id_demandeur'] == $_SESSION['id'] && $voir_utilisateur['statut'] <> 2) {
-                ?>
-                <input type="submit" name="user-supprimer" value="Supprimer">
-                <?php
-                    } elseif ((isset($voir_utilisateur['statut']) || $voir_utilisateur['statut'] == NULL) && !isset($voir_utilisateur['id_bloqueur'])) {
+                    }
+                    if((isset($voir_utilisateur['statut']) || $voir_utilisateur['statut'] == NULL) && !isset($voir_utilisateur['id_bloqueur'])){
                 ?>
                 <input type="submit" name="user-bloquer" value="Bloquer">
                 <?php
-                    } elseif ($voir_utilisateur['id_bloqueur'] <> $_SESSION['id']) {
+                    }elseif($voir_utilisateur['id_bloqueur'] <> $_SESSION['id']){
                 ?>
-                <input type="submit" name="user-debloquer" value="Débloquer">
+                <input type="submit" name="user-debloquer" value="Déloquer">
                 <?php
-                    } else {
+                    }else{
                 ?>
                 <div>Vous avez été bloqué par cet utilisateur</div>
                 <?php

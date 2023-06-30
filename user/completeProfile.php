@@ -16,35 +16,36 @@
         </div>
     </div>
 
+
     <?php
-            if(isset($_GET["email"])){
-                $_SESSION["email"] = $_GET["email"];
+        if(!isset($_GET['email'] ) || count($_GET) !=1){
+            header("Location: /index.php");
+            exit();
+        }
 
-                $pdo = connectDB();
-                $queryPrepared = $pdo->prepare("SELECT * FROM ".DB_PREFIX."user WHERE email=:email");
-                $queryPrepared->execute(["email"=>$_SESSION["email"]]);
-                $user = $queryPrepared->fetch();
-                include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/complete-profile-investor.php";
 
-            } else if(isset($_GET["siren"])){
+        $email = $_GET['email'];
 
-                $_SESSION["siren"] = $_GET["siren"];
-                $pdo = connectDB();
-                $queryPrepared = $pdo->prepare("SELECT * FROM ".DB_PREFIX."company WHERE siren=:siren");
-                $queryPrepared->execute(["siren"=>$_SESSION["siren"]]);
-                $user = $queryPrepared->fetch();
-                include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/complete-profile-company.php";
+        $connect = connectDB();
+        $queryPrepared = $connect->prepare("SELECT * FROM ".DB_PREFIX."user WHERE email=:email");
+        $queryPrepared->execute(["email" => $email]);
+        $results = $queryPrepared->fetch();
+        
 
-            } else {
-                header("Location: /user/login.php");
-            }
-            
+
+        if($results['scope'] == 1 || $results['scope'] == 2){
+            include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/complete-profile-investor.php";
+        } else {
+            header("Location: /index.php");
+            exit();
+        }
         ?>
-
-
-
 <script src="/assets/js/verify.js"></script>
 
 
-
-<?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php";?>
+<div class="fixed-bottom">
+<?php
+    include $_SERVER["DOCUMENT_ROOT"] . "/assets/templates/footer.php";
+    page_load_time();
+?>
+</div>

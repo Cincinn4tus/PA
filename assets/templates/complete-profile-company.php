@@ -1,18 +1,26 @@
+<?php
+    session_start();
+    $pageTitle = "Profil";
+    require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
+    require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
+    include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
+    ?>
+
 <div class="container mt-3 mb-5 passwordForm">
         <div class="row text-center">
             <div class="col-lg-4 col-md-6 col-sm-12 mx-auto">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Inscription - investisseur</h4>
+                        <h4>Mon entreprise</h4>
                     </div>
                     <div class="card-body">
-                        <form action="/core/companyUpdate.php" method="post">
+                        <form action="/core/companyAdd.php" method="post">
                             <div class="step-1">
-                                <h4>Mot de passe</h4><br>
-                                <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Mot de passe" required="required"><br>
-                                <input type="password" class="form-control" name="pwdConfirm" id="pwdConfirm" placeholder="Confirmer le mot de passe" required="required" onblur="passwordVerify()"><br>
+                                <h4>informations légales</h4><br>
+                                <input type="text" id="company_name" class="form-control" name="company_name" placeholder="Nom de l'entreprise" onkeyup="verifyFieldsCompany()" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["company_name"] : ""; ?>"><br>
+                                <input type="number" id="siren" class="form-control" name="siren" id="siren" placeholder="N° Siren de l'entreprise" onkeyup="verifyFieldsCompany()" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["siren"] : ""; ?>"><br>
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-primary next-step" id="step-2" disabled onclick="nextStep('step-1', 'step-2')">Suivant</button>
+                                    <button type="button" class="btn btn-primary next-step" id="step-2" onclick="nextStep('step-1', 'step-2')">Suivant</button>
                                 </div>
                             </div>
                             <div class="step-2" style="display: none;">
@@ -57,3 +65,14 @@
             </div>
         </div>
     </div>
+    
+
+    <script src="/assets/js/verify.js"></script>
+
+
+    <div class="fixed-bottom">
+<?php
+    include $_SERVER["DOCUMENT_ROOT"] . "/assets/templates/footer.php";
+    page_load_time();
+?>
+</div>

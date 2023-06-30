@@ -35,14 +35,22 @@ ini_set('display_errors', 1);
 		}
 	}
 
-	function getUserInfos(){
+
+	function isUser(){
 		if(isConnected()){
-			$connection = connectDB();
-			$queryPrepared = $connection->prepare("SELECT * FROM ".DB_PREFIX.$_SESSION['type']." WHERE email=:email");
-			$queryPrepared->execute(["email"=>$_SESSION["email"]]);
-			$user = $queryPrepared->fetch();
+			if($_SESSION['id'] == 1){
+				return true;
+			}
 		}
 	}
+
+
+
+
+
+
+
+
 
 
 	function saveLogs(){
@@ -73,7 +81,23 @@ ini_set('display_errors', 1);
 								]);
 	}
 
-	
+	function getUserInfos(){
+		if(!isConnected()){
+			return false;
+		} else {
+			$pdo = connectDB();
+			$queryPrepared = $pdo->prepare("SELECT * FROM ".DB_PREFIX."user WHERE email=:email");
+			$queryPrepared->execute(["email"=>$_SESSION['email']]);
+			$user = $queryPrepared->fetch();
+
+			$_SESSION['firstname'] = $user['firstname'];
+			$_SESSION['lastname'] = $user['lastname'];
+			$_SESSION['email'] = $user['email'];
+			$_SESSION['phone_number'] = $user['phone_number'];
+			$_SESSION['id'] = $user['id'];
+			$_SESSION['scope'] = $user['scope'];
+		}
+	}
 	function todayLogs(){
 		$connection = connectDB();
 		$results = $connection->query("SELECT * FROM ".DB_PREFIX."logs");
@@ -90,7 +114,6 @@ ini_set('display_errors', 1);
 			echo "Aucun résultat trouvé.";
 		}
 	}
-
 	function countLogs(){
 		$connection = connectDB();
 		$results = $connection->query("SELECT * FROM ".DB_PREFIX."logs");
@@ -101,6 +124,7 @@ ini_set('display_errors', 1);
 			echo "Aucun résultat trouvé.";
 		}
 	}
+
 
 	// calcul vitesse de chargement de la page
 

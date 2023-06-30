@@ -48,12 +48,7 @@
           <li><a href="/blog.php">Blog</a></li>
           <?php
                 if (isConnected()){
-                  if($_SESSION['type'] == "company"){
-                    echo '<li class="nav-item">
-                        <a class="nav-link" href="/user/demandefinancement.php">Créer un projet</a>
-                        </li>';
-                  } else if($_SESSION['type'] == "user"){
-                      if ($_SESSION['scope'] == 0){
+                    if ($_SESSION['scope'] == 0){
                         echo '<li class="nav-item">
                             <a class="nav-link" href="/admin/admin-dashboard.php">Administration</a>
                         </li>';
@@ -66,18 +61,13 @@
                         <a class="nav-link" href="/user/listefinancement.php">Projets</a>
                         </li>';
                     }
-                    } else if($_SESSION['type'] == "company"){
-                        echo '<li class="nav-item">
-                        <a class="nav-link" href="/user/demandefinancement.php">Créer un projet</a>
-                        </li>';
-                    }
                 } else {
                     echo '<li class="nav-item">
                         <a class="nav-link" href="/user/login.php">Projets</a>
                     </li>';
                 }
                 ?>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="/user/membres.php">Membres</a></li>
           <?php if (isConnected()){
                     echo '
                     <li class="dropdown">

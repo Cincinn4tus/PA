@@ -3,6 +3,9 @@
   require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
   require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
   $pageTitle = "Inscription";
+  
+  getUserInfos();
+  include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 
 // récupérer les données du formulaire
 
@@ -57,7 +60,7 @@ if(!empty($listOfErrors)){
         "email" => $email,
         "gender" => $gender,
         "birthdate" => $birthdate,
-        "scope" => 1,
+        "scope" => $_SESSION['scope'],
         "created_at" => date('Y-m-d H:i:s'),
         "updated_at" => date('Y-m-d H:i:s')
     ]);

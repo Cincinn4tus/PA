@@ -1,18 +1,11 @@
 <?php
-
-
   session_start();
   require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
   require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
   $pageTitle = "Connexion";
+  
+  getUserInfos();
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
-
-  // afficher toutes les erreurs PHP
-
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
-
-
 ?>
 <?php
     if(isset($_GET['validation'])){
@@ -28,40 +21,29 @@
         </div>
     <?php }
 
-if(!empty($_POST['email']) &&  !empty($_POST['pwd'])){
+
+
+
+//On va vérifier que l'on a quelque chose dans $_POST
+//Ce qui signifie que le formulaire a été validé
+if( !empty($_POST['email']) &&  !empty($_POST['pwd']) ){
+
     $email = cleanEmail($_POST["email"]);
     $pwd = $_POST["pwd"];
+
     //Récupérer en bdd le mot de passe hashé pour l'email
     //provenant du formulaire
     $connect = connectDB();
-    $queryPrepared = $connect->prepare("SELECT pwd FROM ".DB_PREFIX."user WHERE email=:email UNION SELECT pwd FROM ".DB_PREFIX."company WHERE email=:email");
+    $queryPrepared = $connect->prepare("SELECT pwd FROM ".DB_PREFIX."user WHERE email=:email");
     $queryPrepared->execute(["email"=>$email]);
     $results = $queryPrepared->fetch();
+
     if(!empty($results) && password_verify($pwd, $results["pwd"]) ){
-            if(isset($results['id'])){
-                $connection = connectDB();
-                $queryPrepared = $connect->prepare("SELECT pwd FROM ".DB_PREFIX."user WHERE email=:email");
-                $queryPrepared->execute(["email"=>$_POST["email"]]);
-                $user = $queryPrepared->fetchAll();
-                $_SESSION['type'] = "user";
-                $_SESSION['email'] = $email;
-                $_SESSION['login'] = true;
-                $_SESSION['key'] = 'id';
-                $_SESSION['key_value'] = $user['id'];
-            } else if(isset($results['siren'])){
-                $connection = connectDB();
-                $queryPrepared = $connect->prepare("SELECT pwd FROM ".DB_PREFIX."company WHERE email=:email");
-                $queryPrepared->execute(["email"=>$_POST["email"]]);
-                $user = $queryPrepared->fetchAll();
-                $_SESSION['type'] = "company";
-                $_SESSION['email'] = $email;
-                $_SESSION['login'] = true;
-                $_SESSION['key'] = 'siren';
-                $_SESSION['key_value'] = $user['siren'];
-            } else {
-                $errors = "Email et / ou mot de passe incorrect";
-            }
-    } else {
+        $_SESSION['scope'] = $results['scope'];
+        $_SESSION['email'] = $email;
+        $_SESSION['login'] = true;
+        header("Location: /index.php");
+    }else{
         $errors = "Email et / ou mot de passe incorrect";
     }
 }
@@ -79,6 +61,7 @@ if(isset($errors)){
         </div>
     </div>
 <?php }
+
 ?>
 
 <div class="container">

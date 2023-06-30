@@ -2,21 +2,10 @@
   session_start();
   require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
   require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-  $pageTitle = "Connexion";
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
+  $pageTitle = "Connexion";
+  getUserInfos();
 ?>
-
-<main id="main">
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
-        <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-            <h2>Membre</h2>
-            <ol>
-                <li><a href="/">Accueil</a></li>
-                <li>Membre</li>
-            </ol>
-        </div>
-    </div><!-- End Breadcrumbs -->
 
 <div class="container-fluid">
     <?php
@@ -48,3 +37,7 @@
         </tbody>
     </table>
 </div>
+
+<?php
+    include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php";
+?>
