@@ -101,7 +101,7 @@ ALTER TABLE crowdhub.pa_financement MODIFY id INT AUTO_INCREMENT;
 
 -- modify scope for user where email = 'admin'
 
-UPDATE crowdhub.pa_user SET scope = 0 WHERE email = 'aligoumane@protonmail.com';
+UPDATE crowdhub.pa_user SET scope = 0 WHERE email = 'asfez.mike@outlook.fr;
 
 -- créer un table pour gérer les performances du site
 -- nom de la page (clé primaire) et temps  de chargement (float), SATUS PAR DÉFAUT 1
