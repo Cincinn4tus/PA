@@ -57,8 +57,8 @@
     ]);
 
 
-    if($scope == 2 && empty($user["siren"])){
-        header ("Location: /assets/templates/complete-profile-company.php");
+    if($scope == 2 && !isset($user["siren"])){
+        header ("Location: /registration/completeCompany.php");
     } else {
         header ("Location: /index.php");
     }

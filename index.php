@@ -2,9 +2,8 @@
   session_start();
   require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
   require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-  $pageTitle = "Accueil";
-  
   getUserInfos();
+  $pageTitle = "Accueil";
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
   <!-- ======= Hero Section ======= -->

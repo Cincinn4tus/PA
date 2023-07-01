@@ -39,7 +39,6 @@ if( !empty($_POST['email']) &&  !empty($_POST['pwd']) ){
     $results = $queryPrepared->fetch();
 
     if(!empty($results) && password_verify($pwd, $results["pwd"]) ){
-        $_SESSION['scope'] = $results['scope'];
         $_SESSION['email'] = $email;
         $_SESSION['login'] = true;
         header("Location: /index.php");

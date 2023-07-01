@@ -24,6 +24,15 @@
         <tbody id="results">
             <?php
                 foreach ($results as $user) {
+                    if($user["scope"] == 1){
+                        $user["scope"] = "Investisseur";
+                    } else if($user["scope"] == 2){
+                        $user["scope"] = "Entreprise";
+                    } else if($user["scope"] == 0){
+                        $user["scope"] = "Administrateur";
+                    } else {
+                        $user["scope"] = "Inconnu";
+                    }
                     echo "<tr>";
                         echo "<td>".$user["id"]."</td>";
                         echo "<td>".$user["lastname"]."</td>";
@@ -44,3 +53,6 @@
         </tbody>
     </table>
 </div>
+
+
+

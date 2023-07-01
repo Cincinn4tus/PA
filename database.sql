@@ -12,6 +12,10 @@ CREATE TABLE crowdhub.pa_company (
     updated_at DATETIME NOT NULL
 );
 
+-- DROP the email column from the pa_company table
+
+ALTER TABLE crowdhub.pa_company DROP COLUMN email;
+
 CREATE TABLE crowdhub.pa_user (
     id INT PRIMARY KEY AUTO_INCREMENT,
     pwd VARCHAR(255),
@@ -97,7 +101,7 @@ ALTER TABLE crowdhub.pa_financement MODIFY id INT AUTO_INCREMENT;
 
 -- modify scope for user where email = 'admin'
 
-UPDATE crowdhub.pa_user SET scope = 0 WHERE email = 'aligoumane.contact@gmail.com';
+UPDATE crowdhub.pa_user SET scope = 0 WHERE email = 'aligoumane@protonmail.com';
 
 -- créer un table pour gérer les performances du site
 -- nom de la page (clé primaire) et temps  de chargement (float), SATUS PAR DÉFAUT 1

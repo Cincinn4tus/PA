@@ -3,8 +3,6 @@
   require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
   require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
   $pageTitle = "Inscription";
-  
-  getUserInfos();
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
@@ -63,10 +61,11 @@
 </div>
 
 
+<script src="/assets/js/sendRegistration.js"></script>
 
-<script src="/assets/js/verify.js"></script>
-
-  <?php
+<div class="fixed-bottom">
+      <?php
     include $_SERVER["DOCUMENT_ROOT"] . "/assets/templates/footer.php";
     page_load_time();
     ?>
+</div>

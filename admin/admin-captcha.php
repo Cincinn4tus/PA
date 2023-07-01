@@ -1,16 +1,16 @@
-<?php
- session_start();
- require "/conf.inc.php";
- require "/core/functions.php";
- include "/assets/templates/header.php";
-
- $pageTitle = "Connexion";
- saveLogs();
- getUserInfos();
+<?php 
+    session_start();
+    $pageTitle = "Captchas";
+    require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
+    require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
+    include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
+    if(!isConnected() || $user['scope'] != 0){
+        header("Location: /errors/403.php");
+        }
 ?>
 
 
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
     <div class="row">
         <div class="col-lg-6 mx-auto">
             <h2 class="text-center">Liste des images</h2>
@@ -30,7 +30,7 @@
     <?php
     // for each image in /assets/img/captcha folder, display it (3 images per row for large screens, 2 for medium screens, 1 for small screens)
     // in each image, display a remove button that will delete the image from the folder
-    $dir = "/assets/img/captcha";
+    $dir = $_SERVER['DOCUMENT_ROOT'] . "/assets/img/captcha/";
     $files = scandir($dir);
     $files = array_diff(scandir($dir), array('.', '..'));
     $i = 0;
@@ -39,7 +39,7 @@
             echo "<div class='row'>";
         }
         echo "<div class='col-lg-4 col-md-6 col-sm-12'>";
-        echo "<img src='/assets/img/captcha/$file' class='img-fluid'>";
+        echo "<img src='/assets/img/captcha/$file' class='img-fluid' width='400px' height='400px'>";
         echo "<button class='btn btn-danger mt-2' onclick='removeCaptcha(\"$file\")'>Supprimer</button>";
         echo "</div>";
         $i++;
@@ -91,4 +91,7 @@ function removeCaptcha(fileName) {
 </script>
 
 
-<?php include "/assets/templates/footer.php"; ?>
+<?php
+    include $_SERVER["DOCUMENT_ROOT"] . "/assets/templates/footer.php";
+    page_load_time();
+    ?>

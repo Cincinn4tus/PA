@@ -1,10 +1,12 @@
-<?php
+<?php 
     session_start();
+    $pageTitle = "Logs";
     require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
     require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
+    if(!isConnected() || $user['scope'] != 0){
+        header("Location: /errors/403.php");
+        }
 
     $email = $_GET["email"];
     if($email == NULL){
@@ -12,6 +14,8 @@
     } else {
         $data = "SELECT * FROM ".DB_PREFIX."user WHERE email LIKE '$email%'";
     }
+
+    
 
 
         $pdo = connectDB();
@@ -50,7 +54,5 @@
 
 
                     ?>
-    <?php   
 
 
-?>

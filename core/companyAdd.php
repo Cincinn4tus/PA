@@ -26,48 +26,56 @@ if (
 
 //Nettoyage des données
 
-$firstname = cleanFirstname($_POST['firstname']);
-$lastname = cleanLastname($_POST['name']);
-$phone_number = $_POST['phone_number'];
-$email = cleanEmail($_POST['email']);
+$name = cleanFirstname($_POST['company_name']);
+$siren = $_POST['siren'];
+$postal_code = $_POST['postal_code'];
+$city = $_POST['city'];
+$address = $_POST['address'];
+$phone_number = $_POST['phone'];
+$sirenRegex = '/^[0-9]{9}$/';
+$email = $_SESSION['email'];
+
 
 
 $listOfErrors = [];
 
-	$connection = connectDB();
-	$queryPrepared = $connection->prepare("SELECT * FROM ".DB_PREFIX."user WHERE email=:email");
-	$queryPrepared->execute([ "email" => $email ]);
+//Validation des données
 
-	$results = $queryPrepared->fetch();
 	
-	if(!empty($results)){
-		$listOfErrors[] = "L'email n'est pas valide";
+	if (!preg_match($sirenRegex, $siren)) {
+		$listOfErrors[] = "Le numéro de SIREN n'est pas valide";	
 	}
-
-
-if(!preg_match("#^[0-9]{14}$#", $siret)){
-	$listOfErrors[] = "Le SIRET est incorrect";
-}
+	
 
 //Si OK
 
 
 	if (empty($listOfErrors)) {
 	
+		$connection = connectDB();
 		$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."company
-												(siren, company_name, phone_number, billing_address, billing_zipcode, city)
+												(siren, company_name, phone_number, billing_address, billing_zipcode, city, created_at, updated_at)
 												VALUES
-                                                (:siren, :company_name, :phone_number, :billing_address, :billing_zipcode, :city)
+                                                (:siren, :company_name, :phone_number, :billing_address, :billing_zipcode, :city, NOW(), NOW())
                                                 ");
 
         $queryPrepared->execute([
             "siren" => $siren,
-            "company_name" => $nameEntreprise,
-            "phone_number" => $phone_numberE,
+            "company_name" => $name,
+            "phone_number" => $phone_number,
             "billing_address" => $address,
             "billing_zipcode" => $postal_code,
             "city" => $city,
         ]);
+
+		$connection = connectDB();
+		$queryPrepared = $connection->prepare("UPDATE ".DB_PREFIX."user SET siren=:siren WHERE email=:email");
+		$queryPrepared->execute([
+			"siren" => $siren,
+			"email" => $email
+		]);
+
+
 
 
 
@@ -82,5 +90,5 @@ if(!preg_match("#^[0-9]{14}$#", $siret)){
 	unset($_POST["pwdConfirm"]);
 	$_SESSION['data'] = $_POST;
 	//Redirection sur la page d'inscription
-	header('location: /registration/register.php');
+	header('location: /registration/completeCompany.php');
 	}

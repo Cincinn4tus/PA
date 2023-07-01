@@ -3,31 +3,10 @@
   require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
   require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
   $pageTitle = "Profil";
-  
   getUserInfos();
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
-
-    <?php
-            $connection = connectDB();
-            $req = $connection->prepare("SELECT * FROM ".DB_PREFIX."user WHERE id = ?");
-
-            if (isset($_SESSION['id'])) {
-                $req->execute([$_SESSION['id']]);
-            } else {
-                header('Location: login.php');
-            }
-
-            $req_user = $req->fetch();
-
-            if ($req_user && !empty($req_user)) {
-                $user = $req_user;
-            } else {
-                echo 'Utilisateur non trouvé';
-            }
-                        
-    ?>
 
     <!-- Récupération des éléments non modifiables :
     - Nom

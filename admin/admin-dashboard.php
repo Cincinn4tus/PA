@@ -1,16 +1,18 @@
 <?php
   session_start();
-  $pageTitle = "Console d'administration";
   require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
   require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-  
+  $pageTitle = "Dashboard";
   getUserInfos();
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
+  if(!isConnected() || $user['scope'] != 0){
+    header("Location: /errors/403.php");
+    }
 ?>
 
     <div class="container mt-5">
         <div class="row">
-        <h3 class="mt-5">Gestion des données</h3>
+            <h3 class="mt-5">Gestion des données</h3>
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card">
                     <div class="card-header">
@@ -40,28 +42,13 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Captcha</h4>
-                    </div>
-                    <div class="card-body">
-                        <p>
-                            Gérer les paramètres de captcha
-                        </p>
-                        <a href="admin-captcha.php" class="btn btn-danger">Gérer</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
                         <h4>Fréquentation</h4>
                     </div>
                     <div class="card-body">
                         <p>
                             Gérer les catégories de la plateforme
                         </p>
-                        <a href="admin-analytics.php" class="btn btn-warning">Gérer</a>
+                        <a href="admin-analytics.php" class="btn btn-danger">Gérer</a>
                     </div>
                 </div>
             </div>
@@ -74,26 +61,26 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Templates d'email</h4>
-                    </div>
-                    <div class="card-body">
-                        <p>
-                            Gérer les templates d'email
-                        </p>
-                        <a href="admin-news.php" class="btn btn-primary">Gérer</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
                         <h4>Gestion des avatars</h4>
                     </div>
                     <div class="card-body">
                         <p>
                             Gérer les avatars
                         </p>
-                        <a href="admin-avatars.php" class="btn btn-primary">Gérer</a>
+                        <a href="admin-avatars.php" class="btn btn-warning">Gérer</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Captcha</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            Gérer les paramètres de captcha
+                        </p>
+                        <a href="admin-captcha.php" class="btn btn-warning">Gérer</a>
                     </div>
                 </div>
             </div>
@@ -144,7 +131,7 @@
         </div>
     </div>
 
-<?php
+    <?php
     include $_SERVER["DOCUMENT_ROOT"] . "/assets/templates/footer.php";
     page_load_time();
-?>
+    ?>
