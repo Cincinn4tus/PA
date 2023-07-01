@@ -1,1 +1,3 @@
-RedirectPermanent /user/ /var/www/pa/user/login.php
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/errors/403\.php
+RewriteRule ^(.*)$ /errors/403.php [L,R=301]
