@@ -220,7 +220,18 @@ function disabled_pages(){
 
 
 
-
+function getFriendRequestCount($userId) {
+    try {
+        $connection = connectDB();
+        $stmt = $connection->prepare("SELECT COUNT(*) AS count FROM friendship WHERE user2_id = ? AND status = 'pending'");
+        $stmt->execute([$userId]);
+        $count = $stmt->fetchColumn();
+        return $count;
+    } catch (PDOException $e) {
+        echo "Erreur lors de la récupération du nombre de demandes d'amis en attente : " . $e->getMessage();
+        return 0;
+    }
+}
 
 
 

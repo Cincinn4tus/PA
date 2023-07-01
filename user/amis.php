@@ -1,61 +1,55 @@
 <?php
-  session_start();
-  require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
-  require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-  $pageTitle = "Connexion";
-  include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
-
-$connection = connectDB();
-
-if (!isset($_SESSION['id'])) {
-    header('Location: /user/membres.php');
-    exit;
-}
-
-$req = $connection->prepare("SELECT u.*
-        FROM " . DB_PREFIX . "user u
-        LEFT JOIN relation r ON (r.id_demandeur = u.id OR r.id_receveur = u.id) AND r.statut = 2 AND (r.id_demandeur = :id OR r.id_receveur = :id)
-        WHERE (r.id_demandeur IS NOT NULL OR r.id_receveur IS NOT NULL) AND u.id <> :id");
-
-$req->execute(array('id' => $_SESSION['id']));
-
-$amis = $req->fetchAll();
+session_start();
+require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
+$pageTitle = "Amis";
+saveLogs();
+getUserInfos();
+include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
 <main id="main">
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('../assets/img/breadcrumbs-bg.jpg');">
         <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
             <h2>Amis</h2>
             <ol>
-                <li><a href="/">Accueil</a></li>
-                <li>Amis</li>
+                <li><a href="/admin/admin-dashboard.php">Administration</a></li>
+                <li>Profil</li>
             </ol>
         </div>
     </div><!-- End Breadcrumbs -->
 
     <div class="container-fluid">
-        <table id="amis-array" class="table col-lg-12">
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                </tr>
-            </thead>
+        <h2>Amis</h2>
+        <?php
+        $currentUserId = $_SESSION['id'];  // l'utilisateur actuellement connecté
 
-            <tbody id="results">
-                <?php
-                foreach ($amis as $ami) {
-                    echo "<tr>";
-                    echo "<td>" . $ami["lastname"] . "</td>";
-                    echo "<td>" . $ami["firstname"] . "</td>";
-                    echo "<td><a href='voirprofile.php?id=" . $ami["id"] . "' class='btn btn-secondary'>Voir Profil</a></td>";
-                    echo "</tr>";
-                }
-                ?>
-            </tbody>
-        </table>
+        try {
+            $connection = connectDB();
+            $stmt = $connection->prepare("SELECT * FROM friendship WHERE (user1_id = ? OR user2_id = ?) AND status = 'accepted' AND blocked_status != 'blocked'");
+            $stmt->execute([$currentUserId, $currentUserId]);
+
+            while ($friendship = $stmt->fetch()) {
+                $friendId = ($friendship['user1_id'] == $currentUserId) ? $friendship['user2_id'] : $friendship['user1_id'];
+                $friendStmt = $connection->prepare("SELECT firstname, lastname FROM pa_user WHERE id = ?");
+                $friendStmt->execute([$friendId]);
+                $friend = $friendStmt->fetch();
+
+                echo "<div id='friend-" . $friendId . "'>";
+                echo "Ami: " . htmlspecialchars($friend['firstname']) . " " . htmlspecialchars($friend['lastname']);
+                echo "<form action='friendshipActions.php' method='post'>";
+                echo "<input type='hidden' name='action' value='removeFriend'>";
+                echo "<input type='hidden' name='friend_id' value='" . $friendId . "'>";
+                echo "<button type='submit'>Supprimer l'ami</button>";
+                echo "</form>";
+                echo "<a href='voirprofile.php?id=" . $friendId . "'>Voir profil</a>";
+                echo "</div>";
+            }
+        } catch (PDOException $e) {
+            echo "Erreur lors de la récupération de la liste d'amis: " . $e->getMessage();
+        }
+        ?>
     </div>
-</main>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>

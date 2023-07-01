@@ -1,43 +1,53 @@
 <?php
-  session_start();
-  require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
-  require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-  include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
-  $pageTitle = "Connexion";
-  getUserInfos();
+session_start();
+require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
+$pageTitle = "Membres";
+saveLogs();
+getUserInfos();
+include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
-<div class="container-fluid">
-    <?php
-        $connection = connectDB();
-        $results = $connection->query("SELECT * FROM ".DB_PREFIX."user");
-        $results = $results->fetchAll();
 
-    ?>
+    <div class="container-fluid">
+        <?php
+        $currentUserId = $_SESSION['id'];  // l'utilisateur actuellement connecté
 
-    <table id="user-array" class="table col-lg-12">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-            </tr>
-        </thead>
+        try {
+            $connection = connectDB();
+            $stmt = $connection->prepare("SELECT * FROM pa_user WHERE id != ? AND id NOT IN (SELECT user1_id FROM friendship WHERE user2_id = ? AND blocked_status = 'blocked')");
+            $stmt->execute([$currentUserId, $currentUserId]);
 
-        <tbody id="results">
-            <?php
-                foreach ($results as $user) {
+            $members = $stmt->fetchAll();
+
+            if (empty($members)) {
+                echo "Aucun membre trouvé.";
+            } else {
+                echo "<table id='members-array' class='table col-lg-12'>
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Profil</th>
+                        </tr>
+                    </thead>
+                    <tbody id='results'>";
+
+                foreach ($members as $member) {
                     echo "<tr>";
-                        echo "<td>".$user["lastname"]."</td>";
-                        echo "<td>".$user["firstname"]."</td>";
-                        echo "<td>
-                            <a href='voirprofile.php?id=".$user["id"]."' class='btn btn-secondary'>Voir Profil</a></td>";
+                    echo "<td>" . htmlspecialchars($member["lastname"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($member["firstname"]) . "</td>";
+                    echo "<td><a href='voirprofile.php?id=" . $member["id"] . "'>Voir profil</a></td>";
                     echo "</tr>";
                 }
-            ?>
-        </tbody>
-    </table>
-</div>
 
-<?php
-    include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php";
-?>
+                echo "</tbody></table>";
+            }
+        } catch (PDOException $e) {
+            echo "Erreur lors de la récupération de la liste des membres: " . $e->getMessage();
+        }
+        ?>
+    </div>
+</main>
+
+<?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>

@@ -99,6 +99,16 @@ CREATE TABLE crowdhub.pa_relation (
 ALTER TABLE crowdhub.pa_financement MODIFY id INT AUTO_INCREMENT;
 
 
+CREATE TABLE crowdhub.friendship (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user1_id INT NOT NULL,
+    user2_id INT NOT NULL,
+    status ENUM('pending', 'accepted', 'declined') NOT NULL,
+    request_sent_by INT NOT NULL,
+    FOREIGN KEY (user1_id) REFERENCES pa_user(id),
+    FOREIGN KEY (user2_id) REFERENCES pa_user(id)
+);
+
 -- modify scope for user where email = 'admin'
 
 UPDATE crowdhub.pa_user SET scope = 0 WHERE email = 'asfez.mike@outlook.fr;

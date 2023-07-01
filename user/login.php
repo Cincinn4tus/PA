@@ -40,6 +40,7 @@ if( !empty($_POST['email']) &&  !empty($_POST['pwd']) ){
 
     if(!empty($results) && password_verify($pwd, $results["pwd"]) ){
         $_SESSION['email'] = $email;
+        $_SESSION['id'] = $results["id"];
         $_SESSION['login'] = true;
         header("Location: /index.php");
     }else{
