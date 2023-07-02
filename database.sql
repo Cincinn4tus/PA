@@ -98,7 +98,7 @@ CREATE TABLE crowdhub.pa_relation (
 
 ALTER TABLE crowdhub.pa_financement MODIFY id INT AUTO_INCREMENT;
 
-CREATE TABLE crowdhub.friendship (
+CREATE TABLE crowdhub.pa_friendship (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user1_id INT NOT NULL,
     user2_id INT NOT NULL,
@@ -107,6 +107,11 @@ CREATE TABLE crowdhub.friendship (
     FOREIGN KEY (user1_id) REFERENCES pa_user(id),
     FOREIGN KEY (user2_id) REFERENCES pa_user(id)
 );
+
+-- renommer table friendship en pa_friendship
+
+RENAME TABLE crowdhub.friendship TO crowdhub.pa_friendship;
+ADD blocked_status ENUM('blocked', 'unblocked') NOT NULL DEFAULT 'unblocked';
 
 
 CREATE TABLE crowdhub.messages (
