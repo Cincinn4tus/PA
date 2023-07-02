@@ -98,7 +98,6 @@ CREATE TABLE crowdhub.pa_relation (
 
 ALTER TABLE crowdhub.pa_financement MODIFY id INT AUTO_INCREMENT;
 
-
 CREATE TABLE crowdhub.friendship (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user1_id INT NOT NULL,
@@ -108,6 +107,19 @@ CREATE TABLE crowdhub.friendship (
     FOREIGN KEY (user1_id) REFERENCES pa_user(id),
     FOREIGN KEY (user2_id) REFERENCES pa_user(id)
 );
+
+
+CREATE TABLE crowdhub.messages (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  sender_id INT NOT NULL,
+  recipient_id INT NOT NULL,
+  content TEXT NOT NULL,
+  sent_at DATETIME NOT NULL,
+  is_read BOOLEAN NOT NULL DEFAULT 0,
+  FOREIGN KEY (sender_id) REFERENCES pa_user(id),
+  FOREIGN KEY (recipient_id) REFERENCES pa_user(id)
+);
+
 
 -- modify scope for user where email = 'admin'
 

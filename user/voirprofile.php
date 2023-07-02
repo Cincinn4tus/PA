@@ -1,11 +1,11 @@
 <?php
-session_start();
-require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
-require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
-$pageTitle = "Amis";
-saveLogs();
-getUserInfos();
-include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
+  session_start();
+  require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
+  require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
+  $pageTitle = "Connexion";
+  saveLogs();
+  getUserInfos();
+  include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
 <main id="main">
@@ -27,16 +27,18 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
         $currentUserId = $_SESSION['id'];
 
         try {
-            $stmt = $connection->prepare("SELECT * FROM pa_user WHERE id = ?");
-            $stmt->execute([$profileUserId]);
+            $stmt = $connection->prepare("SELECT * FROM pa_user WHERE id = :id");
+            $stmt->bindParam(':id', $profileUserId);
+            $stmt->execute();
             $user = $stmt->fetch();
 
             if ($user) {
                 echo "Profil de " . htmlspecialchars($user['firstname']) . " " . htmlspecialchars($user['lastname']);
 
-                $friendshipStmt = $connection->prepare("SELECT status, blocked_status FROM friendship WHERE (user1_id = ? AND user2_id = ?) OR (user1_id = ? AND user2_id = ?)");
-                $friendshipStmt->execute([$currentUserId, $profileUserId, $profileUserId, $currentUserId]);
-
+                $friendshipStmt = $connection->prepare("SELECT status, blocked_status FROM friendship WHERE (user1_id = :user1_id AND user2_id = :user2_id) OR (user1_id = :user2_id AND user2_id = :user1_id)");
+                $friendshipStmt->bindParam(':user1_id', $currentUserId);
+                $friendshipStmt->bindParam(':user2_id', $profileUserId);
+                $friendshipStmt->execute();
                 $friendship = $friendshipStmt->fetch();
 
                 if ($friendship === false) {
@@ -70,6 +72,9 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
                         echo "</form>";
                     }
                 }
+
+                // Bouton pour aller à la messagerie
+                echo "<a href='messagerie.php' class='btn'>Aller à la messagerie</a>";
             } else {
                 echo "Profil introuvable";
             }
@@ -79,4 +84,5 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
         ?>
     </div>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT']."/assets/templates/footer.php"; ?>
+</main>

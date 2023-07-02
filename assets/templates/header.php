@@ -67,34 +67,36 @@
                     </li>';
                 }
                 ?>
-          <li><a href="/user/membres.php">Membres</a></li>
-          <?php if (isConnected()){
-                    echo '
-                    <li class="dropdown">
-                      <a href="#"><span>Mon compte</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                      <ul>
+            <li><a href="/user/membres.php">Membres</a></li>
+            <?php 
+            if (isConnected()) {
+                echo '
+                <li class="dropdown">
+                    <a href="#"><span>Mon compte</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <ul>
                         <li><a href="/user/profile.php">Mon Profil</a></li>
                         <li><a href="/user/membres.php">Membres</a></li>
-                        <li><a href="/user/demandes.php">Mes Demandes';
+                        <li><a href="/user/demandes.php">Mes Demandes</a>';
 
-                        // Afficher le compteur des demandes d'amis
-                        if (isConnected()) {
-                            $currentUserId = $_SESSION['id'];
-                            $friendRequestCount = getFriendRequestCount($currentUserId);
+                // Afficher le compteur des demandes d'amis
+                $currentUserId = $_SESSION['id'];
+                $friendRequestCount = getFriendRequestCount($currentUserId);
 
-                            if ($friendRequestCount > 0) {
-                                echo '<span class="friend-request-counter">' . $friendRequestCount . '</span>';
-                            }
-                        }
-                        '<li><a href="/user/amis.php">Mes Amis</a></li>
+                if ($friendRequestCount > 0) {
+                    echo '<span class="friend-request-counter">' . $friendRequestCount . '</span>';
+                }
+
+                echo '</li>
+                        <li><a href="/user/amis.php">Mes Amis</a></li>
                         <li><a href="/user/logout.php" class="btn btn-started ms-2 mt-1">Déconnexion</a></li>
-                      </ul>
-                    </li>
-                    ';
-                } else {
-                    echo '<a href="/user/login.php"> <button class="btn btn-primary ms-2 mt-1"> Connexion </button> </a>';
-                } ?>
-          <li><button id="theme-button">Passer en mode sombre</button></li>
+                    </ul>
+                </li>';
+            } else {
+                echo '<a href="/user/login.php"><button class="btn btn-primary ms-2 mt-1">Connexion</button></a>';
+            }
+            ?>
+            <li><button id="theme-button">Passer en mode sombre</button></li>
+
         </ul>
       </nav><!-- .navbar -->
     </div>
