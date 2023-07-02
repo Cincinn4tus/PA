@@ -8,25 +8,13 @@
   include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
-<main id="main">
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
-        <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-            <h2>Membres</h2>
-            <ol>
-                <li><a href="/">Accueil</a></li>
-                <li>Membres</li>
-            </ol>
-        </div>
-    </div><!-- End Breadcrumbs -->
-
     <div class="container-fluid">
         <?php
         $currentUserId = $_SESSION['id'];  // l'utilisateur actuellement connecté
 
         try {
             $connection = connectDB();
-            $stmt = $connection->prepare("SELECT * FROM pa_user WHERE id != ? AND id NOT IN (SELECT user1_id FROM friendship WHERE user2_id = ? AND blocked_status = 'blocked')");
+            $stmt = $connection->prepare("SELECT * FROM ".DB_PREFIX."user WHERE id != ? AND id NOT IN (SELECT user1_id FROM ".DB_PREFIX."friendship WHERE user2_id = ? AND blocked_status = 'blocked')");
             $stmt->execute([$currentUserId, $currentUserId]);
 
             $members = $stmt->fetchAll();
