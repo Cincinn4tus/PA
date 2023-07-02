@@ -5,6 +5,6 @@
 
     if (isset($_POST['file-name'])) {
         $file = $_POST['file-name'];
-        unlink("/assets/img/captcha/" . $file);
+        unlink($_SERVER['DOCUMENT_ROOT'] . "/assets/img/captcha/" . $file);
     }
 ?>

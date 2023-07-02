@@ -3,6 +3,7 @@
     require "/conf.inc.php";
     require "/core/functions.php";
 
+    
     if (isset($_FILES['captcha-file'])) {
         $file = $_FILES['captcha-file'];
         move_uploaded_file($file['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/assets/img/captcha/" . $file['name']);
