@@ -80,7 +80,7 @@ document.getElementById('captcha-form').addEventListener('submit', function(e) {
         let formData = new FormData();
         formData.append('file-name', fileName);
 
-        fetch('delete-captcha.php', {
+        fetch('/admin/delete-captcha.php', {
             method: 'POST',
             body: formData
         }).then(response => {
