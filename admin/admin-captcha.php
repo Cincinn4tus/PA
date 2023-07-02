@@ -76,22 +76,23 @@ document.getElementById('captcha-form').addEventListener('submit', function(e) {
     });
 });
 
-function removeCaptcha(fileName) {
-    const formData = new FormData();
-    formData.append('file-name', fileName);
+    function removeCaptcha(fileName) {
+        let formData = new FormData();
+        formData.append('file-name', fileName);
 
-    fetch('delete-captcha.php', {
-        method: 'POST',
-        body: formData
-    }).then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        location.reload();
-    }).catch(error => {
-        console.error('There has been a problem with your fetch operation:', error);
-    });
-}
+        fetch('delete-captcha.php', {
+            method: 'POST',
+            body: formData
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            location.reload();
+        }).catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+    }
+
 
 </script>
 
