@@ -7,6 +7,11 @@
     if(!isConnected() || $user['scope'] != 0){
         header("Location: /errors/403.php");
         }
+
+
+        ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 ?>
 
 
