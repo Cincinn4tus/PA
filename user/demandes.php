@@ -26,11 +26,11 @@ include "../assets/templates/header.php";
 
         try {
             $connection = connectDB();
-            $stmt = $connection->prepare("SELECT * FROM friendship WHERE user2_id = ? AND status = 'pending'");
+            $stmt = $connection->prepare("SELECT * FROM ".DB_PREFIX."friendship WHERE user2_id = ? AND status = 'pending'");
             $stmt->execute([$currentUserId]);
 
             while ($request = $stmt->fetch()) {
-                $userStmt = $connection->prepare("SELECT firstname, lastname FROM pa_user WHERE id = ?");
+                $userStmt = $connection->prepare("SELECT firstname, lastname FROM ".DB_PREFIX."user WHERE id = ?");
                 $userStmt->execute([$request['user1_id']]);
                 $user = $userStmt->fetch();
 
