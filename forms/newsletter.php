@@ -6,7 +6,8 @@ $type = $_POST['type'];
 $date = $_POST['date'];
 
 if (empty($title) || empty($content) || empty($type) || empty($date)) {
-    header("Location: /admin/admin-news.php?error=emptyfields");
+    $_SESSION['error'] = "Veuillez remplir tous les champs";
+    header("Location: /admin/admin-news.php");
     exit();
 } else {
 

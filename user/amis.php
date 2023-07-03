@@ -1,11 +1,11 @@
 <?php
-session_start();
-require "../conf.inc.php";
-require "../core/functions.php";
-$pageTitle = "Amis";
-saveLogs();
-getUserInfos();
-include "../assets/templates/header.php";
+  session_start();
+  require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
+  require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
+  $pageTitle = "Connexion";
+  saveLogs();
+  getUserInfos();
+  include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
 <main id="main">
@@ -27,7 +27,7 @@ include "../assets/templates/header.php";
 
         try {
             $connection = connectDB();
-            $stmt = $connection->prepare("SELECT * FROM ".DB_PREFIX."friendship WHERE (user1_id = ? OR user2_id = ?) AND status = 'accepted' AND blocked_status != 'blocked'");
+            $stmt = $connection->prepare("SELECT * FROM friendship WHERE (user1_id = ? OR user2_id = ?) AND status = 'accepted' AND blocked_status != 'blocked'");
             $stmt->execute([$currentUserId, $currentUserId]);
 
             while ($friendship = $stmt->fetch()) {
@@ -52,4 +52,4 @@ include "../assets/templates/header.php";
         ?>
     </div>
 
-    <?php include "../assets/templates/footer.php"; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php"; ?>

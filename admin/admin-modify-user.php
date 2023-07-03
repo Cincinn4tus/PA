@@ -23,15 +23,15 @@
         <h2 class="text-center">Modifications</h2>
     </div>
     <div class="col-lg-5 mx-auto">
-        <form action="/core/userUpdate.php" method="post">
+        <form action="/admin/admin-user-update.php?<?php $user['email'];?>" method="post">
             <input type="hidden" name="id" value="<?php echo $user["id"];?>">
             <input type="text" class="form-control" value="<?php  echo $user["firstname"];?>" disabled="disabled"><br>
             <input type="text" class="form-control" value="<?php  echo $user["lastname"];?>" disabled="disabled"><br>
             <input type="text" class="form-control" name="phone" value="<?php  echo $user["phone_number"];?>"><br>
             <input type="text" class="form-control" name="address" value="<?php  echo $user["postal_address"];?>"><br>
-            <input type="text" class="form-control" name="postal_code" value="<?php  echo $user["postal_code"];?>"><br>
+            <input type="text" class="form-control" name="postal_code" value="<?php  echo $user["postal_code"];?>"> <br>
+            <input type="text" class="form-control" name="city" value="<?php  echo $user["city"];?>"><br>
             <input type="text" class="form-control" name="email" value="<?php  echo $user["email"];?>"><br>
-
             <select class="form-control" name="scope"  id="scope">
                 <option value="0" <?php if($user["scope"] == '0'){echo "selected";} ?>>Administrateur</option>
                 <option value="1" <?php if($user["scope"] == '1'){echo "selected";} ?>>Investisseur</option>

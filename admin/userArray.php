@@ -33,21 +33,23 @@
                     } else {
                         $user["scope"] = "Inconnu";
                     }
-                    echo "<tr>";
-                        echo "<td>".$user["id"]."</td>";
-                        echo "<td>".$user["lastname"]."</td>";
-                        echo "<td>".$user["firstname"]."</td>";
-                        echo "<td>".$user["email"]."</td>";
-                        echo "<td>".$user["postal_address"]."</td>";
-                        echo "<td>".$user["postal_code"]."</td>";
-                        echo "<td>".$user["scope"]."</td>";
-                        echo "<td>".$user["created_at"]."</td>";
-                        echo "<td>".$user["updated_at"]."</td>";
-                        echo "<td>
-                            <a href='admin-modify-user.php?id=".$user["id"]."' class='btn btn-primary'>Modifier</a>
-                            <a href='admin-delete-user.php?id=".$user["id"]."' class='btn btn-danger'>Supprimer</a>
-                            <a href='admin-details-user.php?id=".$user["id"]."' class='btn btn-secondary'>Détails</a></td>";
-                    echo "</tr>";
+                    if ($user["email"] != $_SESSION["email"]){
+                        echo "<tr>";
+                            echo "<td>".$user["id"]."</td>";
+                            echo "<td>".$user["lastname"]."</td>";
+                            echo "<td>".$user["firstname"]."</td>";
+                            echo "<td>".$user["email"]."</td>";
+                            echo "<td>".$user["postal_address"]."</td>";
+                            echo "<td>".$user["postal_code"]."</td>";
+                            echo "<td>".$user["scope"]."</td>";
+                            echo "<td>".$user["created_at"]."</td>";
+                            echo "<td>".$user["updated_at"]."</td>";
+                            echo "<td>
+                                <a href='admin-modify-user.php?id=".$user["id"]."' class='btn btn-primary'>Modifier</a>
+                                <a href='admin-delete-user.php?id=".$user["id"]."' class='btn btn-danger'>Supprimer</a>
+                                <a href='admin-details-user.php?id=".$user["id"]."' class='btn btn-secondary'>Détails</a></td>";
+                        echo "</tr>";
+                        }
                 }
             ?>
         </tbody>

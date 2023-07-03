@@ -8,7 +8,6 @@ if(!isConnected() || $user['scope'] != 0){
     header("Location: /errors/403.php");
     }
 
-    
 	$connection = connectDB();
 	$results = $connection->query("SELECT * FROM ".DB_PREFIX."logs");
 	$results = $results->fetchAll();
@@ -19,8 +18,6 @@ if(!isConnected() || $user['scope'] != 0){
 
 
 <?php
-
-
 $rrdFile = $_SERVER['DOCUMENT_ROOT'] . "/assets/rrd/visits.rrd";
 $outputPngFile = $_SERVER['DOCUMENT_ROOT'] . "/assets/rrd/visits.png";
 

@@ -7,11 +7,6 @@
     if(!isConnected() || $user['scope'] != 0){
         header("Location: /errors/403.php");
         }
-
-
-        ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 ?>
 
 
@@ -44,7 +39,7 @@ error_reporting(E_ALL);
             echo "<div class='row'>";
         }
         echo "<div class='col-lg-4 col-md-6 col-sm-12'>";
-        echo "<img src='/assets/img/captcha/'.$file.' class='img-fluid' width='400px' height='400px'>";
+        echo "<img src='/assets/img/captcha/$file' class='img-fluid' width='400px' height='400px'>";
         echo "<button class='btn btn-danger mt-2' onclick='removeCaptcha(\"$file\")'>Supprimer</button>";
         echo "</div>";
         $i++;
@@ -76,23 +71,22 @@ document.getElementById('captcha-form').addEventListener('submit', function(e) {
     });
 });
 
-    function removeCaptcha(fileName) {
-        let formData = new FormData();
-        formData.append('file-name', fileName);
+function removeCaptcha(fileName) {
+    const formData = new FormData();
+    formData.append('file-name', fileName);
 
-        fetch('/admin/delete-captcha.php', {
-            method: 'POST',
-            body: formData
-        }).then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            location.reload();
-        }).catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
-        });
-    }
-
+    fetch('delete-captcha.php', {
+        method: 'POST',
+        body: formData
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        location.reload();
+    }).catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+    });
+}
 
 </script>
 
