@@ -13,7 +13,6 @@ $projects = $queryPrepared->fetchAll();
 ?>
 
 <body>
-
 <main>
     <section class="current-funding py-5">
         <div class="container">
@@ -44,7 +43,6 @@ $projects = $queryPrepared->fetchAll();
         </div>
     </section>
 </main>
-    
 <?php
     include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php";
 ?>
