@@ -1,3 +1,19 @@
+<?php
+  session_start();
+  $pageTitle = "Financements";
+  require $_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php";
+  require $_SERVER['DOCUMENT_ROOT'] . "/core/functions.php";
+  include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
+  getUserInfos();
+
+$connection = connectDB();
+$queryPrepared = $connection->prepare("SELECT * FROM ".DB_PREFIX."financement");
+$queryPrepared->execute();
+$projects = $queryPrepared->fetchAll();
+?>
+
+<body>
+
 <main>
     <section class="current-funding py-5">
         <div class="container">
@@ -8,7 +24,7 @@
                     <div class="card">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="crowdfunding-Fotolia_74821971_XS.jpg" class="img-fluid" alt="Image du projet">
+                                <img src="assets/images/project-image.jpg" class="img-fluid" alt="Image du projet">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
@@ -18,22 +34,6 @@
                                     <p class="card-text">Montant demandé: €<?php echo htmlspecialchars($project['requestedAmount']); ?></p>
                                     <p class="card-text">Objectifs de financement: <?php echo htmlspecialchars($project['fundingGoals']); ?></p>
                                     <a href="pagefinancement.php?id=<?php echo $project['id']; ?>" class="btn btn-primary">Participer au financement</a>
-                                    
-                                    <?php 
-                                        if (isConnected()){
-                                            if ($_SESSION['scope'] == 0){
-                                                // si l'utilisateur est un admin, affiche le bouton de suppression
-                                                echo '<a href="deletefinancement.php?id='.$project['id'].'" class="btn btn-danger">Supprimer le financement</a>';
-                                            } else if($_SESSION['scope'] == 2){
-                                               
-                                            } else{
-                                                
-                                            }
-                                        } else {
-                                         
-                                        }
-                                    ?>
-                                    
                                 </div>
                             </div>
                         </div>
@@ -44,3 +44,7 @@
         </div>
     </section>
 </main>
+    
+<?php
+    include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/footer.php";
+?>
