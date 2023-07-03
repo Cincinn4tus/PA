@@ -121,13 +121,6 @@ CREATE TABLE crowdhub.messages (
 );
 
 
--- modify scope for user where email = 'admin'
-
-UPDATE crowdhub.pa_user SET scope = 0 WHERE email = 'asfez.mike@outlook.fr;
-
--- créer un table pour gérer les performances du site
--- nom de la page (clé primaire) et temps  de chargement (float), SATUS PAR DÉFAUT 1
-
 CREATE TABLE crowdhub.pa_performance (
     page VARCHAR(255) PRIMARY KEY,
     time FLOAT NOT NULL,
