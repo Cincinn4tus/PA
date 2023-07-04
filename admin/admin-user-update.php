@@ -36,5 +36,5 @@
     if($scope == 2 && !isset($user["siren"])){
         header ("Location: /registration/completeCompany.php");
     } else {
-        header ("Location: /index.php");
+        header ("Location: /admin/admin-users.php");
     }

@@ -8,6 +8,8 @@ getUserInfos();
 include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
+<br>
+
 <div class="container-fluid">
     <h2>Amis</h2>
     <?php
