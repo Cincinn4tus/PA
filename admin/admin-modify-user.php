@@ -36,6 +36,7 @@
                 <option value="0" <?php if($user["scope"] == '0'){echo "selected";} ?>>Administrateur</option>
                 <option value="1" <?php if($user["scope"] == '1'){echo "selected";} ?>>Investisseur</option>
                 <option value="2" <?php if($user["scope"] == '2'){echo "selected";} ?>>Entreprise</option>
+                <option value="4" <?php if($user["scope"] == '4'){echo "selected";} ?>>Banni</option>
             </select><br>
             <input type="submit" class="btn btn-primary" value="Modifier">
         </form>
