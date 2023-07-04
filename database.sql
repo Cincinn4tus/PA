@@ -98,7 +98,7 @@ CREATE TABLE crowdhub.pa_relation (
 
 ALTER TABLE crowdhub.pa_financement MODIFY id INT AUTO_INCREMENT;
 
-CREATE TABLE crowdhub.friendship (
+CREATE TABLE crowdhub.pa_friendship (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user1_id INT NOT NULL,
     user2_id INT NOT NULL,
