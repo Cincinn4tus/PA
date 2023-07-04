@@ -241,3 +241,14 @@ function getFriendRequestCount($userId) {
 
 
 
+if (isConnected()){
+	$pdo = connectDB();
+	$queryPrepared = $pdo->prepare("SELECT * FROM ".DB_PREFIX."user WHERE email=:email");
+	$queryPrepared->execute(["email"=>$_SESSION['email']]);
+	$userInfos = $queryPrepared->fetch();
+	if($userInfos['scope'] == 4){
+		session_destroy();
+		header("Location: /errors/banned.php");
+	}
+
+}
