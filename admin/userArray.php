@@ -49,7 +49,7 @@
                             echo "<td>
                                 <a href='admin-modify-user.php?id=".$user["id"]."' class='btn btn-primary'>Modifier</a>
                                 <a href='admin-delete-user.php?id=".$user["id"]."' class='btn btn-danger'>Supprimer</a>
-                                <a href='admin-lock-user.php?id=".$user["id"]."' class='btn btn-secondary'>Détails</a></td>";
+                                <a href='admin-lock-user.php?id=".$user["id"]."' class='btn btn-secondary'>Bannir</a></td>";
                         echo "</tr>";
                         }
                 }
