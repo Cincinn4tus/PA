@@ -18,4 +18,6 @@ $id = $_GET["id"];
         "id"=>$id
     ]);
 
+
+    header("Location: /admin/admin-users.php");
 ?>
