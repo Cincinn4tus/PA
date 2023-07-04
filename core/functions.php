@@ -223,7 +223,7 @@ function disabled_pages(){
 function getFriendRequestCount($userId) {
     try {
         $connection = connectDB();
-        $stmt = $connection->prepare("SELECT COUNT(*) AS count FROM friendship WHERE user2_id = ? AND status = 'pending'");
+        $stmt = $connection->prepare("SELECT COUNT(*) AS count FROM ".DB_PREFIX."friendship WHERE id != ? AND status = 'pending'");
         $stmt->execute([$userId]);
         $count = $stmt->fetchColumn();
         return $count;
