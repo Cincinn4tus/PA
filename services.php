@@ -242,8 +242,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Testimonials</h2>
-          <p>Quam sed id excepturi ccusantium dolorem ut quis dolores nisi llum nostrum enim velit qui ut et autem uia reprehenderit sunt deleniti</p>
+          <h2>Témoignages</h2>
+          <p>Découvrez les témoignages de nos clients satisfaits. Ils partagent leur expérience avec notre service et les résultats obtenus grâce à notre soutien. Laissez-vous inspirer par leurs histoires réussies.</p>
         </div>
 
         <div class="slides-2 swiper">
@@ -254,18 +254,18 @@
                 <div class="testimonial-item">
                   <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
                   <h3>Saul Goodman</h3>
-                  <h4>Ceo &amp; Founder</h4>
+                  <h4>PDG et Fondateur</h4>
                   <div class="stars">
                     <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                   </div>
                   <p>
                     <i class="bi bi-quote quote-icon-left"></i>
-                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                    "Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper."
                     <i class="bi bi-quote quote-icon-right"></i>
                   </p>
                 </div>
               </div>
-            </div><!-- End testimonial item -->
+            </div><!-- End Témoignage -->
 
             <div class="swiper-slide">
               <div class="testimonial-wrap">
@@ -278,30 +278,30 @@
                   </div>
                   <p>
                     <i class="bi bi-quote quote-icon-left"></i>
-                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                    "Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa."
                     <i class="bi bi-quote quote-icon-right"></i>
                   </p>
                 </div>
               </div>
-            </div><!-- End testimonial item -->
+            </div><!-- End Témoignage -->
 
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
                   <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
                   <h3>Jena Karlis</h3>
-                  <h4>Store Owner</h4>
+                  <h4>Propriétaire de magasin</h4>
                   <div class="stars">
                     <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                   </div>
                   <p>
                     <i class="bi bi-quote quote-icon-left"></i>
-                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                    "Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim."
                     <i class="bi bi-quote quote-icon-right"></i>
                   </p>
                 </div>
               </div>
-            </div><!-- End testimonial item -->
+            </div><!-- End Témoignage -->
 
             <div class="swiper-slide">
               <div class="testimonial-wrap">
@@ -314,12 +314,12 @@
                   </div>
                   <p>
                     <i class="bi bi-quote quote-icon-left"></i>
-                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                    "Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam."
                     <i class="bi bi-quote quote-icon-right"></i>
                   </p>
                 </div>
               </div>
-            </div><!-- End testimonial item -->
+            </div><!-- End Témoignage -->
 
             <div class="swiper-slide">
               <div class="testimonial-wrap">
@@ -332,19 +332,20 @@
                   </div>
                   <p>
                     <i class="bi bi-quote quote-icon-left"></i>
-                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                    "Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid."
                     <i class="bi bi-quote quote-icon-right"></i>
                   </p>
                 </div>
               </div>
-            </div><!-- End testimonial item -->
+            </div><!-- End Témoignage -->
 
           </div>
           <div class="swiper-pagination"></div>
         </div>
 
       </div>
-    </section><!-- End Testimonials Section -->
+    </section><!-- End Section Témoignages -->
+
 
   </main><!-- End #main -->
 
