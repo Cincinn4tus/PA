@@ -8,6 +8,17 @@ getUserInfos();
 include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
+        <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+            <h2>Membres</h2>
+            <ol>
+                <li><a href="/">Accueil</a></li>
+                <li>Membres</li>
+            </ol>
+        </div>
+    </div><!-- End Breadcrumbs -->
 
     <div class="container-fluid">
         <?php
@@ -33,13 +44,17 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
                     </thead>
                     <tbody id='results'>";
         
-                foreach ($members as $member) {
-                    echo "<tr>";
-                    echo "<td>" . htmlspecialchars($member["lastname"]) . "</td>";
-                    echo "<td>" . htmlspecialchars($member["firstname"]) . "</td>";
-                    echo "<td><a href='voirprofile.php?id=" . $member["id"] . "'>Voir profil</a></td>";
-                    echo "</tr>";
-                }
+                    foreach ($members as $member) {
+                        if ($member["id"] == $_SESSION['id']) {
+                            continue; // Passer à la prochaine itération si c'est le profil de l'utilisateur connecté
+                        }
+                        
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($member["lastname"]) . "</td>";
+                        echo "<td>" . htmlspecialchars($member["firstname"]) . "</td>";
+                        echo "<td><a href='voirprofile.php?id=" . $member["id"] . "'>Voir profil</a></td>";
+                        echo "</tr>";
+                    }
         
                 echo "</tbody></table>";
             }
