@@ -30,6 +30,8 @@
                         $user["scope"] = "Entreprise";
                     } else if($user["scope"] == 0){
                         $user["scope"] = "Administrateur";
+                    } else if($user["scope"] == 4){
+                        $user["scope"] = "Banni";
                     } else {
                         $user["scope"] = "Inconnu";
                     }
