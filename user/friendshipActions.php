@@ -13,7 +13,7 @@ if (isset($_POST['action'])) {
 
             try {
                 $connection = connectDB();
-                $stmt = $connection->prepare("INSERT INTO friendship (user1_id, user2_id, status) VALUES (?, ?, 'pending')");
+                $stmt = $connection->prepare("INSERT INTO ".DB_PREFIX."friendship (user1_id, user2_id, status) VALUES (?, ?, 'pending')");
                 $stmt->execute([$currentUserId, $friendId]);
 
                 // Rediriger vers la page précédente avec un message de succès
@@ -36,7 +36,7 @@ if (isset($_POST['action'])) {
 
             try {
                 $connection = connectDB();
-                $stmt = $connection->prepare("UPDATE friendship SET status = 'accepted' WHERE id = ? AND user2_id = ?");
+                $stmt = $connection->prepare("UPDATE ".DB_PREFIX."friendship SET status = 'accepted' WHERE id = ? AND user2_id = ?");
                 $stmt->execute([$requestId, $currentUserId]);
 
                 // Rediriger vers la page précédente avec un message de succès
@@ -59,7 +59,7 @@ if (isset($_POST['action'])) {
 
             try {
                 $connection = connectDB();
-                $stmt = $connection->prepare("DELETE FROM friendship WHERE id = ? AND user2_id = ?");
+                $stmt = $connection->prepare("DELETE FROM ".DB_PREFIX."friendship WHERE id = ? AND user2_id = ?");
                 $stmt->execute([$requestId, $currentUserId]);
 
                 // Rediriger vers la page précédente avec un message de succès
@@ -82,7 +82,7 @@ if (isset($_POST['action'])) {
 
             try {
                 $connection = connectDB();
-                $stmt = $connection->prepare("DELETE FROM friendship WHERE (user1_id = ? AND user2_id = ?) OR (user1_id = ? AND user2_id = ?)");
+                $stmt = $connection->prepare("DELETE FROM ".DB_PREFIX."friendship WHERE (user1_id = ? AND user2_id = ?) OR (user1_id = ? AND user2_id = ?)");
                 $stmt->execute([$currentUserId, $friendId, $friendId, $currentUserId]);
 
                 // Rediriger vers la page précédente avec un message de succès
@@ -105,7 +105,7 @@ if (isset($_POST['action'])) {
 
             try {
                 $connection = connectDB();
-                $stmt = $connection->prepare("UPDATE friendship SET blocked_status = 'blocked' WHERE (user1_id = ? AND user2_id = ?) OR (user1_id = ? AND user2_id = ?)");
+                $stmt = $connection->prepare("UPDATE ".DB_PREFIX."friendship SET blocked_status = 'blocked' WHERE (user1_id = ? AND user2_id = ?) OR (user1_id = ? AND user2_id = ?)");
                 $stmt->execute([$currentUserId, $userIdToBlock, $userIdToBlock, $currentUserId]);
 
                 // Rediriger vers la page précédente avec un message de succès
@@ -128,7 +128,7 @@ if (isset($_POST['action'])) {
 
             try {
                 $connection = connectDB();
-                $stmt = $connection->prepare("UPDATE friendship SET blocked_status = '' WHERE (user1_id = ? AND user2_id = ?) OR (user1_id = ? AND user2_id = ?)");
+                $stmt = $connection->prepare("UPDATE ".DB_PREFIX."friendship SET blocked_status = '' WHERE (user1_id = ? AND user2_id = ?) OR (user1_id = ? AND user2_id = ?)");
                 $stmt->execute([$currentUserId, $userIdToUnblock, $userIdToUnblock, $currentUserId]);
 
                 // Rediriger vers la page précédente avec un message de succès

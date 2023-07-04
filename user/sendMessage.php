@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $isRead = 0;
 
     try {
-        $stmt = $connection->prepare("INSERT INTO messages (sender_id, recipient_id, content, sent_at, is_read) VALUES (?, ?, ?, NOW(), ?)");
+        $stmt = $connection->prepare("INSERT INTO ".DB_PREFIX."messages (sender_id, recipient_id, content, sent_at, is_read) VALUES (?, ?, ?, NOW(), ?)");
         $stmt->execute([$senderId, $receiverId, $message, $isRead]);
 
         // Redirection vers la messagerie avec un message de succès

@@ -200,7 +200,13 @@ function disabled_pages(){
 			$userInfos = $queryPrepared->fetch();
 
 			return $userInfos;
+
+			if($userInfos['scope'] == 4){
+				session_destroy();
+				header("Location: /errors/banned.php");
+			}
 		}
+
 	}
 
 	$user = getUserInfos();

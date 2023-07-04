@@ -9,6 +9,9 @@
 
 $id = $_GET["id"];
 
+$message = "Nous vous avons banni de la plateforme";
+
+
 
 // mettre à jour la colonne scope de la table user avec la valeur 4
 
@@ -17,6 +20,15 @@ $id = $_GET["id"];
     $queryPrepared->execute([
         "id"=>$id
     ]);
+
+// récupérer l'email de l'utilisateur
+
+    $pdo = connectDB();
+    $queryPrepared = $pdo->prepare("SELECT email FROM ".DB_PREFIX."user WHERE id=:id");
+    $queryPrepared->execute(["id"=>$id]);
+    $result = $queryPrepared->fetch();
+
+
 
 
     require $_SERVER['DOCUMENT_ROOT'] . '/PHPMailer/src/Exception.php';
