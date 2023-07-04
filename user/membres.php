@@ -8,17 +8,6 @@ getUserInfos();
 include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
-<main id="main">
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
-        <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-            <h2>Membres</h2>
-            <ol>
-                <li><a href="/">Accueil</a></li>
-                <li>Membres</li>
-            </ol>
-        </div>
-    </div><!-- End Breadcrumbs -->
 
     <div class="container-fluid">
         <?php
@@ -26,11 +15,11 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 
         try {
             $connection = connectDB();
-            $stmt = $connection->prepare("SELECT * FROM ".DB_PREFIX."user WHERE id != ? AND id NOT IN (SELECT user2_id FROM ".DB_PREFIX."friendship WHERE user1_id = ? AND blocked_status = 'blocked')");
+            $stmt = $connection->prepare("SELECT * FROM ".DB_PREFIX."user");
             $stmt->execute([$currentUserId, $currentUserId]);
-
+        
             $members = $stmt->fetchAll();
-
+        
             if (empty($members)) {
                 echo "Aucun membre trouvé.";
             } else {
@@ -43,7 +32,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
                         </tr>
                     </thead>
                     <tbody id='results'>";
-
+        
                 foreach ($members as $member) {
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($member["lastname"]) . "</td>";
@@ -51,12 +40,12 @@ include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
                     echo "<td><a href='voirprofile.php?id=" . $member["id"] . "'>Voir profil</a></td>";
                     echo "</tr>";
                 }
-
+        
                 echo "</tbody></table>";
             }
         } catch (PDOException $e) {
             echo "Erreur lors de la récupération de la liste des membres: " . $e->getMessage();
-        }
+        }        
         ?>
     </div>
 </main>

@@ -47,85 +47,83 @@
           <li><a href="/services.php">Services</a></li>
           <li><a href="/blog.php">Blog</a></li>
           <?php
-                if (isConnected()){
-                    if ($user['scope'] == 0){
-                        echo '<li class="nav-item">
-                            <a class="nav-link" href="/admin/admin-dashboard.php">Administration</a>
-                        </li>';
-                    } else if($user['scope'] == 2){
-                        echo '<li class="nav-item">
-                        <a class="nav-link" href="/user/demandefinancement.php">Créer un projet</a>
-                        </li>';
-                    } else{
-                        echo '<li class="nav-item">
-                        <a class="nav-link" href="/user/listefinancement.php">Projets</a>
-                        </li>';
-                    }
-                } else {
-                    echo '<li class="nav-item">
-                        <a class="nav-link" href="/user/login.php">Projets</a>
-                    </li>';
-                }
-                ?>
-            <li><a href="/user/membres.php">Membres</a></li>
-            <?php 
-            if (isConnected()) {
-                echo '
-                <li class="dropdown">
-                    <a href="#"><span>Mon compte</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                    <ul>
-                        <li><a href="/user/profile.php">Mon Profil</a></li>
-                        <li><a href="/user/membres.php">Membres</a></li>
-                        <li><a href="/user/demandes.php">Mes Demandes</a>';
-
-                // Afficher le compteur des demandes d'amis
-                $currentUserId = $_SESSION['id'];
-                $friendRequestCount = getFriendRequestCount($currentUserId);
-
-                if ($friendRequestCount > 0) {
-                    echo '<span class="friend-request-counter">' . $friendRequestCount . '</span>';
-                }
-
-                echo '</li>
-                        <li><a href="/user/amis.php">Mes Amis</a></li>
-                        <li><a href="/user/logout.php" class="btn btn-started ms-2 mt-1">Déconnexion</a></li>
-                    </ul>
-                </li>';
+          if (isConnected()) {
+            if ($user['scope'] == 0) {
+              echo '<li class="nav-item">
+                  <a class="nav-link" href="/admin/admin-dashboard.php">Administration</a>
+              </li>';
+            } else if ($user['scope'] == 2) {
+              echo '<li class="nav-item">
+              <a class="nav-link" href="/user/demandefinancement.php">Créer un projet</a>
+              </li>';
             } else {
-                echo '<a href="/user/login.php"><button class="btn btn-primary ms-2 mt-1">Connexion</button></a>';
+              echo '<li class="nav-item">
+              <a class="nav-link" href="/user/listefinancement.php">Projets</a>
+              </li>';
             }
-            ?>
-            <li><button id="theme-button">Passer en mode sombre</button></li>
+          } else {
+            echo '<li class="nav-item">
+                <a class="nav-link" href="/user/login.php">Projets</a>
+            </li>';
+          }
+          ?>
+          <li><a href="/user/membres.php">Membres</a></li>
+          <?php 
+          if (isConnected()) {
+            echo '
+            <li class="dropdown">
+              <a href="#"><span>Mon compte</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+              <ul>
+                <li><a href="/user/profile.php">Mon Profil</a></li>
+                <li><a href="/user/membres.php">Membres</a></li>
+                <li><a href="/user/demandes.php">Mes Demandes</a>';
 
+            // Afficher le compteur des demandes d'amis
+            $currentUserId = $_SESSION['id'];
+            $friendRequestCount = getFriendRequestCount($currentUserId);
+
+            if ($friendRequestCount > 0) {
+              echo '<span class="friend-request-counter">' . $friendRequestCount . '</span>';
+            }
+
+            echo '</li>
+                <li><a href="/user/amis.php">Mes Amis</a></li>
+                <li><a href="/user/logout.php" class="btn btn-started ms-2 mt-1">Déconnexion</a></li>
+              </ul>
+            </li>';
+          } else {
+            echo '<a href="/user/login.php"><button class="btn btn-primary ms-2 mt-1">Connexion</button></a>';
+          }
+          ?>
+          <li><button id="theme-button">Passer en mode sombre</button></li>
         </ul>
       </nav><!-- .navbar -->
     </div>
-  </header><!-- End Header -->  
+  </header><!-- End Header -->
 
+  <?php
+  if ($pageTitle !== "Accueil") { ?>
+    <main id="main">
+      <!-- ======= Breadcrumbs ======= -->
+      <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
+        <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+          <h2><?php echo $pageTitle; ?></h2>
+          <ol>
+            <li><a href="/">Accueil</a></li>
+            <li><?php echo $pageTitle; ?></li>
+          </ol>
+        </div>
+      </div><!-- End Breadcrumbs -->
+    <?php } ?>
 
-<?php
-  if($pageTitle !== "Accueil"){ ?>
-  <main id="main">
-<!-- ======= Breadcrumbs ======= -->
-<div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
-  <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-    <h2><?php echo $pageTitle; ?></h2>
-    <ol>
-      <li><a href="/">Accueil</a></li>
-      <li><?php echo $pageTitle; ?></li>
-    </ol>
-  </div>
-</div><!-- End Breadcrumbs -->
-
-<?php } ?>
-<script>
-  document.querySelector('#theme-button').addEventListener('click', function() {
-    if (document.documentElement.getAttribute('data-theme') === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'light');
-      this.textContent = 'Passer en mode sombre';
-    } else {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      this.textContent = 'Passer en mode clair';
-    }
-  });
-</script>
+  <script>
+    document.querySelector('#theme-button').addEventListener('click', function() {
+      if (document.documentElement.getAttribute('data-theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        this.textContent = 'Passer en mode sombre';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        this.textContent = 'Passer en mode clair';
+      }
+    });
+  </script>

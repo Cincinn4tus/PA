@@ -18,9 +18,9 @@
               <div class="icon">
                 <i class="fa-solid fa-mountain-city"></i>
               </div>
-              <h3>Nesciunt Mete</h3>
-              <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
-              <a href="service-details.html" class="readmore stretched-link">Learn more <i class="bi bi-arrow-right"></i></a>
+              <h3>Plateforme de Financement Participatif</h3>
+              <p>Optez pour une plateforme de financement participatif fiable et sécurisée. Notre équipe vous accompagne tout au long du processus de collecte de fonds pour concrétiser votre projet. Bénéficiez de notre expertise et de notre vaste réseau de contributeurs.</p>
+              <a href="service-details.html" class="readmore stretched-link">En savoir plus <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
@@ -29,9 +29,9 @@
               <div class="icon">
                 <i class="fa-solid fa-arrow-up-from-ground-water"></i>
               </div>
-              <h3>Eosle Commodi</h3>
-              <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
-              <a href="service-details.html" class="readmore stretched-link">Learn more <i class="bi bi-arrow-right"></i></a>
+              <h3>Visibilité et Mobilisation</h3>
+              <p>Augmentez vos chances de réussite grâce à notre plateforme de financement participatif. Profitez d'une visibilité accrue pour votre projet et mobilisez une communauté engagée. Nous mettons à votre disposition les outils nécessaires pour maximiser votre collecte de fonds.</p>
+              <a href="service-details.html" class="readmore stretched-link">En savoir plus <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
@@ -40,9 +40,9 @@
               <div class="icon">
                 <i class="fa-solid fa-compass-drafting"></i>
               </div>
-              <h3>Ledo Markt</h3>
-              <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
-              <a href="service-details.html" class="readmore stretched-link">Learn more <i class="bi bi-arrow-right"></i></a>
+              <h3>Accompagnement Personnalisé</h3>
+              <p>Découvrez notre plateforme de financement participatif et faites décoller votre projet. Bénéficiez d'un accompagnement personnalisé, de conseils d'experts et de solutions adaptées à vos besoins. Ensemble, réalisons vos ambitions.</p>
+              <a href="service-details.html" class="readmore stretched-link">En savoir plus <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
@@ -51,9 +51,9 @@
               <div class="icon">
                 <i class="fa-solid fa-trowel-bricks"></i>
               </div>
-              <h3>Asperiores Commodit</h3>
-              <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
-              <a href="service-details.html" class="readmore stretched-link">Learn more <i class="bi bi-arrow-right"></i></a>
+              <h3>Communauté Engagée</h3>
+              <p>Accédez à une communauté dynamique de contributeurs prêts à soutenir votre projet. Notre plateforme de financement participatif offre une visibilité accrue et vous permet de collecter les fonds nécessaires pour réaliser vos ambitions. Lancez-vous dès maintenant !</p>
+              <a href="service-details.html" class="readmore stretched-link">En savoir plus <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
@@ -62,9 +62,9 @@
               <div class="icon">
                 <i class="fa-solid fa-helmet-safety"></i>
               </div>
-              <h3>Velit Doloremque</h3>
-              <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
-              <a href="service-details.html" class="readmore stretched-link">Learn more <i class="bi bi-arrow-right"></i></a>
+              <h3>Sécurité et Transparence</h3>
+              <p>Bénéficiez d'une plateforme de financement participatif sécurisée et performante. Nous veillons à la protection de vos données et à la transparence des transactions. Lancez votre projet en toute sérénité et atteignez vos objectifs grâce à notre expertise.</p>
+              <a href="service-details.html" class="readmore stretched-link">En savoir plus <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
@@ -73,16 +73,18 @@
               <div class="icon">
                 <i class="fa-solid fa-arrow-up-from-ground-water"></i>
               </div>
-              <h3>Dolori Architecto</h3>
-              <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
-              <a href="service-details.html" class="readmore stretched-link">Learn more <i class="bi bi-arrow-right"></i></a>
+              <h3>Interface Conviviale</h3>
+              <p>Profitez d'une plateforme de financement participatif facile à utiliser et intuitive. Que vous soyez un porteur de projet ou un contributeur, notre interface conviviale vous permet de naviguer aisément et de participer à des projets qui vous tiennent à cœur.</p>
+              <a href="service-details.html" class="readmore stretched-link">En savoir plus <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
         </div>
 
       </div>
-    </section><!-- End Services Section -->
+    </section><!-- End Section Services -->
+
+
 
     <!-- ======= Servie Cards Section ======= -->
     <section id="services-cards" class="services-cards">
@@ -142,14 +144,14 @@
 
         <div class="row justify-content-around gy-4">
           <div class="col-lg-5 d-flex flex-column justify-content-center">
-            <h3>Non quasi officia eum nobis et rerum epudiandae rem voluptatem</h3>
-            <p>Maxime quia dolorum alias perspiciatis. Earum voluptatem sint at non. Ducimus maxime minima iste magni sit praesentium assumenda minus. Amet rerum saepe tempora vero.</p>
+            <h3>Des solutions alternatives pour financer votre projet</h3>
+            <p>Découvrez nos solutions alternatives de financement pour concrétiser vos idées. Nous proposons des options flexibles qui s'adaptent à vos besoins spécifiques. Explorez nos offres et trouvez la solution qui vous convient.</p>
 
             <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100">
               <i class="bi bi-easel flex-shrink-0"></i>
               <div>
                 <h4><a href="" class="stretched-link">Lorem Ipsum</a></h4>
-                <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                <p>Découvrez des projets innovants dans divers domaines et participez à leur réalisation. Trouvez des opportunités de financement uniques et faites partie d'une communauté d'investisseurs passionnés.</p>
               </div>
             </div><!-- End Icon Box -->
 
@@ -157,7 +159,7 @@
               <i class="bi bi-patch-check flex-shrink-0"></i>
               <div>
                 <h4><a href="" class="stretched-link">Nemo Enim</a></h4>
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+                <p>Explorez des options de prêts collaboratifs et bénéficiez de taux d'intérêt avantageux. Investissez dans des projets porteurs et contribuez au développement de nouvelles idées.</p>
               </div>
             </div><!-- End Icon Box -->
 
@@ -165,7 +167,7 @@
               <i class="bi bi-brightness-high flex-shrink-0"></i>
               <div>
                 <h4><a href="" class="stretched-link">Dine Pad</a></h4>
-                <p>Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
+                <p>Participez à des campagnes de crowdfunding et soutenez des projets qui vous tiennent à cœur. Faites partie d'une communauté engagée et contribuez à des causes qui comptent pour vous.</p>
               </div>
             </div><!-- End Icon Box -->
 
@@ -173,7 +175,7 @@
               <i class="bi bi-brightness-high flex-shrink-0"></i>
               <div>
                 <h4><a href="" class="stretched-link">Tride clov</a></h4>
-                <p>Est voluptatem labore deleniti quis a delectus et. Saepe dolorem libero sit non aspernatur odit amet. Et eligendi</p>
+                <p>Investissez dans des start-ups prometteuses et participez à leur croissance. Découvrez des projets innovants et devenez un partenaire stratégique pour les entrepreneurs talentueux.</p>
               </div>
             </div><!-- End Icon Box -->
           </div>
@@ -182,7 +184,8 @@
         </div>
 
       </div>
-    </section><!-- End Alt Services Section 2 -->
+    </section><!-- End Section Services Alternatifs 2 -->
+
 
     <!-- ======= Alt Services Section ======= -->
     <section id="alt-services" class="alt-services">
@@ -192,14 +195,14 @@
           <div class="col-lg-6 img-bg" style="background-image: url(assets/img/alt-services.jpg);" data-aos="zoom-in" data-aos-delay="100"></div>
 
           <div class="col-lg-5 d-flex flex-column justify-content-center">
-            <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
-            <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi</p>
+            <h3>Des alternatives de financement pour vos projets</h3>
+            <p>Découvrez des options de financement alternatives qui répondent à vos besoins. Nous vous proposons des solutions flexibles pour concrétiser vos projets. Explorez nos offres et trouvez la meilleure option pour vous.</p>
 
             <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100">
               <i class="bi bi-easel flex-shrink-0"></i>
               <div>
                 <h4><a href="" class="stretched-link">Lorem Ipsum</a></h4>
-                <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                <p>Découvrez des opportunités de financement uniques pour des projets innovants. Trouvez des partenaires et investisseurs pour réaliser vos idées et faire grandir votre entreprise.</p>
               </div>
             </div><!-- End Icon Box -->
 
@@ -207,7 +210,7 @@
               <i class="bi bi-patch-check flex-shrink-0"></i>
               <div>
                 <h4><a href="" class="stretched-link">Nemo Enim</a></h4>
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+                <p>Explorez des options de prêt collaboratif pour obtenir les fonds nécessaires à votre projet. Bénéficiez de taux avantageux et participez à des financements collectifs pour stimuler votre croissance.</p>
               </div>
             </div><!-- End Icon Box -->
 
@@ -215,7 +218,7 @@
               <i class="bi bi-brightness-high flex-shrink-0"></i>
               <div>
                 <h4><a href="" class="stretched-link">Dine Pad</a></h4>
-                <p>Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
+                <p>Contribuez à des campagnes de financement participatif et soutenez des projets qui vous tiennent à cœur. Faites partie d'une communauté engagée et participez à des initiatives qui ont un impact positif.</p>
               </div>
             </div><!-- End Icon Box -->
 
@@ -223,7 +226,7 @@
               <i class="bi bi-brightness-high flex-shrink-0"></i>
               <div>
                 <h4><a href="" class="stretched-link">Tride clov</a></h4>
-                <p>Est voluptatem labore deleniti quis a delectus et. Saepe dolorem libero sit non aspernatur odit amet. Et eligendi</p>
+                <p>Investissez dans des start-ups prometteuses et devenez un partenaire stratégique. Soutenez des entrepreneurs talentueux et contribuez à la création d'entreprises innovantes.</p>
               </div>
             </div><!-- End Icon Box -->
 
@@ -231,7 +234,8 @@
         </div>
 
       </div>
-    </section><!-- End Alt Services Section -->
+    </section><!-- End Section Services Alternatifs -->
+
 
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials section-bg">
