@@ -8,17 +8,6 @@ getUserInfos();
 include $_SERVER['DOCUMENT_ROOT'] . "/assets/templates/header.php";
 ?>
 
-<main id="main">
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/assets/img/breadcrumbs-bg.jpg');">
-        <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-            <h2>Membres</h2>
-            <ol>
-                <li><a href="/">Accueil</a></li>
-                <li>Membres</li>
-            </ol>
-        </div>
-    </div><!-- End Breadcrumbs -->
 
     <div class="container-fluid">
         <?php
